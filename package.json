@@ -11,6 +11,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/react": "^16.3.8",
+    "react": "^16.3.1",
     "typescript": "^2.8.1"
+  },
+  "dependencies": {
+    "@types/color": "^3.0.0",
+    "@types/ms": "^0.7.30",
+    "color": "^3.0.0",
+    "linked-map": "^2.2.2",
+    "ms": "^2.1.1"
   }
 }

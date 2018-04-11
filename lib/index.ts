@@ -1,8 +1,3 @@
-/**
-* @Method: Returns greetings for a given name
-* @Param {string}
-* @Return {string}
-*/
-export function greetings (name: string) : string {
-  return `Hello ${name}!`;
-}
+export * from './constants';
+export * from './types';
+export * from './jss';

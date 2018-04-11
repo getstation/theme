@@ -10,6 +10,6 @@ npm install @getstation/theme
 
 ### TypeScript
 ```typescript
-import { greetings } from '@getstation/theme';
-console.log(greetings('Station'))
+import { getGradient } from '@getstation/theme';
+getGradient(themeGradientColors);
 ```
