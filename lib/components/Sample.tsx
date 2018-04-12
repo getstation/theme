@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-export interface Props {
+export interface SampleProps {
   name: string,
 }
 
-export class Sample extends React.PureComponent<Props, {}> {
+export class Sample extends React.PureComponent<SampleProps, {}> {
   render() {
     return (
       <div>

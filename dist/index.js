@@ -8,4 +8,6 @@ __export(require("./types"));
 __export(require("./jss"));
 __export(require("./lib"));
 __export(require("./components/Sample"));
+__export(require("./gradient"));
+__export(require("./BrowserXThemeProvider"));
 //# sourceMappingURL=index.js.map

@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const color_1 = __importDefault(require("color"));
 exports.getGradientCSSBackground = (themeColors) => {
-    return `linear-gradient(-180deg, tomato 0vh, ${themeColors[1]} 22vh, olive 58vh, ${themeColors[3]} 100vh)`;
+    return `linear-gradient(-180deg, ${themeColors[0]} 0vh, ${themeColors[1]} 22vh, ${themeColors[2]} 58vh, ${themeColors[3]} 100vh)`;
 };
 exports.getOpacityGradient = (opacity) => {
     return `linear-gradient(-180deg, rgba(0,0,0,${opacity}) 0vh, rgba(0,0,0,${opacity}) 100vh)`;

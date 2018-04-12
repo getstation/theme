@@ -1,7 +1,7 @@
 import Color from 'color';
 
 export const getGradientCSSBackground = (themeColors: string[]) => {
-  return `linear-gradient(-180deg, tomato 0vh, ${themeColors[1]} 22vh, olive 58vh, ${themeColors[3]} 100vh)`;
+  return `linear-gradient(-180deg, ${themeColors[0]} 0vh, ${themeColors[1]} 22vh, ${themeColors[2]} 58vh, ${themeColors[3]} 100vh)`;
 };
 
 export const getOpacityGradient = (opacity: number) => {

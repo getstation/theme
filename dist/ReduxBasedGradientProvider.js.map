@@ -1,0 +1,1 @@
+{"version":3,"file":"ReduxBasedGradientProvider.js","sourceRoot":"","sources":["../lib/ReduxBasedGradientProvider.tsx"],"names":[],"mappings":";;AACA,6CAAsC;AACtC,yCAA8C;AAC9C,2CAA6C;AAEhC,QAAA,0BAA0B,GAAG,qBAAO,CAAC,CAAC,KAAiC,EAAE,EAAE,CAAC,CAAC;IACxF,WAAW,EAAE,0BAAc,CAAC,KAAK,CAAC;CACnC,CAAC,CAAC,CAAC,2BAAgB,CAAC,CAAC"}
