@@ -1,4 +1,4 @@
-export declare const getGradient: (themeColors: string[]) => string;
+export declare const getGradientCSSBackground: (themeColors: string[]) => string;
 export declare const getOpacityGradient: (opacity: number) => string;
 export declare const getHighlightGradient: (direction?: string, opacity?: number) => string;
 export declare const getGradientWithOverlay: (themeColors: string[], opacity: number) => string;
