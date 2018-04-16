@@ -1,3 +1,4 @@
+// @ts-ignore: no declaration file
 import LinkedMap from 'linked-map';
 import ms from 'ms';
 
