@@ -1,17 +1,43 @@
 import Color from 'color';
 
+/**
+ * getGradientCSSBackground
+ *
+ * @param {string[]} themeColors - the array of colors for the current theme
+ * @returns {string} the linear-gradient CSS value that represents the theme colors gradient
+ */
 export const getGradientCSSBackground = (themeColors: string[]) => {
   return `linear-gradient(-180deg, ${themeColors[0]} 0vh, ${themeColors[1]} 22vh, ${themeColors[2]} 58vh, ${themeColors[3]} 100vh)`;
 };
 
+/**
+ * getOpacityGradient
+ *
+ * @param {number} opacity - the opacity
+ * @returns {string} the linear-gradient CSS value that represents the opacity gradient
+ */
 export const getOpacityGradient = (opacity: number) => {
   return `linear-gradient(-180deg, rgba(0,0,0,${opacity}) 0vh, rgba(0,0,0,${opacity}) 100vh)`;
 };
 
+/**
+ * getHighlightGradient
+ *
+ * @param {string} direction - direction of the gradient
+ * @param {number} opacity - opacity of the gradient
+ * @returns {string} the linear-gradient CSS value that represents...
+ */
 export const getHighlightGradient = (direction: string = 'to right', opacity: number = 0.15) => {
   return `linear-gradient(${direction}, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.03) 7%, rgba(255, 255, 255, ${opacity}) 100%);`;
 };
 
+/**
+ * getGradientWithOverlay
+ *
+ * @param {string[]} themeColors - the array of colors for the current theme
+ * @param {number} opacity - opacity of the gradient
+ * @returns {string} the linear-gradient CSS value that represents an opacity gradient on top of the theme colors gradient
+ */
 export const getGradientWithOverlay = (themeColors: string[], opacity: number) => {
   const gradient = getGradientCSSBackground(themeColors);
   const opacityGradient = getOpacityGradient(opacity);
@@ -19,6 +45,13 @@ export const getGradientWithOverlay = (themeColors: string[], opacity: number) =
   return `${opacityGradient}, ${gradient}`;
 };
 
+/**
+ * fontMixin
+ *
+ * @param {number} size - size of the font
+ * @param {string | number} weight - weight of the font
+ * @returns {{fontFamily: string; fontSize: number; fontWeight: string | number}} the corresponding fonts CSS properties
+ */
 const fontMixin = (size: number, weight: string | number = 'normal') => ({
   fontFamily:
     `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
@@ -115,6 +148,13 @@ export const theme = {
   $osbarHeight: '30px',
   $appSize: '50px',
 
+  /**
+   * avatarMixin
+   *
+   * @param {string} value - the width and height value
+   * @param {string} radius - the border radius value
+   * @returns {{height: string; width: string; borderRadius: string; backgroundClip: string}} the corresponding CSS properties
+   */
   avatarMixin: (value: string, radius = value) => ({
     height: value,
     width: value,
@@ -122,6 +162,15 @@ export const theme = {
     backgroundClip: 'padding-box',
   }),
 
+  /**
+   * covererMixin
+   *
+   * @param {number} bottom - value of the bottom property
+   * @param {number} left - value of the left property
+   * @param {number} right - value of the right property
+   * @param {number} top - value of the top property
+   * @returns {{bottom: number; left: number; position: string; right: number; top: number}} the corresponding CSS properties
+   */
   covererMixin: (bottom = 0, left = 0, right = 0, top = 0) => ({
     bottom: bottom,
     left: left,
@@ -132,6 +181,12 @@ export const theme = {
 
   fontMixin,
 
+  /**
+   * elipsisMixin
+   *
+   * @param {number} lineClamp - value of the line-clamp property
+   * @returns {{display: string; "-webkit-line-clamp": number; "-webkit-box-orient": string; overflow: string; textOverflow: string}} the corresponding CSS properties
+   */
   elipsisMixin: (lineClamp = 2) => ({
     display: '-webkit-box',
     '-webkit-line-clamp': lineClamp,
@@ -140,10 +195,23 @@ export const theme = {
     textOverflow: 'ellipsis',
   }),
 
+  /**
+   * mixinDarkenColor
+   *
+   * @param {string} color - the corresponding color
+   * @param {number} ratio - the ratio to daren the color
+   * @returns {string} - the color darkened by the ratio
+   */
   mixinDarkenColor: (color: string, ratio = 0.3) =>
     Color(color).mix(Color('black'), ratio).rgb().string(),
 };
 
+/**
+ * roundedBackground
+ *
+ * @param {string} color - color for the background
+ * @returns {{borderRadius: string; backgroundColor: string}} the corresponding CSS properties
+ */
 export const roundedBackground = (color: string = '#eee') => {
   return {
     borderRadius: '999px',

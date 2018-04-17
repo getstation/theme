@@ -12,6 +12,9 @@ export interface GradientProviderProps {
   children: React.Component
 }
 
+/**
+ * GradientProvider
+ */
 export class GradientProvider extends React.Component<GradientProviderProps> {
   render() {
     return (
@@ -37,6 +40,13 @@ export enum GradientType {
   withDarkOverlay,
 }
 
+/**
+ * computeGradient
+ *
+ * @param {GradientType} type - type of gradient.
+ * @param {string[]} themeGradientColors - array of gradient colors.
+ * @return {string} the corresponding linear-gradient CSS value
+ */
 function computeGradient(type: GradientType, themeGradientColors: string[]) {
   switch (type) {
     case GradientType.normal:

@@ -11,6 +11,9 @@ export interface BrowserXThemeProviderProps {
 
 jss.use(jssNested());
 
+/**
+ * BrowserXThemeProvider
+ */
 export class BrowserXThemeProvider extends React.Component<BrowserXThemeProviderProps, {}> {
   render() {
     return (
