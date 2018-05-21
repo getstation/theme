@@ -48,7 +48,7 @@ class IconImpl extends React.PureComponent<Props, {}> {
   }
 }
 
-const STATIC_PATH = path.resolve(__dirname, '../static');
+const STATIC_PATH = path.resolve(__dirname, '../../static');
 function getIconHref(symbolId: IconSymbol) {
   return path.join(STATIC_PATH, `Icons.svg#icon--${symbolId}`);
 }
