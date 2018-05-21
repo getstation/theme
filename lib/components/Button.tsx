@@ -10,13 +10,13 @@ export enum Style {
   PRIMARY, SECONDARY, TERTIARY,
 }
 
-export interface OwnProps {
+interface OwnProps {
   classes?: any,
   sheet?: any,
   btnSize?: Size,
   btnStyle?: Style
 }
-export type Props = OwnProps & React.HTMLProps<HTMLButtonElement>;
+type Props = OwnProps & React.HTMLProps<HTMLButtonElement>;
 
 const styles = {
   button: {
@@ -78,7 +78,7 @@ const styles = {
     },
   },
 };
-class Button extends React.Component<Props, {}> {
+class ButtonImpl extends React.Component<Props, {}> {
 
   public static defaultProps: Partial<Props> = {
     btnSize: Size.NORMAL,
@@ -125,4 +125,4 @@ class Button extends React.Component<Props, {}> {
   }
 }
 
-export default injectSheet(styles)(Button);
+export const Button = injectSheet(styles)(ButtonImpl);

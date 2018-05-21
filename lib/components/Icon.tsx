@@ -5,11 +5,11 @@ import injectSheet from 'react-jss';
 import { ThemeTypes } from '../types';
 import classNames = require('classnames');
 
-export interface Classes {
+interface Classes {
   icon: string,
 }
 
-export interface OwnProps {
+interface OwnProps {
   classes?: Classes,
   symbolId: IconSymbol,
   width?: number,
@@ -17,7 +17,7 @@ export interface OwnProps {
   size?: number | string,
   color?: string,
 }
-export type Props = React.HTMLProps<SVGSVGElement> & OwnProps;
+type Props = React.HTMLProps<SVGSVGElement> & OwnProps;
 
 const styles = (theme: ThemeTypes) => ({
   icon: {
@@ -27,7 +27,7 @@ const styles = (theme: ThemeTypes) => ({
   },
 });
 
-class Icon extends React.PureComponent<Props, {}> {
+class IconImpl extends React.PureComponent<Props, {}> {
   render() {
     const { classes, symbolId } = this.props;
     const svgProps = { ...this.props };
@@ -53,7 +53,7 @@ function getIconHref(symbolId: IconSymbol) {
   return path.join(STATIC_PATH, `Icons.svg#icon--${symbolId}`);
 }
 
-export default injectSheet(styles)(Icon);
+export const Icon = injectSheet(styles)(IconImpl);
 
 export enum IconSymbol {
   CHAT = 'chat',

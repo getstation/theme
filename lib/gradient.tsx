@@ -1,6 +1,6 @@
 // @ts-ignore the type definition is broken, problem of import default :(
 import createReactContext from 'create-react-context';
-import React from 'react';
+import * as React from 'react';
 import { getGradientCSSBackground as getGradient, getGradientWithOverlay } from './jss';
 
 const defaultGradientColors = ['#85A9C4', '#C5C7C6', '#DFD2C0', '#F1B87C'];
@@ -25,10 +25,7 @@ export class GradientProvider extends React.Component<GradientProviderProps> {
   }
 }
 
-
-// Diff / Omit taken from https://github.com/Microsoft/TypeScript/issues/12215#issuecomment-311923766
-type Diff<T extends string, U extends string> = ({[P in T]: P } & {[P in U]: never } & { [x: string]: never })[T];
-type Omit<T, K extends keyof T> = Pick<T, Diff<keyof T, K>>;
+type Omit<T, K extends keyof T> = T extends any ? Pick<T, Exclude<keyof T, K>> : never;
 
 export interface InjectedProps {
   themeGradient: string,
