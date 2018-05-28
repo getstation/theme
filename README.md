@@ -7,6 +7,9 @@ npm install @getstation/theme
 ```
 
 ## Usage
+### Components
+- `<Button/>`
+- `<Icon/>`
 
 ### TypeScript
 ```typescript
