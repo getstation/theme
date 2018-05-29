@@ -10,19 +10,19 @@ export enum Style {
   PRIMARY, SECONDARY, TERTIARY, LINK,
 }
 
-export interface OwnProps {
+export interface ButtonOwnProps {
   classes?: any,
   sheet?: any,
   btnSize?: Size,
   btnStyle?: Style
 }
-export type Props = OwnProps & React.HTMLProps<HTMLButtonElement>;
+export type ButtonProps = ButtonOwnProps & React.HTMLProps<HTMLButtonElement>;
 
 const styles = {
   button: {
     appearance: 'none',
     border: 'none',
-    padding: (props: Props) => isRenderingIcon(props) ? 0 : '0 20px',
+    padding: (props: ButtonProps) => isRenderingIcon(props) ? 0 : '0 20px',
     borderRadius: '34px',
     height: '34px',
     lineHeight: '34px',
@@ -87,9 +87,9 @@ const styles = {
     },
   },
 };
-class ButtonImpl extends React.Component<Props, {}> {
+export class ButtonImpl extends React.Component<ButtonProps, {}> {
 
-  public static defaultProps: Partial<Props> = {
+  public static defaultProps: Partial<ButtonProps> = {
     btnSize: Size.NORMAL,
     btnStyle: Style.PRIMARY,
   };
@@ -136,7 +136,7 @@ class ButtonImpl extends React.Component<Props, {}> {
 }
 
 // Helpers
-const isRenderingIcon = (props: Props): boolean => {
+const isRenderingIcon = (props: ButtonProps): boolean => {
   const childrenIsObject = typeof props.children === 'object';
   if (!childrenIsObject) return false;
   const childrenHasProps = typeof (props.children as React.ReactElement<typeof props.children>).props !== ('undefined' || 'null');
@@ -145,4 +145,4 @@ const isRenderingIcon = (props: Props): boolean => {
     .some((prop: string) => prop === 'symbolId');
 };
 
-export const Button = injectSheet(styles)(ButtonImpl) as React.Component<Props, {}>;
+export const Button = injectSheet(styles)(ButtonImpl) as typeof ButtonImpl;
