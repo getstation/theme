@@ -7,7 +7,7 @@ export enum Size {
   BIG, NORMAL, SMALL, XSMALL, XXSMALL,
 }
 export enum Style {
-  PRIMARY, SECONDARY, TERTIARY,
+  PRIMARY, SECONDARY, TERTIARY, LINK,
 }
 
 interface OwnProps {
@@ -22,7 +22,7 @@ const styles = {
   button: {
     appearance: 'none',
     border: 'none',
-    padding: '0 20px',
+    padding: (props: Props) => isRenderingIcon(props) ? 0 : '0 20px',
     borderRadius: '34px',
     height: '34px',
     lineHeight: '34px',
@@ -77,6 +77,15 @@ const styles = {
       backgroundColor: 'rgba(0, 0, 0, 0.2)',
     },
   },
+  buttonLink: {
+    fontWeight: 'bold',
+    color: 'rgba(255, 255, 255, 0.6)',
+    backgroundColor: 'transparent',
+    textDecoration: 'underline',
+    '&:hover:enabled, &:active:enabled': {
+      color: 'rgba(255, 255, 255, 0.8)',
+    },
+  },
 };
 class ButtonImpl extends React.Component<Props, {}> {
 
@@ -105,6 +114,7 @@ class ButtonImpl extends React.Component<Props, {}> {
       [Style.PRIMARY]: classes.buttonPrimary,
       [Style.SECONDARY]: classes.buttonSecondary,
       [Style.TERTIARY]: classes.buttonTertiary,
+      [Style.LINK]: classes.buttonLink,
     };
 
     const className = classNames(
@@ -125,4 +135,14 @@ class ButtonImpl extends React.Component<Props, {}> {
   }
 }
 
-export const Button = injectSheet(styles)(ButtonImpl);
+// Helpers
+const isRenderingIcon = (props: Props): boolean => {
+  const childrenIsObject = typeof props.children === 'object';
+  if (!childrenIsObject) return false;
+  const childrenHasProps = typeof (props.children as React.ReactElement<typeof props.children>).props !== ('undefined' || 'null');
+  if (!childrenHasProps) return false;
+  return Object.keys((props.children as React.ReactElement<typeof props.children>).props!)
+    .some((prop: string) => prop === 'symbolId');
+};
+
+export const Button = injectSheet(styles)(ButtonImpl) as React.Component<Props, {}>;
