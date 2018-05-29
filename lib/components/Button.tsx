@@ -10,13 +10,13 @@ export enum Style {
   PRIMARY, SECONDARY, TERTIARY, LINK,
 }
 
-interface OwnProps {
+export interface OwnProps {
   classes?: any,
   sheet?: any,
   btnSize?: Size,
   btnStyle?: Style
 }
-type Props = OwnProps & React.HTMLProps<HTMLButtonElement>;
+export type Props = OwnProps & React.HTMLProps<HTMLButtonElement>;
 
 const styles = {
   button: {

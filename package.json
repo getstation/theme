@@ -1,13 +1,14 @@
 {
   "name": "@getstation/theme",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Station Theme & Styleguide",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "typedoc": "typedoc --out ./docs ./lib"
+    "typedoc": "typedoc --out ./docs ./lib",
+    "prepublish": "tsc"
   },
   "author": "",
   "license": "ISC",
