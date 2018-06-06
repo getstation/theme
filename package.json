@@ -7,10 +7,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "typedoc": "typedoc --out ./docs/typedoc ./lib",
+    "typedoc": "rimraf ./docs/typedoc && typedoc --out ./docs/typedoc ./lib",
     "prepublish": "tsc",
     "storybook": "start-storybook -s ./ -p 6006",
-    "build-storybook": "build-storybook -o ./docs/storybook",
+    "build-storybook": "rimraf ./docs/storybook && build-storybook -o ./docs/storybook",
     "build-docs": "yarn run build-storybook && yarn run typedoc"
   },
   "author": "",
@@ -49,6 +49,7 @@
     "@types/storybook__react": "^3.0.7",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
+    "rimraf": "^2.6.2",
     "ts-loader": "^3.0.0",
     "typedoc": "^0.11.1",
     "typescript": "^2.8.1"
