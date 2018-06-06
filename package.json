@@ -7,28 +7,50 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "typedoc": "typedoc --out ./docs ./lib",
-    "prepublish": "tsc"
+    "typedoc": "rimraf ./docs/typedoc && typedoc --out ./docs/typedoc ./lib",
+    "prepublish": "tsc",
+    "storybook": "start-storybook -s ./ -p 6006",
+    "build-storybook": "rimraf ./docs/storybook && build-storybook -o ./docs/storybook",
+    "build-docs": "yarn run build-storybook && yarn run typedoc"
   },
   "author": "",
   "license": "ISC",
+  "resolutions": {
+    "typescript": "^2.8.0"
+  },
   "dependencies": {
     "classnames": "^2.2.5",
     "color": "^3.0.0",
-    "create-react-context": "^0.2.1",
+    "create-react-context": "^0.2.2",
     "jss-nested": "^6.0.1",
     "linked-map": "^2.2.2",
     "ms": "^2.1.1",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
     "react-jss": "^8.4.0"
   },
   "devDependencies": {
-    "@types/classnames": "^2.2.3",
+    "@storybook/addon-actions": "^3.4.6",
+    "@storybook/addon-info": "^3.4.6",
+    "@storybook/addon-knobs": "^3.4.6",
+    "@storybook/addon-links": "^3.4.6",
+    "@storybook/addon-notes": "^3.4.6",
+    "@storybook/addons": "^3.4.6",
+    "@storybook/react": "^3.4.6",
+    "@types/classnames": "^2.2.4",
     "@types/color": "^3.0.0",
     "@types/ms": "^0.7.30",
-    "@types/react": "^15.6.7",
-    "@types/react-dom": "^15.5.1",
+    "@types/react": "^16.3.16",
+    "@types/react-dom": "^16.0.6",
+    "@types/storybook__addon-actions": "^3.0.3",
+    "@types/storybook__addon-info": "^3.2.3",
+    "@types/storybook__addon-knobs": "^3.3.1",
+    "@types/storybook__addon-notes": "^3.3.1",
+    "@types/storybook__react": "^3.0.7",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0",
+    "rimraf": "^2.6.2",
+    "ts-loader": "^3.0.0",
     "typedoc": "^0.11.1",
     "typescript": "^2.8.1"
   }

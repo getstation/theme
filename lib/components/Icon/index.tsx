@@ -2,7 +2,7 @@ import * as path from 'path';
 import * as React from 'react';
 // @ts-ignore: no declaration file
 import injectSheet from 'react-jss';
-import { ThemeTypes } from '../types';
+import { ThemeTypes } from '../../types';
 import classNames = require('classnames');
 
 export interface IconOwnProps {

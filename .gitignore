@@ -151,7 +151,7 @@ GitHub.sublime-settings
 .LSOverride
 
 # Icon must end with two \r
-Icon
+# Icon
 
 # Thumbnails
 ._*
@@ -230,3 +230,6 @@ tags
 .nfs*
 
 /.idea
+
+/docs/*
+!/docs/index.html
