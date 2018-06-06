@@ -15,6 +15,9 @@
   },
   "author": "",
   "license": "ISC",
+  "resolutions": {
+    "typescript": "^2.8.0"
+  },
   "dependencies": {
     "classnames": "^2.2.5",
     "color": "^3.0.0",
