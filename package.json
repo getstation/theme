@@ -18,7 +18,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "color": "^3.0.0",
-    "create-react-context": "^0.2.1",
+    "create-react-context": "^0.2.2",
     "jss-nested": "^6.0.1",
     "linked-map": "^2.2.2",
     "ms": "^2.1.1",
@@ -34,11 +34,11 @@
     "@storybook/addon-notes": "^3.4.6",
     "@storybook/addons": "^3.4.6",
     "@storybook/react": "^3.4.6",
-    "@types/classnames": "^2.2.3",
+    "@types/classnames": "^2.2.4",
     "@types/color": "^3.0.0",
     "@types/ms": "^0.7.30",
-    "@types/react": "^16.3.6",
-    "@types/react-dom": "^16.0.4",
+    "@types/react": "^16.3.16",
+    "@types/react-dom": "^16.0.6",
     "@types/storybook__addon-actions": "^3.0.3",
     "@types/storybook__addon-info": "^3.2.3",
     "@types/storybook__addon-knobs": "^3.3.1",
@@ -46,7 +46,7 @@
     "@types/storybook__react": "^3.0.7",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
-    "ts-loader": "^3.2.0",
+    "ts-loader": "^4.3.1",
     "typedoc": "^0.11.1",
     "typescript": "^2.8.1"
   }
