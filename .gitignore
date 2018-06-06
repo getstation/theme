@@ -230,6 +230,3 @@ tags
 .nfs*
 
 /.idea
-
-/docs/*
-!/docs/index.html
