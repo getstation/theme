@@ -4,7 +4,7 @@ import { BrowserXThemeProvider } from '../lib/BrowserXThemeProvider';
 import { COLORS, Theme } from '../lib/constants';
 import { GradientProvider } from '../lib/gradient';
 
-const req = require.context('../stories', true, /.stories.tsx$/);
+const req = require.context('../', true, /stories.tsx$/);
 function loadStories() {
   req.keys().forEach(filename => req(filename));
 }
