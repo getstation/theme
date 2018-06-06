@@ -7,10 +7,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "typedoc": "typedoc --out ./docs ./lib",
+    "typedoc": "typedoc --out ./docs/typedoc ./lib",
     "prepublish": "tsc",
     "storybook": "start-storybook -s ./ -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o ./docs/storybook",
+    "build-docs": "yarn run build-storybook && yarn run typedoc"
   },
   "author": "",
   "license": "ISC",
