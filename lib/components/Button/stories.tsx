@@ -5,8 +5,6 @@ import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { withNotes } from '@storybook/addon-notes';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-// import AppContainer from '../commons/AppContainer';
-// import ColoredBg from '../commons/ColoredBg';
 
 const story = storiesOf('Components/Button', module);
 
@@ -17,7 +15,6 @@ story
       withNotes('Button - Normal style')(
         () =>
           <div>
-            {/*<AppContainer>*/}
             <div>
               <Button btnSize={Size.BIG} btnStyle={Style.PRIMARY}>Big Button</Button>
               <Button btnSize={Size.NORMAL} btnStyle={Style.PRIMARY}>Normal Button</Button>
@@ -26,8 +23,7 @@ story
               <Button btnSize={Size.XXSMALL} btnStyle={Style.PRIMARY}>XXSmall Button</Button>
             </div>
 
-            {/*<ColoredBg>*/}
-            <div>
+            <div style={{ backgroundColor: '#507DA2' }}>
               <Button btnSize={Size.BIG} btnStyle={Style.SECONDARY}>Big Button</Button>
               <Button btnSize={Size.NORMAL} btnStyle={Style.SECONDARY}>Normal Button</Button>
               <Button btnSize={Size.SMALL} btnStyle={Style.SECONDARY}>Small Button</Button>
