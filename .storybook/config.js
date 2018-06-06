@@ -1,9 +1,20 @@
-import { configure } from '@storybook/react';
+import React from 'react';
+import { addDecorator, configure } from '@storybook/react';
+import { BrowserXThemeProvider } from '../lib/BrowserXThemeProvider';
+import { COLORS, Theme } from '../lib/constants';
+import { GradientProvider } from '../lib/gradient';
 
-// automatically import all files ending in *.stories.js
-const req = require.context('../stories', true, /.stories.js$/);
+const req = require.context('../stories', true, /.stories.tsx$/);
 function loadStories() {
   req.keys().forEach(filename => req(filename));
 }
+
+addDecorator((story) => (
+  <BrowserXThemeProvider>
+    <GradientProvider themeColors={COLORS.get(Theme.dawn).colors}>
+      {story()}
+    </GradientProvider>
+  </BrowserXThemeProvider>
+));
 
 configure(loadStories, module);
