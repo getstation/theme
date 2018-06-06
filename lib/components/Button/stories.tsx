@@ -1,4 +1,4 @@
-import { Button, Size, Style } from './Button';
+import { Button, Size, Style } from './index';
 import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
 import { boolean, withKnobs } from '@storybook/addon-knobs';
@@ -8,7 +8,7 @@ import * as React from 'react';
 // import AppContainer from '../commons/AppContainer';
 // import ColoredBg from '../commons/ColoredBg';
 
-const story = storiesOf('Theme/Buttons', module);
+const story = storiesOf('Components/Button', module);
 
 story
   .addDecorator(withKnobs)
