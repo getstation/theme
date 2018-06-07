@@ -1,6 +1,9 @@
 const path = require("path");
 
 module.exports = (baseConfig, env, defaultConfig) => {
+  defaultConfig.node = {
+    __dirname: true,
+  };
 
   defaultConfig.module.rules.push({
     test: /\.(ts|tsx)$/,
