@@ -6,11 +6,11 @@ import ReactHoverObserver from 'react-hover-observer';
 import injectSheet from 'react-jss';
 import { Manager, Popper, Target } from 'react-popper';
 
-export interface Classes {
+interface Classes {
     hint: string,
 }
 
-export interface Props {
+interface Props {
     classes?: Classes,
     /** A CSS class that'll be added to the outer div */
     className?: string,

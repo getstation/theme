@@ -2,16 +2,16 @@ import * as React from 'react';
 // @ts-ignore: no declaration file
 import injectSheet from 'react-jss';
 import {Icon, IconSymbol} from "../Icon";
-import Tooltip, {Classes} from "../Tooltip";
+import Tooltip from "../Tooltip";
 
 export enum STYLE {
     LIGHT, DARK,
 }
 
-export interface Classes {
+interface Classes {
 }
 
-export interface Props {
+interface Props {
     classes?: Classes,
     tooltip: string;
     style?: STYLE,
