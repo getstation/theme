@@ -18,7 +18,7 @@ const story = storiesOf('Components/Switcher', module);
 story
   .addDecorator(withKnobs)
   .add('Switcher',
-    withInfo({ text: 'NativeAppDockIcon' })(
+    withInfo({ text: 'Switcher' })(
       withNotes('A very simple component')(
         () =>
         <div style={containerStyle}>
