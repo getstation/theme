@@ -1,10 +1,11 @@
 import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
-import { boolean, withKnobs } from '@storybook/addon-knobs';
+import {boolean, select, withKnobs} from '@storybook/addon-knobs';
 import { withNotes } from '@storybook/addon-notes';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Switcher, {TEXT} from './index';
+import {STYLE} from "../Hint";
 
 const containerStyle = {
     width: 200,
@@ -20,12 +21,17 @@ story
   .add('Switcher',
     withInfo({ text: 'Switcher' })(
       withNotes('A very simple component')(
-        () =>
-        <div style={containerStyle}>
-          <Switcher
-              checked={boolean('checked', true)}
-              onChange={action('onChange')}
-              text={TEXT.YES_NO}
-          />
-        </div>
+        () => {
+            const text = select('Text', TEXT, TEXT.ON_OFF);
+
+            return (
+                <div style={containerStyle}>
+                    <Switcher
+                        checked={boolean('checked', true)}
+                        onChange={action('onChange')}
+                        text={text}
+                    />
+                </div>
+            )
+        }
       )));

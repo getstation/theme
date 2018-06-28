@@ -1,8 +1,9 @@
 import { withInfo } from '@storybook/addon-info';
-import { withKnobs } from '@storybook/addon-knobs';
+import {select, text, withKnobs} from '@storybook/addon-knobs';
 import { withNotes } from '@storybook/addon-notes';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
+import PopperJS from 'popper.js';
 import Tooltip from './index';
 import {Icon, IconSymbol} from "../Icon";
 
@@ -19,10 +20,17 @@ story
     .add('Tooltip',
         withInfo({ text: 'Tooltip' })(
             withNotes('A very simple component')(
-                () =>
-                    <div style={containerStyle}>
-                        <Tooltip tooltip={'Here is a tooltip'}>
-                            <Icon symbolId={IconSymbol.BELL} color={'#FFF'} size={40}/>
-                        </Tooltip>
-                    </div>
+                () => {
+                    const tooltip = text('Tooltip', 'This is a tooltip');
+                    // const placement = text('Placement', 'auto'); TODO: fix type issues with PopperJS.Placement
+                    const offset = text('Offset', '0, 0, 0, 0');
+
+                    return (
+                        <div style={containerStyle}>
+                            <Tooltip tooltip={tooltip} offset={offset}>
+                                <Icon symbolId={IconSymbol.BELL} color={'#FFF'} size={40}/>
+                            </Tooltip>
+                        </div>
+                    )
+                }
             )));

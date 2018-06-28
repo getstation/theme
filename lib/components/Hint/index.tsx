@@ -9,6 +9,8 @@ export enum STYLE {
 }
 
 interface Classes {
+    container: string,
+    tooltip: string,
 }
 
 interface Props {
@@ -16,14 +18,22 @@ interface Props {
     tooltip: string;
     style?: STYLE,
     size?: number,
+    children: any,
 }
 
 @injectSheet(() => ({
+    container: {
+        display: 'inline-flex',
+        alignItems: 'center',
+    },
+    tooltip: {
+        marginLeft: 5,
+    },
 }))
 export default class Hint extends React.PureComponent<Props, {}> {
     static defaultProps = {
         style: STYLE.LIGHT,
-        size: 20,
+        size: 15,
     };
 
     style: Object;
@@ -36,13 +46,19 @@ export default class Hint extends React.PureComponent<Props, {}> {
             [STYLE.DARK]: 'rgba(0, 0, 0, .5)',
         }
     }
+
     render() {
-        const { tooltip, style, size } = this.props;
+        const { classes, tooltip, style, size, children } = this.props;
 
         return (
-            <Tooltip tooltip={tooltip}>
-                <Icon symbolId={IconSymbol.HINT} color={this.style[style!]} size={size}/>
-            </Tooltip>
+            <div className={classes!.container}>
+                <div>
+                    { children }
+                </div>
+                <Tooltip className={classes!.tooltip} tooltip={tooltip}>
+                    <Icon symbolId={IconSymbol.HINT} color={this.style[style!]} size={size}/>
+                </Tooltip>
+            </div>
         );
     }
 }
