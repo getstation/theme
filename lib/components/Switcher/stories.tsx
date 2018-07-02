@@ -4,8 +4,7 @@ import {boolean, select, withKnobs} from '@storybook/addon-knobs';
 import { withNotes } from '@storybook/addon-notes';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import Switcher, {TEXT} from './index';
-import {STYLE} from "../Hint";
+import {Switcher, TEXT} from './index';
 
 const containerStyle = {
     width: 200,

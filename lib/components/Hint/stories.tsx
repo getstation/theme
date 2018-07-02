@@ -3,7 +3,7 @@ import {number, select, text, withKnobs} from '@storybook/addon-knobs';
 import { withNotes } from '@storybook/addon-notes';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import Hint, {STYLE} from './index';
+import {Hint, STYLE} from './index';
 
 const story = storiesOf('Components/Hint', module);
 

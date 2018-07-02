@@ -2,7 +2,7 @@ import * as React from 'react';
 // @ts-ignore: no declaration file
 import injectSheet from 'react-jss';
 import {Icon, IconSymbol} from "../Icon";
-import Tooltip from "../Tooltip";
+import { Tooltip } from "../Tooltip";
 
 export enum STYLE {
     LIGHT, DARK,
@@ -11,6 +11,7 @@ export enum STYLE {
 interface Classes {
     container: string,
     tooltip: string,
+    hint: string,
 }
 
 interface Props {
@@ -29,8 +30,12 @@ interface Props {
     tooltip: {
         marginLeft: 5,
     },
+    hint: {
+        width: 'initial',
+        maxWidth: 250,
+    }
 }))
-export default class Hint extends React.PureComponent<Props, {}> {
+export class Hint extends React.PureComponent<Props, {}> {
     static defaultProps = {
         style: STYLE.LIGHT,
         size: 15,
@@ -55,7 +60,7 @@ export default class Hint extends React.PureComponent<Props, {}> {
                 <div>
                     { children }
                 </div>
-                <Tooltip className={classes!.tooltip} tooltip={tooltip}>
+                <Tooltip className={classes!.tooltip} tooltip={tooltip} hintClassname={classes!.hint}>
                     <Icon symbolId={IconSymbol.HINT} color={this.style[style!]} size={size}/>
                 </Tooltip>
             </div>

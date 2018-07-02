@@ -9,7 +9,7 @@ export enum TEXT {
     YES_NO,
 }
 
-export interface Classes {
+interface Classes {
     switcher: string,
     toggle: string,
     button: string,
@@ -19,7 +19,7 @@ export interface Classes {
     contentRight: string,
 }
 
-export interface Props {
+interface Props {
     classes?: Classes,
     checked: boolean,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => any,
@@ -131,7 +131,7 @@ const styles = () => {
     });
 };
 @injectSheet(styles)
-export default class Switcher extends React.PureComponent<Props, {}> {
+export class Switcher extends React.PureComponent<Props, {}> {
     static defaultProps = {
         text: TEXT.ON_OFF,
     };

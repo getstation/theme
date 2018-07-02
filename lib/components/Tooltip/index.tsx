@@ -5,6 +5,7 @@ import ReactHoverObserver from 'react-hover-observer';
 // @ts-ignore: no declaration file
 import injectSheet from 'react-jss';
 import { Manager, Popper, Target } from 'react-popper';
+import classNames = require("classnames");
 
 interface Classes {
     hint: string,
@@ -17,6 +18,7 @@ interface Props {
     tooltip?: string,
     placement?: PopperJS.Placement,
     offset?: string,
+    hintClassname?: string,
 }
 
 interface State {
@@ -39,7 +41,7 @@ const styles = () => ({
 });
 
 @injectSheet(styles)
-export default class Tooltip extends React.PureComponent<Props, State> {
+export class Tooltip extends React.PureComponent<Props, State> {
 
     static defaultProps = {
         placement: 'right',
@@ -78,7 +80,7 @@ export default class Tooltip extends React.PureComponent<Props, State> {
     }
 
     render() {
-        const { children, tooltip, placement, classes, offset } = this.props;
+        const { children, tooltip, placement, classes, offset, hintClassname } = this.props;
 
         return (
             <Manager className={this.props.className}>
@@ -99,7 +101,7 @@ export default class Tooltip extends React.PureComponent<Props, State> {
                         offset: { offset },
                     }}
                 >
-                    <div className={classes!.hint}>
+                    <div className={classNames(classes!.hint, hintClassname)}>
                         {tooltip}
                     </div>
                 </Popper>
