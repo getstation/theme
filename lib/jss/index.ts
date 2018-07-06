@@ -97,6 +97,7 @@ export const theme = {
       '-webkit-box-orient': 'vertical',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
+      wordBreak: 'break-word',
     }),
     flexbox: {
       containerCenter: {
