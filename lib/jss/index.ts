@@ -91,13 +91,13 @@ export const theme = {
     },
   },
   mixins: {
-    ellipsis: {
+    ellipsis: (nbLines: number = 2) =>({
       display: '-webkit-box',
-      '-webkit-line-clamp': 2,
+      '-webkit-line-clamp': nbLines,
       '-webkit-box-orient': 'vertical',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-    },
+    }),
     flexbox: {
       containerCenter: {
         display: 'flex',
