@@ -1,4 +1,5 @@
 # Station Theme
+[![Build Status](https://travis-ci.com/getstation/theme.svg?branch=master)](https://travis-ci.com/getstation/theme)
 
 ## TL;DR
 
