@@ -6,3 +6,6 @@ export * from './gradient';
 export * from './BrowserXThemeProvider';
 export * from './components/Button';
 export * from './components/Icon';
+export * from './components/Switcher';
+export * from './components/Tooltip';
+export * from './components/Hint';

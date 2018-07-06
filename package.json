@@ -1,6 +1,6 @@
 {
   "name": "@getstation/theme",
-  "version": "0.3.0",
+  "version": "0.4.1",
   "description": "Station Theme & Styleguide",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -27,7 +27,9 @@
     "ms": "^2.1.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
-    "react-jss": "^8.4.0"
+    "react-hover-observer": "^2.1.0",
+    "react-jss": "^8.4.0",
+    "react-popper": "^0.10.1"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.6",
@@ -42,6 +44,7 @@
     "@types/ms": "^0.7.30",
     "@types/react": "^16.3.16",
     "@types/react-dom": "^16.0.6",
+    "@types/shortid": "^0.0.29",
     "@types/storybook__addon-actions": "^3.0.3",
     "@types/storybook__addon-info": "^3.2.3",
     "@types/storybook__addon-knobs": "^3.3.1",
@@ -49,7 +52,9 @@
     "@types/storybook__react": "^3.0.7",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
+    "popper.js": "^1.14.3",
     "rimraf": "^2.6.2",
+    "shortid": "^2.2.8",
     "ts-loader": "^3.0.0",
     "typedoc": "^0.11.1",
     "typescript": "^2.8.1"
