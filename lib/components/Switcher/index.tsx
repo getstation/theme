@@ -74,7 +74,7 @@ const styles = () => {
             backgroundImage: 'linear-gradient(180deg, #213655 0%, #385679 34.24%, #4A7496 79.87%, #7272A0 100%)',
             backgroundSize: '100%',
             '& span': {
-                margin: '-1px 7px',
+                margin: '-1px 6px',
             },
         },
         contentRight: {
