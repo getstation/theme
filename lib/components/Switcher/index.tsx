@@ -22,7 +22,7 @@ interface Classes {
 interface Props {
     classes?: Classes,
     checked: boolean,
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => any,
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => any,
     text?: TEXT,
 }
 
@@ -135,6 +135,7 @@ const styles = () => {
 export class Switcher extends React.PureComponent<Props, {}> {
     static defaultProps = {
         text: TEXT.ON_OFF,
+        onChange: () => {},
     };
 
     inputId: string;
