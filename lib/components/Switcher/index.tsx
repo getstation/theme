@@ -44,7 +44,7 @@ const styles = () => {
             background: '#C9C9C9',
             boxSizing: 'border-box',
             position: 'absolute',
-            top: '3px',
+            top: '4px',
             left: '47px',
             width: '12px',
             height: '12px',
@@ -74,7 +74,8 @@ const styles = () => {
             backgroundImage: 'linear-gradient(180deg, #213655 0%, #385679 34.24%, #4A7496 79.87%, #7272A0 100%)',
             backgroundSize: '100%',
             '& span': {
-                margin: '-1px 6px',
+                marginRight: '20px',
+                float: 'right',
             },
         },
         contentRight: {
@@ -82,7 +83,7 @@ const styles = () => {
             color: '#C9C9C9',
             backgroundSize: '100%',
             '& span': {
-                margin: '-1px 32px',
+                marginLeft: '18px',
             },
         },
         viewport: {
