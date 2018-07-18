@@ -24,6 +24,7 @@ interface Props {
     checked: boolean,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => any,
     text?: TEXT,
+    disabled?: boolean,
 }
 
 const styles = () => {
@@ -39,7 +40,7 @@ const styles = () => {
             width: '200%',
             ...transition,
         },
-        button: {
+        button: (props: Props) => ({
             backgroundSize: '100%',
             background: '#C9C9C9',
             boxSizing: 'border-box',
@@ -48,13 +49,12 @@ const styles = () => {
             left: '47px',
             width: '12px',
             height: '12px',
-            cursor: 'pointer',
+            cursor: props.disabled ? 'not-allowed' : 'pointer',
             borderRadius: '100%',
             ...transition,
-        },
-        content: {
+        }),
+        content: ({
             background: 'rgba(157, 38, 29, 0.5)',
-            cursor: 'pointer',
             display: 'inline-block',
             float: 'left',
             height: '100%',
@@ -69,7 +69,7 @@ const styles = () => {
                 lineHeight: '20px',
                 float: 'left',
             },
-        },
+        }),
         contentLeft: {
             backgroundImage: 'linear-gradient(180deg, #213655 0%, #385679 34.24%, #4A7496 79.87%, #7272A0 100%)',
             backgroundSize: '100%',
@@ -85,19 +85,19 @@ const styles = () => {
                 margin: '-1px 32px',
             },
         },
-        viewport: {
+        viewport: (props: Props) => ({
             display: 'block',
             width: '44px',
             height: '19px',
             overflow: 'hidden',
             position: 'relative',
-            cursor: 'pointer',
+            cursor: props.disabled ? 'not-allowed' : 'pointer',
             borderRadius: '40px',
             color: '#fff',
             float: 'right',
             userSelect: 'none',
             border: '1px solid #EEE',
-        },
+        }),
         toggle: {
             display: 'none',
             visibility: 'hidden',
@@ -134,6 +134,7 @@ const styles = () => {
 export class Switcher extends React.PureComponent<Props, {}> {
     static defaultProps = {
         text: TEXT.ON_OFF,
+        disabled: false,
     };
 
     inputId: string;
@@ -149,7 +150,7 @@ export class Switcher extends React.PureComponent<Props, {}> {
     }
 
     render() {
-        const { classes, checked, onChange, text } = this.props;
+        const { classes, checked, onChange, disabled, text } = this.props;
 
         const values = this.values[text!];
 
@@ -160,6 +161,7 @@ export class Switcher extends React.PureComponent<Props, {}> {
                     id={this.inputId}
                     className={classes!.toggle}
                     checked={checked}
+                    disabled={disabled}
                     onChange={onChange}
                 />
                 <label className={classes!.viewport} htmlFor={this.inputId}>

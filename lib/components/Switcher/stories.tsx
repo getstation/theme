@@ -28,6 +28,7 @@ story
                     <Switcher
                         checked={boolean('checked', true)}
                         onChange={action('onChange')}
+                        disabled={boolean('disabled', false)}
                         text={text}
                     />
                 </div>
