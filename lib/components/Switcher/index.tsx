@@ -59,7 +59,7 @@ const styles = () => {
             float: 'left',
             height: '100%',
             width: '64px',
-            fontSize: '10px',
+            fontSize: '9px',
             fontWeight: 'bold',
             textTransform: 'uppercase',
             top: '10px',
