@@ -87,6 +87,7 @@ const styles = () => {
             },
         },
         viewport: {
+            boxSizing: 'content-box',
             display: 'block',
             width: '44px',
             height: '19px',
