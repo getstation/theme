@@ -3,6 +3,7 @@ import * as React from 'react';
 // @ts-ignore: no declaration file
 import injectSheet from 'react-jss';
 import * as shortid from 'shortid';
+import { Tooltip } from '../Tooltip';
 
 export enum TEXT {
     ON_OFF,
@@ -10,6 +11,8 @@ export enum TEXT {
 }
 
 interface Classes {
+    tooltip: string,
+    hint: string,
     switcher: string,
     toggle: string,
     button: string,
@@ -21,6 +24,7 @@ interface Classes {
 
 interface Props {
     classes?: Classes,
+    disabledHint?: string,
     checked: boolean,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => any,
     text?: TEXT,
@@ -33,6 +37,13 @@ const styles = () => {
     };
 
     return ({
+        tooltip: {
+            marginLeft: 5,
+        },
+        hint: {
+            width: 'initial',
+            maxWidth: 250,
+        },
         switcher: {
             display: 'flex',
             height: '100%',
@@ -145,6 +156,7 @@ export class Switcher extends React.PureComponent<Props, {}> {
     static defaultProps = {
         text: TEXT.ON_OFF,
         disabled: false,
+        disabledHint: '',
     };
 
     inputId: string;
@@ -160,12 +172,14 @@ export class Switcher extends React.PureComponent<Props, {}> {
     }
 
     render() {
-        const { classes, checked, onChange, disabled, text } = this.props;
+        const { classes, checked, onChange, disabled, text, disabledHint } = this.props;
 
+        const hint = disabled ? disabledHint : '';
         const values = this.values[text!];
 
         return (
             <div>
+              <Tooltip className={classes!.tooltip} hintClassname={classes!.hint} tooltip={hint}>
                 <input
                     type="checkbox"
                     id={this.inputId}
@@ -181,6 +195,7 @@ export class Switcher extends React.PureComponent<Props, {}> {
                         <div className={classNames(classes!.content, classes!.contentRight)}><span>{values[0]}</span></div>
                     </div>
                 </label>
+              </Tooltip>
             </div>
         );
     }
