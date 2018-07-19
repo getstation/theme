@@ -53,7 +53,7 @@ const styles = () => {
         },
         button: (props: Props) => ({
             backgroundSize: '100%',
-            background: '#C9C9C9',
+            background: 'gray',
             boxSizing: 'border-box',
             position: 'absolute',
             top: '3px',
@@ -65,7 +65,7 @@ const styles = () => {
             ...transition,
         }),
         content: ({
-            background: '#C9C9C9',
+            background: 'gray',
             display: 'inline-block',
             float: 'left',
             height: '100%',
@@ -90,7 +90,7 @@ const styles = () => {
         },
         contentRight: {
             backgroundColor: 'white',
-            color: '#C9C9C9',
+            color: 'gray',
             backgroundSize: '100%',
             '& span': {
                 margin: '-1px 32px',
