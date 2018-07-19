@@ -54,7 +54,7 @@ const styles = () => {
             ...transition,
         }),
         content: ({
-            background: 'rgba(157, 38, 29, 0.5)',
+            background: '#C9C9C9',
             display: 'inline-block',
             float: 'left',
             height: '100%',
@@ -118,7 +118,6 @@ const styles = () => {
             },
             '&:checked + $viewport $button': {
                 left: '27px',
-                color: 'white',
                 backgroundColor: 'white',
             },
             '&:checked + $viewport $contentLeft': {
@@ -126,6 +125,17 @@ const styles = () => {
             },
             '&:checked + $viewport $contentRight > span': {
                 margin: '-1px 4px',
+            },
+            '&:disabled + $viewport $content': {
+              color: '#C9C9C9',
+              background: 'white',
+            },
+            '&:disabled:checked + $viewport $content': {
+                color: '#C9C9C9',
+                background: 'white',
+            },
+            '&:disabled:checked + $viewport $button': {
+                backgroundColor: '#C9C9C9',
             },
         },
     });
