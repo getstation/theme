@@ -1,14 +1,14 @@
 {
   "name": "@getstation/theme",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Station Theme & Styleguide",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
+    "build": "rimraf ./dist && tsc",
     "typedoc": "rimraf ./docs/typedoc && typedoc --out ./docs/typedoc ./lib",
-    "prepublish": "tsc",
+    "prepublish": "rimraf ./dist && tsc",
     "storybook": "start-storybook -s ./ -p 6006",
     "build-storybook": "rimraf ./docs/storybook && build-storybook -s ./static -o ./docs/storybook/ && cp ./docs/storybook/Icons.svg ./docs/storybook/static/Icons.svg",
     "build-docs": "yarn run build-storybook && yarn run typedoc"
