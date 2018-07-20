@@ -37,9 +37,6 @@ const styles = () => {
     };
 
     return ({
-        tooltip: {
-            marginLeft: 5,
-        },
         hint: {
             width: 'initial',
             maxWidth: 250,
@@ -184,7 +181,7 @@ export class Switcher extends React.PureComponent<Props, {}> {
 
         return (
             <div>
-              <Tooltip className={classes!.tooltip} hintClassname={classes!.hint} tooltip={hint}>
+              <Tooltip hintClassname={classes!.hint} tooltip={hint}>
                 <input
                     type="checkbox"
                     id={this.inputId}
