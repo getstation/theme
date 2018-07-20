@@ -3,6 +3,7 @@ import * as React from 'react';
 // @ts-ignore: no declaration file
 import injectSheet from 'react-jss';
 import * as shortid from 'shortid';
+import { Tooltip } from '../Tooltip';
 
 export enum TEXT {
     ON_OFF,
@@ -10,6 +11,8 @@ export enum TEXT {
 }
 
 interface Classes {
+    tooltip: string,
+    hint: string,
     switcher: string,
     toggle: string,
     button: string,
@@ -21,9 +24,11 @@ interface Classes {
 
 interface Props {
     classes?: Classes,
+    disabledHint?: string,
     checked?: boolean,
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => any,
     text?: TEXT,
+    disabled?: boolean,
 }
 
 const styles = () => {
@@ -32,6 +37,13 @@ const styles = () => {
     };
 
     return ({
+        tooltip: {
+            marginLeft: 5,
+        },
+        hint: {
+            width: 'initial',
+            maxWidth: 250,
+        },
         switcher: {
             display: 'flex',
             height: '100%',
@@ -39,22 +51,21 @@ const styles = () => {
             width: '200%',
             ...transition,
         },
-        button: {
+        button: (props: Props) => ({
             backgroundSize: '100%',
-            background: '#C9C9C9',
+            background: 'gray',
             boxSizing: 'border-box',
             position: 'absolute',
             top: '4px',
             left: 48,
             width: 11,
             height: 11,
-            cursor: 'pointer',
+            cursor: props.disabled ? 'not-allowed' : 'pointer',
             borderRadius: '100%',
             ...transition,
-        },
-        content: {
-            background: 'rgba(157, 38, 29, 0.5)',
-            cursor: 'pointer',
+        }),
+        content: ({
+            background: 'gray',
             display: 'inline-block',
             float: 'left',
             height: '100%',
@@ -69,7 +80,7 @@ const styles = () => {
                 lineHeight: '20px',
                 float: 'left',
             },
-        },
+        }),
         contentLeft: {
             backgroundImage: 'linear-gradient(180deg, #213655 0%, #385679 34.24%, #4A7496 79.87%, #7272A0 100%)',
             backgroundSize: '100%',
@@ -80,7 +91,7 @@ const styles = () => {
         },
         contentRight: {
             backgroundColor: 'white',
-            color: '#C9C9C9',
+            color: 'gray',
             backgroundSize: '100%',
             '& span': {
                 marginLeft: '18px',
@@ -89,20 +100,20 @@ const styles = () => {
                 textAlign: 'center',
             },
         },
-        viewport: {
+        viewport: (props: Props) => ({
             boxSizing: 'content-box',
             display: 'block',
             width: '44px',
             height: '19px',
             overflow: 'hidden',
             position: 'relative',
-            cursor: 'pointer',
+            cursor: props.disabled ? 'not-allowed' : 'pointer',
             borderRadius: '40px',
             color: '#fff',
             float: 'right',
             userSelect: 'none',
             border: '1px solid #EEE',
-        },
+        }),
         toggle: {
             display: 'none',
             visibility: 'hidden',
@@ -129,6 +140,17 @@ const styles = () => {
             '&:checked + $viewport $contentLeft': {
                 marginLeft: 0,
             },
+            '&:disabled + $viewport $content': {
+              color: '#C9C9C9',
+              background: 'white',
+            },
+            '&:disabled:checked + $viewport $content': {
+                color: '#C9C9C9',
+                background: 'white',
+            },
+            '&:disabled:checked + $viewport $button': {
+                backgroundColor: '#C9C9C9',
+            },
         },
     });
 };
@@ -138,6 +160,8 @@ export class Switcher extends React.PureComponent<Props, {}> {
         text: TEXT.ON_OFF,
         onChange: () => {},
         checked: false,
+        disabled: false,
+        disabledHint: '',
     };
 
     inputId: string;
@@ -153,17 +177,20 @@ export class Switcher extends React.PureComponent<Props, {}> {
     }
 
     render() {
-        const { classes, checked, onChange, text } = this.props;
+        const { classes, checked, onChange, disabled, text, disabledHint } = this.props;
 
+        const hint = disabled ? disabledHint : '';
         const values = this.values[text!];
 
         return (
             <div>
+              <Tooltip className={classes!.tooltip} hintClassname={classes!.hint} tooltip={hint}>
                 <input
                     type="checkbox"
                     id={this.inputId}
                     className={classes!.toggle}
                     checked={checked}
+                    disabled={disabled}
                     onChange={onChange}
                 />
                 <label className={classes!.viewport} htmlFor={this.inputId}>
@@ -173,6 +200,7 @@ export class Switcher extends React.PureComponent<Props, {}> {
                         <div className={classNames(classes!.content, classes!.contentRight)}><span>{values[0]}</span></div>
                     </div>
                 </label>
+              </Tooltip>
             </div>
         );
     }
