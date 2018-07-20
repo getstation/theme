@@ -21,8 +21,8 @@ interface Classes {
 
 interface Props {
     classes?: Classes,
-    checked: boolean,
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => any,
+    checked?: boolean,
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => any,
     text?: TEXT,
 }
 
@@ -44,10 +44,10 @@ const styles = () => {
             background: '#C9C9C9',
             boxSizing: 'border-box',
             position: 'absolute',
-            top: '3px',
-            left: '47px',
-            width: '12px',
-            height: '12px',
+            top: '4px',
+            left: 48,
+            width: 11,
+            height: 11,
             cursor: 'pointer',
             borderRadius: '100%',
             ...transition,
@@ -59,7 +59,7 @@ const styles = () => {
             float: 'left',
             height: '100%',
             width: '64px',
-            fontSize: '10px',
+            fontSize: '9px',
             fontWeight: 'bold',
             textTransform: 'uppercase',
             top: '10px',
@@ -74,7 +74,8 @@ const styles = () => {
             backgroundImage: 'linear-gradient(180deg, #213655 0%, #385679 34.24%, #4A7496 79.87%, #7272A0 100%)',
             backgroundSize: '100%',
             '& span': {
-                margin: '-1px 6px',
+                marginRight: '20px',
+                float: 'right',
             },
         },
         contentRight: {
@@ -82,10 +83,14 @@ const styles = () => {
             color: '#C9C9C9',
             backgroundSize: '100%',
             '& span': {
-                margin: '-1px 32px',
+                marginLeft: '18px',
+                display: 'inline-block',
+                width: 22,
+                textAlign: 'center',
             },
         },
         viewport: {
+            boxSizing: 'content-box',
             display: 'block',
             width: '44px',
             height: '19px',
@@ -105,7 +110,7 @@ const styles = () => {
                 left: '-100%',
             },
             '& + $viewport > $button': {
-                left: '47px',
+                left: 48,
             },
             '& + $viewport > $content': {
                 left: '65px',
@@ -117,15 +122,12 @@ const styles = () => {
                 left: 0,
             },
             '&:checked + $viewport $button': {
-                left: '27px',
+                left: 28,
                 color: 'white',
                 backgroundColor: 'white',
             },
             '&:checked + $viewport $contentLeft': {
                 marginLeft: 0,
-            },
-            '&:checked + $viewport $contentRight > span': {
-                margin: '-1px 4px',
             },
         },
     });
@@ -134,6 +136,8 @@ const styles = () => {
 export class Switcher extends React.PureComponent<Props, {}> {
     static defaultProps = {
         text: TEXT.ON_OFF,
+        onChange: () => {},
+        checked: false,
     };
 
     inputId: string;
