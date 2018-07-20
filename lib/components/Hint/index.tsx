@@ -28,6 +28,7 @@ interface Props {
         alignItems: 'center',
     },
     tooltip: {
+        marginTop: 5,
         marginLeft: 5,
     },
     hint: {
