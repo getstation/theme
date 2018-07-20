@@ -45,9 +45,9 @@ const styles = () => {
             boxSizing: 'border-box',
             position: 'absolute',
             top: '4px',
-            left: '47px',
-            width: '12px',
-            height: '12px',
+            left: 48,
+            width: 11,
+            height: 11,
             cursor: 'pointer',
             borderRadius: '100%',
             ...transition,
@@ -84,6 +84,9 @@ const styles = () => {
             backgroundSize: '100%',
             '& span': {
                 marginLeft: '18px',
+                display: 'inline-block',
+                width: 22,
+                textAlign: 'center',
             },
         },
         viewport: {
@@ -107,7 +110,7 @@ const styles = () => {
                 left: '-100%',
             },
             '& + $viewport > $button': {
-                left: '47px',
+                left: 48,
             },
             '& + $viewport > $content': {
                 left: '65px',
@@ -119,15 +122,12 @@ const styles = () => {
                 left: 0,
             },
             '&:checked + $viewport $button': {
-                left: '27px',
+                left: 28,
                 color: 'white',
                 backgroundColor: 'white',
             },
             '&:checked + $viewport $contentLeft': {
                 marginLeft: 0,
-            },
-            '&:checked + $viewport $contentRight > span': {
-                margin: '-1px 4px',
             },
         },
     });
