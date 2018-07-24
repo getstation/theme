@@ -39,7 +39,9 @@ const styles = () => {
     return ({
         hint: {
             width: 'initial',
-            maxWidth: 250,
+            maxWidth: 200,
+            marginTop: 20,
+            marginRight: 5,
         },
         switcher: {
             display: 'flex',
