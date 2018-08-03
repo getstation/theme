@@ -37,7 +37,7 @@ const iconWrapperStyle = {
   border: '1px solid gray',
 };
 
-const story = storiesOf('Components/Icon', module);
+const story = storiesOf('Components|Icon', module);
 
 story
   .addDecorator(withKnobs)
@@ -104,7 +104,7 @@ story
   );
 
 Object.keys(IconSymbol).map(symbol =>
-  storiesOf('Components/Icon/icon', module).add(IconSymbol[symbol], () =>
+  storiesOf('Components|Icon/icon', module).add(IconSymbol[symbol], () =>
     <div>
       <h1>Icon: {symbol}</h1>
       <div style={iconContainerStyle}>

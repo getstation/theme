@@ -6,7 +6,7 @@ import { withNotes } from '@storybook/addon-notes';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-const story = storiesOf('Components/Button', module);
+const story = storiesOf('Components|Button', module);
 
 story
   .addDecorator(withKnobs)

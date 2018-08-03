@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import {Hint, STYLE} from './index';
 
-const story = storiesOf('Components/Hint', module);
+const story = storiesOf('Components|Hint', module);
 
 story
     .addDecorator(withKnobs)

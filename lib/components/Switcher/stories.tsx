@@ -13,7 +13,7 @@ const containerStyle = {
     backgroundColor: '#0E3255',
 };
 
-const story = storiesOf('Components/Switcher', module);
+const story = storiesOf('Components|Switcher', module);
 
 story
   .addDecorator(withKnobs)

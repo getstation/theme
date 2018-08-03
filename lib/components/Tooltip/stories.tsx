@@ -13,7 +13,7 @@ const containerStyle = {
     backgroundColor: '#0E3255',
 };
 
-const story = storiesOf('Components/Tooltip', module);
+const story = storiesOf('Components|Tooltip', module);
 
 story
     .addDecorator(withKnobs)
