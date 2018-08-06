@@ -1,20 +1,14 @@
 import { CSSProperties } from 'react';
 import { Icon, IconSymbol } from './index';
-import { action } from '@storybook/addon-actions';
+// import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
-import { boolean, withKnobs } from '@storybook/addon-knobs';
+import { withKnobs } from '@storybook/addon-knobs';
+// import { boolean } from '@storybook/addon-knobs';
 import { withNotes } from '@storybook/addon-notes';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 // import DockNavigationButtons from '../../app/dock-navigation/components/DockNavigationButtons';
 // import NativeAppDockIcon from '../../app/dock/components/NativeAppDockIcon';
-
-const containerStyle = {
-  width: 50,
-  height: '100%',
-  padding: '5px 0',
-  backgroundColor: '#0E3255',
-};
 
 const OSBarStyle = {
   width: '100%',
@@ -27,25 +21,24 @@ const iconContainerStyle : CSSProperties = {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: '#EEE',
+  backgroundColor: 'rgba(0, 0, 0, .1)',
   margin: 10,
   width: 200,
   height: 200,
 };
 
 const iconWrapperStyle = {
-  border: '1px solid gray',
+  border: '1px solid rgba(0, 0, 0, .5)',
 };
 
-const story = storiesOf('Components|Icon', module);
-
-story
+storiesOf('Atoms|Icon', module)
   .addDecorator(withKnobs)
   .add('NativeAppDockIcon',
     withInfo({ text: 'NativeAppDockIcon' })(
-      withNotes('A very simple component')(
+      withNotes('This component cannot be migrated from Station\'s Storybook to this one because of Node dependencies')(
         () =>
-          <div style={containerStyle}>
+          <div>
+            NativeAppDockIcon
             {/*<NativeAppDockIcon
               tooltip={'Tooltip text'}
               iconSymbolId={IconSymbol.FOCUS}
@@ -58,9 +51,10 @@ story
       )))
   .add('Dock Navigation Buttons',
     withInfo({ text: 'This is the Back & Forth Icon component' })(
-      withNotes('This icon is a set of two icons')(
+      withNotes('This component cannot be migrated from Station\'s Storybook to this one because of Node dependencies')(
         () =>
-          <div style={containerStyle}>
+          <div>
+            DockNavigationButtons
             {/*<DockNavigationButtons
               canGoBack={boolean('canGoBack', true)}
               canGoForward={boolean('canGoForward', true)}
@@ -77,9 +71,10 @@ story
       )))
   .add('Dock Navigation Buttons OSBar',
     withInfo({ text: 'This is the Back & Forth Icon component' })(
-      withNotes('This icon is a set of two icons')(
+      withNotes('This component cannot be migrated from Station\'s Storybook to this one because of Node dependencies')(
         () =>
           <div style={OSBarStyle}>
+            DockNavigationButtons
             {/*<DockNavigationButtons
               canGoBack={boolean('canGoBack', true)}
               canGoForward={boolean('canGoForward', true)}
@@ -104,24 +99,26 @@ story
   );
 
 Object.keys(IconSymbol).map(symbol =>
-  storiesOf('Components|Icon/icon', module).add(IconSymbol[symbol], () =>
-    <div>
-      <h1>Icon: {symbol}</h1>
-      <div style={iconContainerStyle}>
-        <div style={iconWrapperStyle}>
-          <Icon key={symbol} symbolId={IconSymbol[symbol]} color={'#000'} size={48}/>
+  storiesOf('Atoms|Icon/icon', module)
+    .add(IconSymbol[symbol], () =>
+      <div>
+        <h1>Icon: {symbol}</h1>
+        <div style={iconContainerStyle}>
+          <div style={iconWrapperStyle}>
+            <Icon key={symbol} symbolId={IconSymbol[symbol]} color={'#000'} size={48}/>
+          </div>
+          <pre>{ IconSymbol[symbol] }</pre>
         </div>
-        <pre>{ IconSymbol[symbol] }</pre>
-      </div>
 
-      <div style={containerStyle}>
-        {/*<NativeAppDockIcon
-          tooltip={IconSymbol[symbol]}
-          iconSymbolId={IconSymbol[symbol]}
-          onClick={action('clicked')}
-          disabled={boolean('disabled')}
-        />*/}
+        <div>
+          NativeAppDockIcon
+          {/*<NativeAppDockIcon
+            tooltip={IconSymbol[symbol]}
+            iconSymbolId={IconSymbol[symbol]}
+            onClick={action('clicked')}
+            disabled={boolean('disabled')}
+          />*/}
+        </div>
       </div>
-    </div>
   )
 );

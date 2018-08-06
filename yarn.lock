@@ -25,6 +25,13 @@
     global "^4.3.2"
     prop-types "^15.6.1"
 
+"@storybook/addon-centered@^3.4.10":
+  version "3.4.10"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-centered/-/addon-centered-3.4.10.tgz#40e6093362fcc450432c8ace5454d92c74c588a9"
+  dependencies:
+    babel-runtime "^6.26.0"
+    global "^4.3.2"
+
 "@storybook/addon-info@^3.4.10":
   version "3.4.10"
   resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-3.4.10.tgz#fb846457150b6aff690b7886d2b82cf576829bad"
@@ -376,6 +383,12 @@
 "@types/storybook__addon-actions@^3.4.0":
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@types/storybook__addon-actions/-/storybook__addon-actions-3.4.0.tgz#9a8d9b3c7478e6557a6c50a06c8216d1bdca9fe4"
+
+"@types/storybook__addon-centered@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@types/storybook__addon-centered/-/storybook__addon-centered-3.3.0.tgz#638ab15529d49d0d872c2183de58b211fdc683e4"
+  dependencies:
+    "@types/react" "*"
 
 "@types/storybook__addon-info@^3.4.0":
   version "3.4.0"
