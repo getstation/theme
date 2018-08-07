@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
+
+## [0.6.1] - 2018-08-07
+### Fixed
+- Fix exports on last migrated components
+
 ## [0.6.0] - 2018-08-07
 ### Changed
 - Upgraded storybook
