@@ -4,7 +4,7 @@ import { text, withKnobs } from '@storybook/addon-knobs';
 import { withNotes } from '@storybook/addon-notes';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import Input, { Type } from './index';
+import { Input, InputType } from './index';
 
 storiesOf('Atoms|Input', module)
   .addDecorator(withKnobs)
@@ -14,7 +14,7 @@ storiesOf('Atoms|Input', module)
       withNotes('Input - Normal style')(
         () => (
           <Input
-            type={Type.TEXT}
+            type={InputType.TEXT}
             value={text('value', 'Trello')}
           />
         )
@@ -24,7 +24,7 @@ storiesOf('Atoms|Input', module)
       withNotes('Input - Error style')(
         () => (
           <Input
-            type={Type.TEXT}
+            type={InputType.TEXT}
             label={text('label', 'Email')}
             value={text('value', 'Trello')}
             error={text('Error', 'invalid value')}
