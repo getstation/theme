@@ -8,12 +8,7 @@ npm install @getstation/theme
 ```
 
 ## Usage
-### Components
-- `<Button/>`
-- `<Icon/>`
+https://getstation.github.io/theme/storybook/index.html
 
-### TypeScript
-```typescript
-import { getGradient } from '@getstation/theme';
-getGradient(themeGradientColors);
-```
+## TypeScript
+https://getstation.github.io/theme/typedoc/index.html
