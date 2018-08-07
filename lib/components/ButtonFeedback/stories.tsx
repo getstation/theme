@@ -1,4 +1,4 @@
-import { ButtonFeedback } from './index';
+import ButtonFeedback from './index';
 import { Size, Style } from '../Button';
 import centered from '@storybook/addon-centered';
 import { withInfo } from '@storybook/addon-info';

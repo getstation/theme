@@ -1,5 +1,5 @@
 import { Button, Size as ButtonSize, Style as ButtonStyle } from '../Button';
-import { ThemeTypes, ChooserItemTypes } from '../../types';
+import { ThemeTypes as Theme, ChooserItem as ChooserItemType } from '../../types';
 import classNames from 'classnames';
 import * as React from 'react';
 // @ts-ignore: no declaration file
@@ -20,13 +20,13 @@ interface Classes {
 
 interface Props {
   classes?: Classes,
-  item: ChooserItemTypes,
+  item: ChooserItemType,
   onSelect: (item: any) => any,
   style?: ChooserItemStyle,
   selectText?: string,
 }
 
-@injectSheet((theme: ThemeTypes) => ({
+@injectSheet((theme: Theme) => ({
   chooserItem: {
     margin: '10px auto 10px',
     position: 'relative',
@@ -65,7 +65,7 @@ interface Props {
     },
   },
 }))
-export class ChooserItem extends React.PureComponent<Props, {}> {
+export default class ChooserItem extends React.PureComponent<Props, {}> {
   static defaultProps = {
     style: ChooserItemStyle.PRIMARY,
     implicit: true,

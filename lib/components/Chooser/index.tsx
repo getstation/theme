@@ -1,15 +1,15 @@
-import { ChooserItemTypes } from '../../types';
+import { ChooserItem as ChooserItemType } from '../../types';
 import * as React from 'react';
-import { ChooserItem } from '../ChooserItem';
+import ChooserItem from '../ChooserItem';
 
 export interface Props {
-  items: Array<ChooserItemTypes>,
+  items: Array<ChooserItemType>,
   onSelect: (item: any) => any,
   className?: string,
   implicit?: boolean,
 }
 
-export class Chooser extends React.PureComponent<Props, {}> {
+export default class Chooser extends React.PureComponent<Props, {}> {
   render() {
     const { className, items, onSelect } = this.props;
 

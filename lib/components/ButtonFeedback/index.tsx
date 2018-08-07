@@ -1,5 +1,5 @@
 import { Button, ButtonProps } from '../Button';
-import { ThemeTypes } from '../../types';
+import { ThemeTypes as Theme } from '../../types';
 import classNames from 'classnames';
 import * as React from 'react';
 // @ts-ignore: no declaration file
@@ -9,17 +9,15 @@ interface Classes {
   button: string,
 }
 
-interface OwnProps {
-  classes?: Classes,
+interface Props {
+  classes: Classes,
 }
-
-type Props = OwnProps & ButtonProps;
 
 interface State {
   sent: boolean,
 }
 
-@injectSheet((theme: ThemeTypes) => ({
+@injectSheet((theme: Theme) => ({
   button: {
     transition: 'background-color .6s',
     // backgroundColor: '#4aad56 !important',
@@ -53,11 +51,11 @@ interface State {
     },
   },
 }))
-export class ButtonFeedback extends React.PureComponent<Props, State> {
+export default class ButtonFeedback extends React.PureComponent<ButtonProps, State> {
 
   protected feedbackTimeout: any;
 
-  constructor(props: Props) {
+  constructor(props: ButtonProps) {
     super(props);
 
     this.state = {

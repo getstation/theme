@@ -34,7 +34,7 @@ export class ThemeColorScheme {
   }
 }
 
-export type ChooserItemTypes = {
+export type ChooserItem = {
   title: string,
   description: string,
   value: any,

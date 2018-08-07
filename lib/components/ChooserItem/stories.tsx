@@ -3,7 +3,7 @@ import centered from '@storybook/addon-centered';
 import { withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { ChooserItem } from './index';
+import ChooserItem from './index';
 
 const item = {
   title: 'Test',

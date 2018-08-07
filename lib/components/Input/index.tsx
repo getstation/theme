@@ -8,7 +8,7 @@ export enum InputSize {
   BIG, NORMAL, SMALL, XSMALL, XXSMALL,
 }
 
-export enum InputType {
+export enum Type {
   TEXT = 'text',
   PASSWORD = 'password',
 }
@@ -103,7 +103,7 @@ type Props = OwnProps & React.HTMLProps<HTMLInputElement>;
     padding: [0, 5, 8, 10],
   },
 })
-export class Input extends React.Component<Props, {}> {
+export default class Input extends React.Component<Props, {}> {
 
   constructor(props: Props) {
     super(props);
