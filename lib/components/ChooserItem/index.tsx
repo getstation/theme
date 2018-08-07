@@ -1,4 +1,4 @@
-import { Button, Size as ButtonSize } from '../Button';
+import { Button, Size as ButtonSize, Style as ButtonStyle } from '../Button';
 import { ThemeTypes as Theme, ChooserItem as ChooserItemType } from '../../types';
 import classNames from 'classnames';
 import * as React from 'react';
@@ -93,7 +93,7 @@ export default class ChooserItem extends React.PureComponent<Props, {}> {
 
         <Button
           onClick={() => onSelect(item.value)}
-          btnStyle={style === ChooserItemStyle.SECONDARY ? ChooserItemStyle.SECONDARY : ChooserItemStyle.PRIMARY}
+          btnStyle={style === ChooserItemStyle.SECONDARY ? ButtonStyle.SECONDARY : ButtonStyle.PRIMARY}
           btnSize={ButtonSize.SMALL}
         >
           {selectText || 'Select'}
