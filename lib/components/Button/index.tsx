@@ -10,14 +10,14 @@ export enum Style {
   PRIMARY, SECONDARY, TERTIARY, LINK,
 }
 
-export interface ButtonOwnProps {
+export interface ButtonOwnProps extends JSX.IntrinsicClassAttributes<ButtonImpl> {
   classes?: any,
   sheet?: any,
   btnSize?: Size,
   btnStyle?: Style
 }
 
-export type ButtonProps = ButtonOwnProps & any; // & React.HTMLProps<HTMLButtonElement>
+export type ButtonProps = ButtonOwnProps & React.HTMLProps<HTMLButtonElement>;
 
 const styles = {
   button: {
