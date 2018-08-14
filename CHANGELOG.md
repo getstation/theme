@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
 
+## [0.6.2] - 2018-08-14
+### Added
+- Add Return Icon
+
+### Updated
+- Update Cog Icon
+
 ## [0.6.1] - 2018-08-07
 ### Fixed
 - Fix exports on last migrated components
