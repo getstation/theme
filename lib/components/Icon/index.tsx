@@ -98,4 +98,5 @@ export enum IconSymbol {
   TEXT = 'text',
   SEND = 'send',
   HINT = 'hint',
+  RETURN = 'return',
 }
