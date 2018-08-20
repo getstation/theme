@@ -13,3 +13,6 @@ export * from './components/Input';
 export * from './components/ChooserItem';
 export * from './components/Chooser';
 export * from './components/ButtonFeedback';
+export * from './components/ModalWrapper';
+export * from './components/Modal';
+export * from './components/SlideX';
