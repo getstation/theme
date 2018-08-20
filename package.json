@@ -29,7 +29,7 @@
     "react-dom": "^16.3.1",
     "react-hover-observer": "^2.1.0",
     "react-jss": "^8.4.0",
-    "react-key-handler": "^1.1.0",
+    "react-key-handler": "1.0.1",
     "react-popper": "^0.10.1"
   },
   "devDependencies": {

@@ -2,12 +2,12 @@ import classNames from 'classnames';
 import * as React from 'react';
 // @ts-ignore: no declaration file
 import injectSheet from 'react-jss';
-import ModalWrapper from '../ModalWrapper';
+import { ModalWrapper } from '../ModalWrapper';
 import {ThemeTypes} from "../../types";
 import {Icon, IconSymbol} from "../Icon";
 import {Button, Style} from "../Button";
 
-export interface Classes {
+interface Classes {
   container: string,
   header: string,
   applicationIcon: string,
@@ -18,7 +18,7 @@ export interface Classes {
   footer: string,
 }
 
-export interface Props {
+interface Props {
   classes?: Classes,
   classNameModalBody?: string,
   title: string,
@@ -96,7 +96,7 @@ export interface Props {
     },
   },
 }))
-export default class Modal extends React.PureComponent<Props, {}> {
+export class Modal extends React.PureComponent<Props, {}> {
   render() {
     const {
       classes, title, description, classNameModalBody, onCancel, cancelContent, onContinue, continueContent, isLoading, children,

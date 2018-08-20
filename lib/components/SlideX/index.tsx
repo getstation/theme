@@ -2,17 +2,17 @@ import * as React from 'react';
 // @ts-ignore: no declaration file
 import injectSheet from 'react-jss';
 
-export interface Classes {
+interface Classes {
   stepAnimationContainer: string,
   stepAnimation: string,
 }
 
-export interface Props {
+interface Props {
   classes?: Classes,
   step: number,
 }
 
-const styles = {
+@injectSheet({
   stepAnimationContainer: {
     overflowX: 'hidden',
     width: '100%',
@@ -29,10 +29,8 @@ const styles = {
       minWidth: '100%',
     },
   },
-};
-
-@injectSheet(styles)
-export default class SlideX extends React.PureComponent<Props, {}> {
+})
+export class SlideX extends React.PureComponent<Props, {}> {
 
   static defaultProps = {
     step: 0,

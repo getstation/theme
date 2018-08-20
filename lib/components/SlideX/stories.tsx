@@ -2,7 +2,7 @@ import {number, withKnobs} from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import centered from "@storybook/addon-centered";
 import * as React from 'react';
-import SlideX from './index';
+import { SlideX } from './index';
 
 const containerStyle = {
   padding: 40,

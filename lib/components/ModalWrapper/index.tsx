@@ -9,7 +9,7 @@ interface Classes {
   container: string,
 }
 
-export interface StateToProps {
+interface StateToProps {
   classes?: Classes,
 }
 
@@ -33,7 +33,7 @@ type Props = StateToProps & OwnProps;
     zIndex: theme.$zIndexSupra,
   },
 }))
-export default class ModalWrapper extends React.PureComponent<Props, {}> {
+export class ModalWrapper extends React.PureComponent<Props, {}> {
   public static defaultProps = {
     backgroundOverlay: true,
     onCancel: () => {},
