@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
+### Added
+- Add FloatingActionButton component
 
 ## [0.7.0] - 2018-08-20
 ### Added
