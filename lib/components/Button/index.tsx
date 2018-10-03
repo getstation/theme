@@ -2,12 +2,13 @@ import * as React from 'react';
 // @ts-ignore
 import injectSheet from 'react-jss';
 import classNames = require('classnames');
+import { ThemeTypes } from '../../types';
 
 export enum Size {
   BIG, NORMAL, SMALL, XSMALL, XXSMALL,
 }
 export enum Style {
-  PRIMARY, SECONDARY, TERTIARY, LINK,
+  PRIMARY, SECONDARY, TERTIARY, LINK, DANGER,
 }
 
 export interface ButtonOwnProps extends JSX.IntrinsicClassAttributes<ButtonImpl> {
@@ -19,7 +20,7 @@ export interface ButtonOwnProps extends JSX.IntrinsicClassAttributes<ButtonImpl>
 
 export type ButtonProps = ButtonOwnProps & React.HTMLProps<HTMLButtonElement>;
 
-const styles = {
+const styles = (theme: ThemeTypes) => ({
   button: {
     appearance: 'none',
     border: 'none',
@@ -87,7 +88,14 @@ const styles = {
       color: 'rgba(255, 255, 255, 0.8)',
     },
   },
-};
+  buttonDanger: {
+    backgroundColor: theme.colors.flatRed.middle,
+    color: 'white',
+    '&:hover:enabled, &:active:enabled': {
+      backgroundColor: theme.colors.flatRed.dark,
+    },
+  },
+});
 export class ButtonImpl extends React.Component<ButtonProps, {}> {
 
   public static defaultProps: Partial<ButtonProps> = {
@@ -116,6 +124,7 @@ export class ButtonImpl extends React.Component<ButtonProps, {}> {
       [Style.SECONDARY]: classes.buttonSecondary,
       [Style.TERTIARY]: classes.buttonTertiary,
       [Style.LINK]: classes.buttonLink,
+      [Style.DANGER]: classes.buttonDanger,
     };
 
     const className = classNames(

@@ -67,6 +67,10 @@ export const theme = {
       middle: '#949494',
       dark: '#292929',
     },
+    flatRed: {
+      middle: '#e75858',
+      dark: '#B83636',
+    },
     error: '#FF8686',
   },
   titles: {
