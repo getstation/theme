@@ -71,6 +71,7 @@ export const theme = {
       middle: '#e75858',
       dark: '#B83636',
     },
+    black: '#292929',
     error: '#FF8686',
   },
   titles: {

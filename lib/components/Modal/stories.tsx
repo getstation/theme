@@ -21,6 +21,8 @@ storiesOf('Molecules|Modal', module)
       description={text('Description', 'My awesome modal here')}
       onCancel={action('cancel')}
       onContinue={action('continue')}
+      continueDanger={boolean('continueDanger', false)}
+      continueContent={text('continueContent', '')}
     >
       {text('Content', 'Content of the modal with action buttons')}
     </Modal>
@@ -32,6 +34,8 @@ storiesOf('Molecules|Modal', module)
       onCancel={action('cancel')}
       onContinue={action('continue')}
       applicationIcon={text('applicationIcon', 'https://pbs.twimg.com/profile_images/959451316903845889/BpKfHFc4_400x400.jpg')}
+      continueDanger={boolean('continueDanger', false)}
+      continueContent={text('continueContent', '')}
     >
       {text('Content', 'Content of the modal with buttons and Application icon')}
     </Modal>
@@ -44,6 +48,8 @@ storiesOf('Molecules|Modal', module)
       onContinue={action('continue')}
       applicationIcon={text('applicationIcon', 'https://pbs.twimg.com/profile_images/959451316903845889/BpKfHFc4_400x400.jpg')}
       isLoading={boolean('isLoading', true)}
+      continueDanger={boolean('continueDanger', false)}
+      continueContent={text('continueContent', '')}
     >
       {text('Content', 'Content of the modal with buttons and Application icon')}
     </Modal>
