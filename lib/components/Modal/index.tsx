@@ -21,12 +21,13 @@ interface Classes {
 interface Props {
   classes?: Classes,
   classNameModalBody?: string,
-  title: string,
+  title?: string,
   description?: string,
   onCancel?: () => void,
   cancelContent?: string,
   onContinue?: () => void,
   continueContent?: string,
+  continueDanger?: boolean,
   applicationIcon?: string,
   isLoading?: boolean,
 }
@@ -41,7 +42,15 @@ interface Props {
   },
   header: {
     width: '100%',
-    padding: ({ applicationIcon }: Props) => applicationIcon ? '70px 20px 20px' : 20,
+    padding: ({ applicationIcon, title, description }: Props) => {
+      if (applicationIcon) {
+        return '70px 20px 20px';
+      }
+      if (title || description) {
+        return '20px';
+      }
+      return '0px';
+    },
     textAlign: 'center',
     backgroundColor: theme.colors.gray.light,
     boxSizing: 'border-box',
@@ -64,6 +73,7 @@ interface Props {
   },
   title: {
     ...theme.fontMixin(18, 500),
+    color: theme.colors.black,
     marginBottom: 5,
   },
   description: {
@@ -72,6 +82,7 @@ interface Props {
     opacity: .4,
   },
   body: {
+    color: theme.colors.black,
     position: 'relative',
     padding: 20,
   },
@@ -88,18 +99,21 @@ interface Props {
     },
   },
   footer: {
+    whiteSpace: 'nowrap',
     display: 'flex',
     justifyContent: 'space-between',
     padding: 20,
     '& button': {
       flexBasis: ({ onContinue }: Props) => onContinue ? '48%' : '100%',
+      marginLeft: 5,
     },
   },
 }))
 export class Modal extends React.PureComponent<Props, {}> {
   render() {
     const {
-      classes, title, description, classNameModalBody, onCancel, cancelContent, onContinue, continueContent, isLoading, children,
+      classes, title, description, classNameModalBody, onCancel, cancelContent, onContinue, continueContent,
+      isLoading, children, continueDanger,
     } = this.props;
 
     return (
@@ -130,7 +144,7 @@ export class Modal extends React.PureComponent<Props, {}> {
             }
 
             { onContinue &&
-            <Button onClick={onContinue}>
+            <Button onClick={onContinue} btnStyle={continueDanger ? Style.DANGER : Style.PRIMARY}>
               {continueContent || `OK`}
             </Button>
             }
