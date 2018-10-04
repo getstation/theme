@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
+## [0.7.2] - 2018-10-04
+### Added
+- Add Danger button style
+
+## [0.7.1] - 2018-09-13
 ### Added
 - Add FloatingActionButton component
 
