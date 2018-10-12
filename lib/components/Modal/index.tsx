@@ -35,7 +35,7 @@ interface Props {
 @injectSheet((theme: ThemeTypes) => ({
   container: {
     position: 'relative',
-    width: 350,
+    width: 450,
     maxHeight: 500,
     backgroundColor: theme.$bodyBkg,
     borderRadius: 5,
