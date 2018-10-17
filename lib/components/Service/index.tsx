@@ -9,12 +9,10 @@ import { roundedBackground } from "../../jss";
 export enum ServiceActionType {
   Add = 'Add',
   Settings = 'Settings',
-  Select = 'Select',
 }
 
 interface Classes {
   container: string,
-  checkbox: string,
   iconContainer: string,
   serviceDetails: string,
   serviceName: string,
@@ -34,14 +32,13 @@ interface IService {
 interface Props {
   classes?: Classes,
   service: IService,
-  onAdd: (serviceId: string, checked?: boolean) => any,
+  onAdd: (serviceId: string, iconPath: string, iconRef?: any) => any,
   isExtension?: boolean,
   subTitle?: string,
   actionType?: ServiceActionType,
-  checked?: boolean,
   alternate?: boolean,
-  disabled?: boolean,
   iconPath: string,
+  getIconRef?: boolean,
 }
 
 const ServiceActionButtonIconMap = {
@@ -55,20 +52,16 @@ const ServiceActionButtonIconMap = {
     display: 'inline-flex',
     color: 'rgb(38, 33, 33)',
     alignItems: 'center',
-    width: ({ alternate }: Props) => alternate ? null : 220,
+    width: ({ alternate }: Props) => alternate ? null : 195,
     margin: '0 7px 10px 0',
     padding: ({ alternate }: Props) => alternate ? '0px 5px 10px 0' : 10,
     backgroundColor: 'transparent',
     borderRadius: '999px',
     transition: '200ms',
+    userSelect: 'none',
     '&:hover': {
       backgroundColor: ({ alternate }: Props) => alternate ? 'none' : '#EEE',
     },
-  },
-  checkbox: {
-    '-webkit-appearance': 'checkbox',
-    marginRight: 10,
-    ...theme.mixins.size(20),
   },
   iconContainer: {
     margin: '0 10px 0 0',
@@ -113,7 +106,7 @@ const ServiceActionButtonIconMap = {
     opacity: 0,
     cursor: 'pointer',
     transition: '200ms',
-    '$service:hover &': {
+    '$container:hover &': {
       opacity: .6,
     },
     '&:hover': {
@@ -125,38 +118,31 @@ const ServiceActionButtonIconMap = {
   },
 }))
 export class Service extends React.PureComponent<Props, {}> {
+  iconRef: any;
+
   constructor(props: Props) {
     super(props);
+
+    this.iconRef = React.createRef();
 
     this.handleAddApplication = this.handleAddApplication.bind(this);
   }
 
-  handleAddApplication(event?: React.ChangeEvent<HTMLInputElement>) {
-    const { service } = this.props;
+  handleAddApplication() {
+    const { service, iconPath } = this.props;
 
     const serviceId = (service.deprecated && service.newVersionId) ? service.newVersionId : service.id;
-    const checked = event && event.target.checked;
 
-    this.props.onAdd(serviceId, checked);
+    this.props.onAdd(serviceId, iconPath, this.iconRef.current);
   }
 
   render() {
-    const { classes, service, isExtension, checked, disabled, iconPath, actionType, subTitle } = this.props;
+    const { classes, service, isExtension, iconPath, actionType, subTitle } = this.props;
 
     return (
       <div className={classes!.container}>
-        { actionType === ServiceActionType.Select &&
-          <input
-            className={classes!.checkbox}
-            type="checkbox"
-            checked={checked}
-            onChange={this.handleAddApplication}
-            disabled={disabled}
-          />
-        }
-
         <div className={classes!.iconContainer}>
-          <img className={classes!.icon} src={iconPath} />
+          <img ref={this.iconRef} className={classes!.icon} src={iconPath} />
 
           { isExtension &&
             <div className={classes!.iconPin}>
@@ -171,12 +157,12 @@ export class Service extends React.PureComponent<Props, {}> {
           { subTitle && <small>{subTitle}</small> }
         </p>
 
-        { actionType && actionType !== ServiceActionType.Select &&
+        { actionType &&
           <Icon
             symbolId={ServiceActionButtonIconMap[actionType]}
             size={24}
             className={classes!.action}
-            onClick={() => this.handleAddApplication}
+            onClick={this.handleAddApplication.bind(this)}
           />
         }
       </div>
