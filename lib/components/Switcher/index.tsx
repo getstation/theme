@@ -21,7 +21,7 @@ const transition = {
   transition: 'all 500ms ease-in-out',
 };
 
-const styles: Styles = {
+const styles = {
   hint: {
     width: 'initial',
     maxWidth: 200,
@@ -138,7 +138,9 @@ const styles: Styles = {
   },
 };
 
-type Props = OwnProps & WithSheet<typeof styles, {}>;
+type IgnoreJSSNested<C> = Styles<Extract<keyof C, string>>;
+
+type Props = OwnProps & WithSheet<IgnoreJSSNested<typeof styles>, {}>;
 
 class SwitcherImpl extends React.PureComponent<Props, {}> {
     static defaultProps = {
@@ -169,20 +171,20 @@ class SwitcherImpl extends React.PureComponent<Props, {}> {
 
         return (
             <div>
-              <Tooltip hintClassname={classes!.hint} tooltip={hint}>
+              <Tooltip hintClassname={classes.hint} tooltip={hint}>
                 <input
                     type="checkbox"
                     id={this.inputId}
-                    className={classes!.toggle}
+                    className={classes.toggle}
                     checked={checked}
                     disabled={disabled}
                     onChange={onChange}
                 />
-                <label className={classes!.viewport} htmlFor={this.inputId}>
-                    <div className={classes!.switcher}>
-                        <div className={classes!.button}>&nbsp;</div>
-                        <div className={classNames(classes!.content, classes!.contentLeft)}><span>{values[1]}</span></div>
-                        <div className={classNames(classes!.content, classes!.contentRight)}><span>{values[0]}</span></div>
+                <label className={classes.viewport} htmlFor={this.inputId}>
+                    <div className={classes.switcher}>
+                        <div className={classes.button}>&nbsp;</div>
+                        <div className={classNames(classes.content, classes.contentLeft)}><span>{values[1]}</span></div>
+                        <div className={classNames(classes.content, classes.contentRight)}><span>{values[0]}</span></div>
                     </div>
                 </label>
               </Tooltip>
@@ -191,4 +193,4 @@ class SwitcherImpl extends React.PureComponent<Props, {}> {
     }
 }
 
-export const Switcher = injectSheet(styles)(SwitcherImpl);
+export const Switcher = injectSheet(styles as IgnoreJSSNested<typeof styles>)(SwitcherImpl);
