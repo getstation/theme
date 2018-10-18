@@ -1,7 +1,6 @@
 import classNames = require('classnames');
 import * as React from 'react';
-// @ts-ignore: no declaration file
-import injectSheet from 'react-jss';
+import injectSheet, { CSSProperties, Styles, WithSheet } from 'react-jss';
 import * as shortid from 'shortid';
 import { Tooltip } from '../Tooltip';
 
@@ -10,20 +9,7 @@ export enum TEXT {
     YES_NO,
 }
 
-interface Classes {
-    tooltip: string,
-    hint: string,
-    switcher: string,
-    toggle: string,
-    button: string,
-    content: string,
-    viewport: string,
-    contentLeft: string,
-    contentRight: string,
-}
-
-interface Props {
-    classes?: Classes,
+interface OwnProps {
     disabledHint?: string,
     checked?: boolean,
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => any,
@@ -31,130 +17,130 @@ interface Props {
     disabled?: boolean,
 }
 
-const styles = () => {
-    const transition = {
-        transition: 'all 500ms ease-in-out',
-    };
-
-    return ({
-        hint: {
-            width: 'initial',
-            maxWidth: 200,
-            marginTop: 20,
-            marginRight: 5,
-        },
-        switcher: {
-            display: 'flex',
-            height: '100%',
-            position: 'relative',
-            width: '200%',
-            ...transition,
-        },
-        button: (props: Props) => ({
-            backgroundSize: '100%',
-            background: 'gray',
-            boxSizing: 'border-box',
-            position: 'absolute',
-            top: '4px',
-            left: 48,
-            width: 11,
-            height: 11,
-            cursor: props.disabled ? 'not-allowed' : 'pointer',
-            borderRadius: '100%',
-            ...transition,
-        }),
-        content: ({
-            background: 'gray',
-            display: 'inline-block',
-            float: 'left',
-            height: '100%',
-            width: '64px',
-            fontSize: '9px',
-            fontWeight: 'bold',
-            textTransform: 'uppercase',
-            top: '10px',
-            ...transition,
-            '& span': {
-                height: '100%',
-                lineHeight: '20px',
-                float: 'left',
-            },
-        }),
-        contentLeft: {
-            backgroundImage: 'linear-gradient(180deg, #213655 0%, #385679 34.24%, #4A7496 79.87%, #7272A0 100%)',
-            backgroundSize: '100%',
-            '& span': {
-                marginRight: '20px',
-                float: 'right',
-            },
-        },
-        contentRight: {
-            backgroundColor: 'white',
-            color: 'gray',
-            backgroundSize: '100%',
-            '& span': {
-                marginLeft: '18px',
-                display: 'inline-block',
-                width: 22,
-                textAlign: 'center',
-            },
-        },
-        viewport: (props: Props) => ({
-            boxSizing: 'content-box',
-            display: 'block',
-            width: '44px',
-            height: '19px',
-            overflow: 'hidden',
-            position: 'relative',
-            cursor: props.disabled ? 'not-allowed' : 'pointer',
-            borderRadius: '40px',
-            color: '#fff',
-            float: 'right',
-            userSelect: 'none',
-            border: '1px solid #EEE',
-        }),
-        toggle: {
-            display: 'none',
-            visibility: 'hidden',
-            '& + $viewport > $switcher': {
-                left: '-100%',
-            },
-            '& + $viewport > $button': {
-                left: 48,
-            },
-            '& + $viewport > $content': {
-                left: '65px',
-            },
-            '& + $viewport > $contentLeft': {
-                marginLeft: 0,
-            },
-            '&:checked + $viewport > $switcher': {
-                left: 0,
-            },
-            '&:checked + $viewport $button': {
-                left: 28,
-                color: 'white',
-                backgroundColor: 'white',
-            },
-            '&:checked + $viewport $contentLeft': {
-                marginLeft: 0,
-            },
-            '&:disabled + $viewport $content': {
-              color: '#C9C9C9',
-              background: 'white',
-            },
-            '&:disabled:checked + $viewport $content': {
-                color: '#C9C9C9',
-                background: 'white',
-            },
-            '&:disabled:checked + $viewport $button': {
-                backgroundColor: '#C9C9C9',
-            },
-        },
-    });
+const transition = {
+  transition: 'all 500ms ease-in-out',
 };
-@injectSheet(styles)
-export class Switcher extends React.PureComponent<Props, {}> {
+
+const styles: Styles = {
+  hint: {
+    width: 'initial',
+    maxWidth: 200,
+    marginTop: 20,
+    marginRight: 5,
+  },
+  switcher: {
+    display: 'flex',
+    height: '100%',
+    position: 'relative',
+    width: '200%',
+    ...transition,
+  },
+  button: ((props: OwnProps): CSSProperties => ({
+    backgroundSize: '100%',
+    background: 'gray',
+    boxSizing: 'border-box',
+    position: 'absolute',
+    top: '4px',
+    left: 48,
+    width: 11,
+    height: 11,
+    cursor: props.disabled ? 'not-allowed' : 'pointer',
+    borderRadius: '100%',
+    ...transition,
+  })) as any,
+  content: {
+    background: 'gray',
+    display: 'inline-block',
+    float: 'left',
+    height: '100%',
+    width: '64px',
+    fontSize: '9px',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    top: '10px',
+    ...transition,
+    '& span': {
+      height: '100%',
+      lineHeight: '20px',
+      float: 'left',
+    },
+  },
+  contentLeft: {
+    backgroundImage: 'linear-gradient(180deg, #213655 0%, #385679 34.24%, #4A7496 79.87%, #7272A0 100%)',
+    backgroundSize: '100%',
+    '& span': {
+      marginRight: '20px',
+      float: 'right',
+    },
+  },
+  contentRight: {
+    backgroundColor: 'white',
+    color: 'gray',
+    backgroundSize: '100%',
+    '& span': {
+      marginLeft: '18px',
+      display: 'inline-block',
+      width: 22,
+      textAlign: 'center',
+    },
+  },
+  viewport: ((props: OwnProps): CSSProperties => ({
+    boxSizing: 'content-box',
+    display: 'block',
+    width: '44px',
+    height: '19px',
+    overflow: 'hidden',
+    position: 'relative',
+    cursor: props.disabled ? 'not-allowed' : 'pointer',
+    borderRadius: '40px',
+    color: '#fff',
+    float: 'right',
+    userSelect: 'none',
+    border: '1px solid #EEE',
+  })) as any,
+  toggle: {
+    display: 'none',
+    visibility: 'hidden',
+    '& + $viewport > $switcher': {
+      left: '-100%',
+    },
+    '& + $viewport > $button': {
+      left: 48,
+    },
+    '& + $viewport > $content': {
+      left: '65px',
+    },
+    '& + $viewport > $contentLeft': {
+      marginLeft: 0,
+    },
+    '&:checked + $viewport > $switcher': {
+      left: 0,
+    },
+    '&:checked + $viewport $button': {
+      left: 28,
+      color: 'white',
+      backgroundColor: 'white',
+    },
+    '&:checked + $viewport $contentLeft': {
+      marginLeft: 0,
+    },
+    '&:disabled + $viewport $content': {
+      color: '#C9C9C9',
+      background: 'white',
+    },
+    '&:disabled:checked + $viewport $content': {
+      color: '#C9C9C9',
+      background: 'white',
+    },
+    '&:disabled:checked + $viewport $button': {
+      backgroundColor: '#C9C9C9',
+    },
+  },
+};
+
+type Props = OwnProps & WithSheet<typeof styles, {}>;
+
+class SwitcherImpl extends React.PureComponent<Props, {}> {
     static defaultProps = {
         text: TEXT.ON_OFF,
         onChange: () => {},
@@ -204,3 +190,5 @@ export class Switcher extends React.PureComponent<Props, {}> {
         );
     }
 }
+
+export const Switcher = injectSheet(styles)(SwitcherImpl);
