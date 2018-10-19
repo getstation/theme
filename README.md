@@ -12,3 +12,9 @@ https://getstation.github.io/theme/storybook/index.html
 
 ## TypeScript
 https://getstation.github.io/theme/typedoc/index.html
+
+## Publish
+- Build docs: `yarn build-docs`
+- Bump version in `package.json`
+- verify `CHANGELOG.md` entries
+- Publish: `npm publish`
