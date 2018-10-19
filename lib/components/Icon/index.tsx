@@ -1,6 +1,5 @@
 import * as path from 'path';
 import * as React from 'react';
-// @ts-ignore: no declaration file
 import injectSheet from 'react-jss';
 import { ThemeTypes } from '../../types';
 import classNames = require('classnames');
@@ -19,9 +18,9 @@ export type IconProps = React.HTMLProps<SVGSVGElement> & IconOwnProps;
 
 const styles = (theme: ThemeTypes) => ({
   icon: {
-    width: (props: IconProps) => props.width || props.size,
-    height: (props: IconProps) => props.height || props.size,
-    fill: (props: IconProps) => props.color || theme.icons.color.base,
+    width: ((props: IconProps) => props.width || props.size) as any,
+    height: ((props: IconProps) => props.height || props.size) as any,
+    fill: ((props: IconProps) => props.color || theme.icons.color.base) as any,
   },
 });
 

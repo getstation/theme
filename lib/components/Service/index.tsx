@@ -1,25 +1,13 @@
 import { Icon, IconSymbol } from '../Icon';
 import * as React from 'react';
-// @ts-ignore: no declaration file
-import injectSheet from 'react-jss';
-import { ThemeTypes } from "../../types";
+import injectSheet, { WithSheet } from 'react-jss';
+import { createStyles, ThemeTypes } from '../../types';
 import { roundedBackground } from "../../jss";
 
 /** The type of action: will influence icon used and checkbox. If not present, no action button will be shown. */
 export enum ServiceActionType {
   Add = 'Add',
   Settings = 'Settings',
-}
-
-interface Classes {
-  container: string,
-  iconContainer: string,
-  serviceDetails: string,
-  serviceName: string,
-  icon: string,
-  iconPin: string,
-  action: string,
-  svgPath: string,
 }
 
 interface IService {
@@ -29,8 +17,7 @@ interface IService {
   name: string,
 }
 
-interface Props {
-  classes?: Classes,
+interface OwnProps {
   service: IService,
   onAdd: (serviceId: string, iconPath: string, iconRef?: any) => any,
   isExtension?: boolean,
@@ -46,22 +33,22 @@ const ServiceActionButtonIconMap = {
   [ServiceActionType.Settings]: IconSymbol.COG,
 };
 
-@injectSheet((theme: ThemeTypes) => ({
+const styles = (theme: ThemeTypes) => createStyles({
   container: {
     flex: 0,
     display: 'inline-flex',
     color: 'rgb(38, 33, 33)',
     alignItems: 'center',
-    width: ({ alternate }: Props) => alternate ? null : 195,
+    width: (({ alternate }: OwnProps) => alternate ? null : 195) as any,
     margin: '0 7px 10px 0',
-    padding: ({ alternate }: Props) => alternate ? '0px 5px 10px 0' : 10,
+    padding: (({ alternate }: OwnProps) => alternate ? '0px 5px 10px 0' : 10) as any,
     backgroundColor: 'transparent',
     borderRadius: '999px',
     transition: '200ms',
     userSelect: 'none',
     '&:hover': {
-      backgroundColor: ({ alternate }: Props) => alternate ? 'none' : '#EEE',
-    },
+      backgroundColor: ({ alternate }: OwnProps) => alternate ? 'none' : '#EEE',
+    } as any,
   },
   iconContainer: {
     margin: '0 10px 0 0',
@@ -83,7 +70,7 @@ const ServiceActionButtonIconMap = {
   serviceName: {
     display: 'inline-block',
     fontSize: '12px',
-    fontWeight: '600',
+    fontWeight: 600,
   },
   icon: {
     display: 'inline-block',
@@ -111,13 +98,16 @@ const ServiceActionButtonIconMap = {
     },
     '&:hover': {
       opacity: '1 !important',
-    },
+    } as any,
   },
   svgPath: {
     fill: 'white',
   },
-}))
-export class Service extends React.PureComponent<Props, {}> {
+});
+
+type Props = OwnProps & WithSheet<typeof styles>;
+
+class ServiceImpl extends React.PureComponent<Props, {}> {
   iconRef: any;
 
   constructor(props: Props) {
@@ -169,3 +159,5 @@ export class Service extends React.PureComponent<Props, {}> {
     );
   }
 }
+
+export const Service = injectSheet(styles)(ServiceImpl);

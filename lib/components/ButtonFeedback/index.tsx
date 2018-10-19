@@ -1,28 +1,16 @@
-import { Button, ButtonProps } from '../Button';
-import { ThemeTypes } from '../../types';
 import classNames from 'classnames';
 import * as React from 'react';
-// @ts-ignore: no declaration file
-import injectSheet from 'react-jss';
-
-interface Classes {
-  button: string,
-}
-
-interface OwnProps {
-  classes?: Classes,
-}
-
-type Props = OwnProps & ButtonProps;
+import injectSheet, { WithSheet } from 'react-jss';
+import { ThemeTypes } from '../../types';
+import { Button, ButtonProps } from '../Button';
 
 interface State {
   sent: boolean,
 }
 
-@injectSheet((theme: ThemeTypes) => ({
+const styles = (theme: ThemeTypes) => ({
   button: {
     transition: 'background-color .6s',
-    // backgroundColor: '#4aad56 !important',
     overflow: 'hidden',
     '&.sent': {
       backgroundColor: '#64bf6f !important',
@@ -52,8 +40,11 @@ interface State {
       transform: 'translateY(0)',
     },
   },
-}))
-export class ButtonFeedback extends React.PureComponent<Props, State> {
+});
+
+type Props = ButtonProps & WithSheet<typeof styles>;
+
+class ButtonFeedbackImpl extends React.PureComponent<Props, State> {
 
   protected feedbackTimeout: any;
 
@@ -87,7 +78,7 @@ export class ButtonFeedback extends React.PureComponent<Props, State> {
 
     return (
       <Button
-        className={classNames(className, classes!.button, { sent })}
+        className={classNames(className, classes.button, { sent })}
         onClick={this.onClick}
         {...buttonProps}
       >
@@ -97,3 +88,5 @@ export class ButtonFeedback extends React.PureComponent<Props, State> {
     );
   }
 }
+
+export const ButtonFeedback = injectSheet(styles)(ButtonFeedbackImpl);

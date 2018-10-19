@@ -1,3 +1,4 @@
+import { Styles } from 'react-jss';
 import { theme } from './jss';
 
 export interface Coordinates {
@@ -40,4 +41,10 @@ export type ChooserItemTypes = {
   value: any,
 }
 
+export type IgnoreJSSNested<C> = Styles<Extract<keyof C, string>>;
+
 export type ThemeTypes = typeof theme;
+
+export function createStyles<C extends string>(styles: Styles<C>): Styles<C> {
+  return styles;
+}
