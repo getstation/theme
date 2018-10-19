@@ -2,27 +2,19 @@ import { Icon, IconSymbol } from '../Icon';
 import * as Mousetrap from 'mousetrap';
 import * as React from 'react';
 import { DebounceInput } from 'react-debounce-input';
-// @ts-ignore: no declaration file
-import injectSheet from 'react-jss';
-import {ThemeTypes} from "../../types";
+import injectSheet, { WithSheet } from 'react-jss';
+import { createStyles, ThemeTypes } from '../../types';
 
-export interface IClasses {
-  container: string,
-  icon: string,
-  input: string,
-}
-
-export interface IProps {
-  classes?: IClasses,
+export interface OwnProps {
   placeholder: string,
   value: string,
   onChange: (value: string) => any,
   autofocus?: boolean,
 }
 
-@injectSheet((theme: ThemeTypes) => ({
+const styles = (theme: ThemeTypes) => createStyles({
   container: {
-    padding: [0, 10],
+    padding: [0, 10] as any,
     height: 40,
     borderRadius: 20,
     width: '100%',
@@ -45,11 +37,14 @@ export interface IProps {
     fontSize: '14px',
     backgroundColor: 'transparent',
   },
-}))
-export class SearchInput extends React.PureComponent<IProps, {}> {
+});
+
+type Props = OwnProps & WithSheet<typeof styles>;
+
+class SearchInputImpl extends React.PureComponent<Props, {}> {
   inputRef: any;
 
-  constructor(props: IProps) {
+  constructor(props: Props) {
     super(props);
 
     this.inputRef = React.createRef();
@@ -76,13 +71,13 @@ export class SearchInput extends React.PureComponent<IProps, {}> {
     const { classes, placeholder, value, autofocus } = this.props;
 
     return (
-      <div className={classes!.container}>
-        <Icon symbolId={IconSymbol.SEARCH} size={40} className={classes!.icon} />
+      <div className={classes.container}>
+        <Icon symbolId={IconSymbol.SEARCH} size={40} className={classes.icon} />
 
         <DebounceInput
           minLength={0}
           debounceTimeout={150}
-          className={classes!.input}
+          className={classes.input}
           autoFocus={autofocus}
           type="search"
           placeholder={placeholder}
@@ -94,3 +89,5 @@ export class SearchInput extends React.PureComponent<IProps, {}> {
     );
   }
 }
+
+export const SearchInput = injectSheet(styles)(SearchInputImpl);
