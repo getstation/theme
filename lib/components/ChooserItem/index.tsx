@@ -1,32 +1,21 @@
-import { Button, Size as ButtonSize, Style as ButtonStyle } from '../Button';
-import { ThemeTypes, ChooserItemTypes } from '../../types';
 import classNames from 'classnames';
 import * as React from 'react';
-// @ts-ignore: no declaration file
-import injectSheet from 'react-jss';
+import injectSheet, { WithSheet } from 'react-jss';
+import { ChooserItemTypes, createStyles, ThemeTypes } from '../../types';
+import { Button, Size as ButtonSize, Style as ButtonStyle } from '../Button';
 
 export enum ChooserItemStyle {
   PRIMARY, SECONDARY,
 }
 
-interface Classes {
-  chooserItem: string,
-  title: string,
-  description: string,
-  info: string,
-  chooserPrimary: string,
-  chooserSecondary: string,
-}
-
-interface Props {
-  classes?: Classes,
+interface OwnProps {
   item: ChooserItemTypes,
   onSelect: (item: any) => any,
   style?: ChooserItemStyle,
   selectText?: string,
 }
 
-@injectSheet((theme: ThemeTypes) => ({
+const styles = (theme: ThemeTypes) => createStyles({
   chooserItem: {
     margin: '10px auto 10px',
     position: 'relative',
@@ -64,8 +53,11 @@ interface Props {
       color: theme.colors.gray.light,
     },
   },
-}))
-export class ChooserItem extends React.PureComponent<Props, {}> {
+});
+
+type Props = OwnProps & WithSheet<typeof styles>;
+
+class ChooserItemImpl extends React.PureComponent<Props, {}> {
   static defaultProps = {
     style: ChooserItemStyle.PRIMARY,
     implicit: true,
@@ -102,3 +94,5 @@ export class ChooserItem extends React.PureComponent<Props, {}> {
     );
   }
 }
+
+export const ChooserItem = injectSheet(styles)(ChooserItemImpl);

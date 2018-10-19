@@ -1,25 +1,12 @@
 import classNames from 'classnames';
 import * as React from 'react';
-// @ts-ignore: no declaration file
-import injectSheet from 'react-jss';
+import injectSheet, { WithSheet } from 'react-jss';
+import { createStyles, ThemeTypes } from '../../types';
+import { Button, Style } from '../Button';
+import { Icon, IconSymbol } from '../Icon';
 import { ModalWrapper } from '../ModalWrapper';
-import {ThemeTypes} from "../../types";
-import {Icon, IconSymbol} from "../Icon";
-import {Button, Style} from "../Button";
 
-interface Classes {
-  container: string,
-  header: string,
-  applicationIcon: string,
-  body: string,
-  loading: string,
-  title: string,
-  description: string,
-  footer: string,
-}
-
-interface Props {
-  classes?: Classes,
+interface OwnProps {
   classNameModalBody?: string,
   title?: string,
   description?: string,
@@ -32,7 +19,7 @@ interface Props {
   isLoading?: boolean,
 }
 
-@injectSheet((theme: ThemeTypes) => ({
+const styles = (theme: ThemeTypes) => createStyles({
   container: {
     position: 'relative',
     width: 450,
@@ -42,7 +29,7 @@ interface Props {
   },
   header: {
     width: '100%',
-    padding: ({ applicationIcon, title, description }: Props) => {
+    padding: (({ applicationIcon, title, description }: OwnProps) => {
       if (applicationIcon) {
         return '70px 20px 20px';
       }
@@ -50,20 +37,20 @@ interface Props {
         return '20px';
       }
       return '0px';
-    },
+    }) as any,
     textAlign: 'center',
     backgroundColor: theme.colors.gray.light,
     boxSizing: 'border-box',
-    borderRadius: [5, 5, 0, 0],
+    borderRadius: [5, 5, 0, 0] as any,
   },
   applicationIcon: {
-    display: ({ applicationIcon }: Props) => applicationIcon ? 'initial' : 'none',
+    display: (({ applicationIcon }: OwnProps) => applicationIcon ? 'initial' : 'none') as any,
     position: 'absolute',
     top: -45,
     left: 'calc(50% - 45px)',
     width: 90,
     height: 90,
-    backgroundImage: ({ applicationIcon }: Props) => `url('${applicationIcon}')`,
+    backgroundImage: (({ applicationIcon }: OwnProps) => `url('${applicationIcon}')`) as any,
     backgroundColor: theme.colors.gray.light,
     backgroundRepeat: 'no-repeat',
     backgroundSize: '100%',
@@ -104,12 +91,15 @@ interface Props {
     justifyContent: 'space-between',
     padding: 20,
     '& button': {
-      flexBasis: ({ onContinue }: Props) => onContinue ? '48%' : '100%',
+      flexBasis: ({ onContinue }: OwnProps) => onContinue ? '48%' : '100%',
       marginLeft: 5,
-    },
+    } as any,
   },
-}))
-export class Modal extends React.PureComponent<Props, {}> {
+});
+
+type Props = OwnProps & WithSheet<typeof styles>;
+
+class ModalImpl extends React.PureComponent<Props, {}> {
   render() {
     const {
       classes, title, description, classNameModalBody, onCancel, cancelContent, onContinue, continueContent,
@@ -118,16 +108,16 @@ export class Modal extends React.PureComponent<Props, {}> {
 
     return (
       <ModalWrapper onCancel={onCancel}>
-        <div className={classes!.container}>
-          <div className={classes!.header}>
-            <div className={classes!.applicationIcon} />
-            <div className={classes!.title}>{title}</div>
-            <div className={classes!.description}>{description}</div>
+        <div className={classes.container}>
+          <div className={classes.header}>
+            <div className={classes.applicationIcon} />
+            <div className={classes.title}>{title}</div>
+            <div className={classes.description}>{description}</div>
           </div>
 
-          <div className={classNames(classes!.body, classNameModalBody)}>
+          <div className={classNames(classes.body, classNameModalBody)}>
             { isLoading &&
-            <div className={classes!.loading}>
+            <div className={classes.loading}>
               <Icon symbolId={IconSymbol.LOADING} size={25} color={'#000'} />
             </div>
             }
@@ -136,7 +126,7 @@ export class Modal extends React.PureComponent<Props, {}> {
           </div>
 
           { (onCancel || onContinue) &&
-          <div className={classes!.footer}>
+          <div className={classes.footer}>
             { onCancel &&
             <Button onClick={onCancel} btnStyle={Style.TERTIARY}>
               {cancelContent || `Cancel`}
@@ -155,3 +145,5 @@ export class Modal extends React.PureComponent<Props, {}> {
     );
   }
 }
+
+export const Modal = injectSheet(styles)(ModalImpl);

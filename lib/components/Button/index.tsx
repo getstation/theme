@@ -1,8 +1,7 @@
 import * as React from 'react';
-// @ts-ignore
 import injectSheet from 'react-jss';
+import { createStyles, ThemeTypes } from '../../types';
 import classNames = require('classnames');
-import { ThemeTypes } from '../../types';
 
 export enum Size {
   BIG, NORMAL, SMALL, XSMALL, XXSMALL,
@@ -20,11 +19,11 @@ export interface ButtonOwnProps extends JSX.IntrinsicClassAttributes<ButtonImpl>
 
 export type ButtonProps = ButtonOwnProps & React.HTMLProps<HTMLButtonElement>;
 
-const styles = (theme: ThemeTypes) => ({
+const styles = (theme: ThemeTypes) => createStyles({
   button: {
-    appearance: 'none',
+    appearance: 'none' as 'none',
     border: 'none',
-    padding: (props: ButtonProps) => isRenderingIcon(props) ? 0 : '0 20px',
+    padding: ((props: ButtonProps) => isRenderingIcon(props) ? 0 : '0 20px') as any,
     borderRadius: '34px',
     height: '34px',
     lineHeight: '34px',

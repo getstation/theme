@@ -1,7 +1,8 @@
 import classNames = require('classnames');
 import * as React from 'react';
-import injectSheet, { CSSProperties, Styles, WithSheet } from 'react-jss';
+import injectSheet, { CSSProperties, WithSheet } from 'react-jss';
 import * as shortid from 'shortid';
+import { IgnoreJSSNested } from '../../types';
 import { Tooltip } from '../Tooltip';
 
 export enum TEXT {
@@ -138,7 +139,6 @@ const styles = {
   },
 };
 
-type IgnoreJSSNested<C> = Styles<Extract<keyof C, string>>;
 
 type Props = OwnProps & WithSheet<IgnoreJSSNested<typeof styles>, {}>;
 
