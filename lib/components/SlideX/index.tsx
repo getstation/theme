@@ -1,18 +1,12 @@
 import * as React from 'react';
-// @ts-ignore: no declaration file
-import injectSheet from 'react-jss';
+import injectSheet, { WithSheet } from 'react-jss';
+import { IgnoreJSSNested } from '../../types';
 
-interface Classes {
-  stepAnimationContainer: string,
-  stepAnimation: string,
-}
-
-interface Props {
-  classes?: Classes,
+interface OwnProps {
   step: number,
 }
 
-@injectSheet({
+const styles = {
   stepAnimationContainer: {
     overflowX: 'hidden',
     width: '100%',
@@ -23,14 +17,17 @@ interface Props {
     alignItems: 'flex-end',
     justifyContent: 'flex-start',
     width: '100%',
-    transform: ({ step }: Props) => step ? `translateX(-${step * 100}%)` : 'translateX(0)',
+    transform: (({ step }: OwnProps) => step ? `translateX(-${step * 100}%)` : 'translateX(0)') as any,
 
     '& > *': {
       minWidth: '100%',
     },
   },
-})
-export class SlideX extends React.PureComponent<Props, {}> {
+};
+
+type Props = OwnProps & WithSheet<IgnoreJSSNested<typeof styles>, {}>;
+
+class SlideXImpl extends React.PureComponent<Props, {}> {
 
   static defaultProps = {
     step: 0,
@@ -48,3 +45,5 @@ export class SlideX extends React.PureComponent<Props, {}> {
     );
   }
 }
+
+export const SlideX = injectSheet(styles as IgnoreJSSNested<typeof styles>)(SlideXImpl);

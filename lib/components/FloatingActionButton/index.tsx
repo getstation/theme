@@ -1,15 +1,8 @@
-import { GradientType, withGradient } from '../../gradient';
 import * as React from 'react';
-// @ts-ignore: no declaration file
-import injectSheet from 'react-jss';
-import { ThemeTypes } from '../../types';
-
-interface IClasses {
-  container: string,
-}
+import injectSheet, { WithSheet } from 'react-jss';
+import { createStyles, ThemeTypes } from '../../types';
 
 interface IProps {
-  classes?: IClasses,
   onClick?: () => void,
   children?: any,
 }
@@ -19,9 +12,9 @@ interface IStateFromProps {
 }
 
 // type Props = IProps & IStateFromProps;
-type Props = IProps;
+type Props = IProps & WithSheet<typeof styles>;
 
-@injectSheet((theme: ThemeTypes) => ({
+const styles = (theme: ThemeTypes) => createStyles({
   container: {
     ...theme.mixins.flexbox.containerCenter,
     position: 'fixed',
@@ -38,17 +31,18 @@ type Props = IProps;
     boxShadow: '0px 2px 10px 0 rgba(150, 150, 150, 0.75)',
     cursor: 'pointer',
   },
-}))
-export class FloatingActionButton extends React.PureComponent<Props, {}> {
+});
+
+export class FloatingActionButtonImpl extends React.PureComponent<Props, {}> {
   render() {
     const { classes, onClick, children } = this.props;
 
     return (
-      <button className={classes!.container} onClick={onClick}>
+      <button className={classes.container} onClick={onClick}>
         { children }
       </button>
     );
   }
 }
 
-// export const FloatingActionButton = withGradient(GradientType.normal)(FloatingActionButtonImpl);
+export const FloatingActionButton = injectSheet(styles)(FloatingActionButtonImpl);

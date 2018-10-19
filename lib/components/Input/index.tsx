@@ -1,8 +1,8 @@
 import { theme } from '../../jss';
 import classNames from 'classnames';
 import * as React from 'react';
-// @ts-ignore: no declaration file
-import injectSheet from 'react-jss';
+import injectSheet, { WithSheet } from 'react-jss';
+import { IgnoreJSSNested } from '../../types';
 
 export enum InputSize {
   BIG, NORMAL, SMALL, XSMALL, XXSMALL,
@@ -13,20 +13,7 @@ export enum InputType {
   PASSWORD = 'password',
 }
 
-interface Classes {
-  container: string,
-  input: string,
-  inputXSmall: string,
-  inputXXSmall: string,
-  inputSmall: string,
-  inputBig: string,
-  header: string,
-  label: string,
-  error: string,
-}
-
 interface OwnProps {
-  classes?: Classes,
   sheet?: any,
   className?: string,
   inputClassName?: string,
@@ -37,17 +24,15 @@ interface OwnProps {
   refInput?: (inputEl: HTMLInputElement) => any,
 }
 
-type Props = OwnProps & React.HTMLProps<HTMLInputElement>;
-
-@injectSheet({
+const styles = {
   container: {
     maxWidth: 500,
   },
   input: {
     display: 'block',
     appearance: 'none',
-    border: ({ error }: Props) => error ? `2px solid ${theme.colors.error}` : '1px solid rgba(41, 41, 41, 0.1)',
-    padding: [0, 15],
+    border: (({ error }: OwnProps) => error ? `2px solid ${theme.colors.error}` : '1px solid rgba(41, 41, 41, 0.1)') as any,
+    padding: [0, 15] as any,
     boxSizing: 'border-box',
     borderRadius: 30,
     minWidth: 200,
@@ -56,7 +41,7 @@ type Props = OwnProps & React.HTMLProps<HTMLInputElement>;
     lineHeight: '34px',
     ...theme.fontMixin(11, 500),
     transition: 'all 250ms ease-out',
-    color: ({ error }: Props) => error ? theme.colors.error : '#292929',
+    color: (({ error }: OwnProps) => error ? theme.colors.error : '#292929') as any,
     backgroundColor: '#FFFFFF',
     '&:disabled': {
       opacity: 0.4,
@@ -92,18 +77,21 @@ type Props = OwnProps & React.HTMLProps<HTMLInputElement>;
   },
   label: {
     display: 'block',
-    margin: [0, 0, 8, 5],
+    margin: [0, 0, 8, 5] as any,
     ...theme.fontMixin(12),
-    color: ({ error }: Props) => error ? theme.colors.error : theme.colors.gray.middle,
+    color: (({ error }: OwnProps) => error ? theme.colors.error : theme.colors.gray.middle) as any,
   },
   error: {
     ...theme.fontMixin(10, 'bold'),
     color: theme.colors.error,
     textAlign: 'right',
-    padding: [0, 5, 8, 10],
+    padding: [0, 5, 8, 10] as any,
   },
-})
-export class Input extends React.Component<Props, {}> {
+};
+
+type Props = OwnProps & WithSheet<IgnoreJSSNested<typeof styles>, {}> & React.HTMLProps<HTMLInputElement>;
+
+class InputImpl extends React.Component<Props, {}> {
 
   constructor(props: Props) {
     super(props);
@@ -156,3 +144,5 @@ export class Input extends React.Component<Props, {}> {
     );
   }
 }
+
+export const Input = injectSheet(styles as IgnoreJSSNested<typeof styles>)(InputImpl);
