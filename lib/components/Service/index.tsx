@@ -8,6 +8,7 @@ import { roundedBackground } from "../../jss";
 export enum ServiceActionType {
   Add = 'Add',
   Settings = 'Settings',
+  Remove = 'Remove',
 }
 
 interface IService {
@@ -31,6 +32,7 @@ interface OwnProps {
 const ServiceActionButtonIconMap = {
   [ServiceActionType.Add]: IconSymbol.PLUS,
   [ServiceActionType.Settings]: IconSymbol.COG,
+  [ServiceActionType.Remove]: IconSymbol.CROSS,
 };
 
 const styles = (theme: ThemeTypes) => createStyles({
