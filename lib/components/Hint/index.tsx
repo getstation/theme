@@ -1,8 +1,7 @@
 import * as React from 'react';
-// @ts-ignore: no declaration file
-import injectSheet from 'react-jss';
-import {Icon, IconSymbol} from "../Icon";
-import { Tooltip } from "../Tooltip";
+import injectSheet, { WithSheet } from 'react-jss';
+import { Icon, IconSymbol } from '../Icon';
+import { Tooltip } from '../Tooltip';
 
 export enum STYLE {
     LIGHT, DARK,
@@ -14,7 +13,7 @@ interface Classes {
     hint: string,
 }
 
-interface Props {
+interface OwnProps {
     classes?: Classes,
     tooltip: string;
     style?: STYLE,
@@ -22,21 +21,24 @@ interface Props {
     children: any,
 }
 
-@injectSheet(() => ({
-    container: {
-        display: 'inline-flex',
-        alignItems: 'center',
-    },
-    tooltip: {
-        marginTop: 5,
-        marginLeft: 5,
-    },
-    hint: {
-        width: 'initial',
-        maxWidth: 250,
-    }
-}))
-export class Hint extends React.PureComponent<Props, {}> {
+const styles = {
+  container: {
+    display: 'inline-flex',
+    alignItems: 'center',
+  },
+  tooltip: {
+    marginTop: 5,
+    marginLeft: 5,
+  },
+  hint: {
+    width: 'initial',
+    maxWidth: 250,
+  }
+};
+
+type Props = OwnProps & WithSheet<typeof styles, {}>;
+
+class HintImpl extends React.PureComponent<Props, {}> {
     static defaultProps = {
         style: STYLE.LIGHT,
         size: 15,
@@ -68,3 +70,5 @@ export class Hint extends React.PureComponent<Props, {}> {
         );
     }
 }
+
+export const Hint = injectSheet(styles)(HintImpl);
