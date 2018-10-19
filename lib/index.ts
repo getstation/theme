@@ -17,3 +17,5 @@ export * from './components/ModalWrapper';
 export * from './components/Modal';
 export * from './components/SlideX';
 export * from './components/FloatingActionButton';
+export * from './components/Service';
+export * from './components/SearchInput';
