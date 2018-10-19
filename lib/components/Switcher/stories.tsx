@@ -1,11 +1,11 @@
-import { action } from '@storybook/addon-actions';
 import centered from '@storybook/addon-centered';
-import { withInfo } from '@storybook/addon-info';
-import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
-import { withNotes } from '@storybook/addon-notes';
-import { storiesOf } from '@storybook/react';
+import {action} from '@storybook/addon-actions';
+import {withInfo} from '@storybook/addon-info';
+import {boolean, select, text, withKnobs} from '@storybook/addon-knobs';
+import {withNotes} from '@storybook/addon-notes';
+import {storiesOf} from '@storybook/react';
 import * as React from 'react';
-import { Switcher, TEXT } from './index';
+import {Switcher, TEXT} from './index';
 
 storiesOf('Atoms|Switcher', module)
   .addDecorator(withKnobs)

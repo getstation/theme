@@ -2,11 +2,18 @@ import PopperJS from 'popper.js';
 import * as React from 'react';
 // @ts-ignore: no declaration file
 import ReactHoverObserver from 'react-hover-observer';
-import injectSheet, { WithSheet } from 'react-jss';
+// @ts-ignore: no declaration file
+import injectSheet from 'react-jss';
 import { Manager, Popper, Target } from 'react-popper';
-import classNames = require('classnames');
+import classNames = require("classnames");
 
-interface OwnProps {
+interface Classes {
+    hint: string,
+}
+
+interface Props {
+    classes?: Classes,
+    /** A CSS class that'll be added to the outer div */
     className?: string,
     tooltip?: string,
     placement?: PopperJS.Placement,
@@ -19,26 +26,25 @@ interface State {
     tooltipShown: boolean,
 }
 
-const styles = {
-  hint: {
-    width: 137,
-    margin: [0, 0, 0, 2] as any,
-    padding: [5, 10, 6] as any,
-    fontSize: 11,
-    fontWeight: 700,
-    textAlign: 'center' as 'center',
-    color: '#FFF',
-    backgroundColor: '#333',
-    borderRadius: 2,
-  },
-};
+const styles = () => ({
+    hint: {
+        width: 137,
+        margin: [0, 0, 0, 2],
+        padding: [5, 10, 6],
+        fontSize: 11,
+        fontWeight: 700,
+        textAlign: 'center',
+        color: '#FFF',
+        backgroundColor: '#333',
+        borderRadius: 2,
+    },
+});
 
-type Props = OwnProps & WithSheet<typeof styles, {}>;
-
-class TooltipImpl extends React.PureComponent<Props, State> {
+@injectSheet(styles)
+export class Tooltip extends React.PureComponent<Props, State> {
 
     static defaultProps = {
-        placement: 'right' as PopperJS.Placement,
+        placement: 'right',
         offset: '0, 2',
     };
 
@@ -95,7 +101,7 @@ class TooltipImpl extends React.PureComponent<Props, State> {
                         offset: { offset },
                     }}
                 >
-                    <div className={classNames(classes.hint, hintClassname)}>
+                    <div className={classNames(classes!.hint, hintClassname)}>
                         {tooltip}
                     </div>
                 </Popper>
@@ -104,5 +110,3 @@ class TooltipImpl extends React.PureComponent<Props, State> {
         );
     }
 }
-
-export const Tooltip = injectSheet(styles)(TooltipImpl);
