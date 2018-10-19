@@ -1,5 +1,4 @@
 import * as React from 'react';
-// @ts-ignore: no declaration file
 import injectSheet, { WithSheet } from 'react-jss';
 import { IgnoreJSSNested } from '../../types';
 
