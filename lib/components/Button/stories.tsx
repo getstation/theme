@@ -1,7 +1,7 @@
 import { Button, Size, Style } from './index';
 import centered from '@storybook/addon-centered';
 import { withInfo } from '@storybook/addon-info';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import {withKnobs, text, boolean} from '@storybook/addon-knobs';
 import { withNotes } from '@storybook/addon-notes';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
@@ -19,95 +19,96 @@ storiesOf('Atoms|Button', module)
           const linkContent = text('link button content', 'Link Button');
           const dangerContent = text('danger button content', 'Danger Button');
           const style = { marginLeft: '10px' };
+          const isLoading = boolean('isLoading', false);
           return (
             <div>
               <h4>XXSMALL Button</h4>
               <div>
-                <Button style={style} btnSize={Size.XXSMALL} btnStyle={Style.PRIMARY}>
+                <Button style={style} btnSize={Size.XXSMALL} btnStyle={Style.PRIMARY} isLoading={isLoading}>
                   {primaryContent}
                 </Button>
-                <Button style={style} btnSize={Size.XXSMALL} btnStyle={Style.SECONDARY}>
+                <Button style={style} btnSize={Size.XXSMALL} btnStyle={Style.SECONDARY} isLoading={isLoading}>
                   {secondaryContent}
                 </Button>
-                <Button style={style} btnSize={Size.XXSMALL} btnStyle={Style.TERTIARY}>
+                <Button style={style} btnSize={Size.XXSMALL} btnStyle={Style.TERTIARY} isLoading={isLoading}>
                   {tertiaryContent}
                 </Button>
-                <Button style={style} btnSize={Size.XXSMALL} btnStyle={Style.LINK}>
+                <Button style={style} btnSize={Size.XXSMALL} btnStyle={Style.LINK} isLoading={isLoading}>
                   {linkContent}
                 </Button>
-                <Button style={style} btnSize={Size.XXSMALL} btnStyle={Style.DANGER}>
+                <Button style={style} btnSize={Size.XXSMALL} btnStyle={Style.DANGER} isLoading={isLoading}>
                   {dangerContent}
                 </Button>
               </div>
               <h4>XSMALL Button</h4>
               <div>
-                <Button style={style} btnSize={Size.XSMALL} btnStyle={Style.PRIMARY}>
+                <Button style={style} btnSize={Size.XSMALL} btnStyle={Style.PRIMARY} isLoading={isLoading}>
                   {primaryContent}
                 </Button>
-                <Button style={style} btnSize={Size.XSMALL} btnStyle={Style.SECONDARY}>
+                <Button style={style} btnSize={Size.XSMALL} btnStyle={Style.SECONDARY} isLoading={isLoading}>
                   {secondaryContent}
                 </Button>
-                <Button style={style} btnSize={Size.XSMALL} btnStyle={Style.TERTIARY}>
+                <Button style={style} btnSize={Size.XSMALL} btnStyle={Style.TERTIARY} isLoading={isLoading}>
                   {tertiaryContent}
                 </Button>
-                <Button style={style} btnSize={Size.XSMALL} btnStyle={Style.LINK}>
+                <Button style={style} btnSize={Size.XSMALL} btnStyle={Style.LINK} isLoading={isLoading}>
                   {linkContent}
                 </Button>
-                <Button style={style} btnSize={Size.XSMALL} btnStyle={Style.DANGER}>
+                <Button style={style} btnSize={Size.XSMALL} btnStyle={Style.DANGER} isLoading={isLoading}>
                   {dangerContent}
                 </Button>
               </div>
               <h4>SMALL Button</h4>
               <div>
-                <Button style={style} btnSize={Size.SMALL} btnStyle={Style.PRIMARY}>
+                <Button style={style} btnSize={Size.SMALL} btnStyle={Style.PRIMARY} isLoading={isLoading}>
                   {primaryContent}
                 </Button>
-                <Button style={style} btnSize={Size.SMALL} btnStyle={Style.SECONDARY}>
+                <Button style={style} btnSize={Size.SMALL} btnStyle={Style.SECONDARY} isLoading={isLoading}>
                   {secondaryContent}
                 </Button>
-                <Button style={style} btnSize={Size.SMALL} btnStyle={Style.TERTIARY}>
+                <Button style={style} btnSize={Size.SMALL} btnStyle={Style.TERTIARY} isLoading={isLoading}>
                   {tertiaryContent}
                 </Button>
-                <Button style={style} btnSize={Size.SMALL} btnStyle={Style.LINK}>
+                <Button style={style} btnSize={Size.SMALL} btnStyle={Style.LINK} isLoading={isLoading}>
                   {linkContent}
                 </Button>
-                <Button style={style} btnSize={Size.SMALL} btnStyle={Style.DANGER}>
+                <Button style={style} btnSize={Size.SMALL} btnStyle={Style.DANGER} isLoading={isLoading}>
                   {dangerContent}
                 </Button>
               </div>
               <h4>NORMAL Button</h4>
               <div>
-                <Button style={style} btnSize={Size.NORMAL} btnStyle={Style.PRIMARY}>
+                <Button style={style} btnSize={Size.NORMAL} btnStyle={Style.PRIMARY} isLoading={isLoading}>
                   {primaryContent}
                 </Button>
-                <Button style={style} btnSize={Size.NORMAL} btnStyle={Style.SECONDARY}>
+                <Button style={style} btnSize={Size.NORMAL} btnStyle={Style.SECONDARY} isLoading={isLoading}>
                   {secondaryContent}
                 </Button>
-                <Button style={style} btnSize={Size.NORMAL} btnStyle={Style.TERTIARY}>
+                <Button style={style} btnSize={Size.NORMAL} btnStyle={Style.TERTIARY} isLoading={isLoading}>
                   {tertiaryContent}
                 </Button>
-                <Button style={style} btnSize={Size.NORMAL} btnStyle={Style.LINK}>
+                <Button style={style} btnSize={Size.NORMAL} btnStyle={Style.LINK} isLoading={isLoading}>
                   {linkContent}
                 </Button>
-                <Button style={style} btnSize={Size.NORMAL} btnStyle={Style.DANGER}>
+                <Button style={style} btnSize={Size.NORMAL} btnStyle={Style.DANGER} isLoading={isLoading}>
                   {dangerContent}
                 </Button>
               </div>
               <h4>BIG Button</h4>
               <div>
-                <Button style={style} btnSize={Size.BIG} btnStyle={Style.PRIMARY}>
+                <Button style={style} btnSize={Size.BIG} btnStyle={Style.PRIMARY} isLoading={isLoading}>
                   {primaryContent}
                 </Button>
-                <Button style={style} btnSize={Size.BIG} btnStyle={Style.SECONDARY}>
+                <Button style={style} btnSize={Size.BIG} btnStyle={Style.SECONDARY} isLoading={isLoading}>
                   {secondaryContent}
                 </Button>
-                <Button style={style} btnSize={Size.BIG} btnStyle={Style.TERTIARY}>
+                <Button style={style} btnSize={Size.BIG} btnStyle={Style.TERTIARY} isLoading={isLoading}>
                   {tertiaryContent}
                 </Button>
-                <Button style={style} btnSize={Size.BIG} btnStyle={Style.LINK}>
+                <Button style={style} btnSize={Size.BIG} btnStyle={Style.LINK} isLoading={isLoading}>
                   {linkContent}
                 </Button>
-                <Button style={style} btnSize={Size.BIG} btnStyle={Style.DANGER}>
+                <Button style={style} btnSize={Size.BIG} btnStyle={Style.DANGER} isLoading={isLoading}>
                   {dangerContent}
                 </Button>
               </div>

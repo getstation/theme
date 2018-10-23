@@ -2,6 +2,7 @@ import * as React from 'react';
 import injectSheet from 'react-jss';
 import { createStyles, ThemeTypes } from '../../types';
 import classNames = require('classnames');
+import {Icon, IconSymbol} from "../Icon";
 
 export enum Size {
   BIG, NORMAL, SMALL, XSMALL, XXSMALL,
@@ -15,12 +16,14 @@ export interface ButtonOwnProps extends JSX.IntrinsicClassAttributes<ButtonImpl>
   sheet?: any,
   btnSize?: Size,
   btnStyle?: Style
+  isLoading?: boolean,
 }
 
 export type ButtonProps = ButtonOwnProps & React.HTMLProps<HTMLButtonElement>;
 
 const styles = (theme: ThemeTypes) => createStyles({
   button: {
+    position: 'relative',
     appearance: 'none' as 'none',
     border: 'none',
     padding: ((props: ButtonProps) => isRenderingIcon(props) ? 0 : '0 20px') as any,
@@ -94,6 +97,24 @@ const styles = (theme: ThemeTypes) => createStyles({
       backgroundColor: theme.colors.flatRed.dark,
     },
   },
+  content: {
+    opacity: (({ isLoading } : ButtonProps) => isLoading ? 0 : 1) as any,
+    transition: '300ms',
+  },
+  '@keyframes spin': {
+    '100%': { transform: 'rotate(360deg)' },
+  },
+  loading: {
+    ...theme.mixins.flexbox.containerCenter,
+    position: 'absolute',
+    left: 0,
+    ...theme.mixins.size('100%'),
+    opacity: (({ isLoading } : ButtonProps) => isLoading ? 1 : 0) as any,
+    transition: 'opacity 300ms',
+    '& svg': {
+      animation: `spin 1.5s cubic-bezier(0.82, 0.26, 0.25, 0.68) infinite`,
+    },
+  },
 });
 export class ButtonImpl extends React.Component<ButtonProps, {}> {
 
@@ -103,12 +124,7 @@ export class ButtonImpl extends React.Component<ButtonProps, {}> {
   };
 
   render() {
-    const {
-      classes,
-      className: upperClassName,
-      btnSize, btnStyle,
-      sheet: _,
-      ...buttonProps } = this.props;
+    const { classes, className: upperClassName, btnSize, btnStyle, sheet: _, ...buttonProps } = this.props;
 
     const sizeClassNames = {
       [Size.XXSMALL]: classes.buttonXXSmall,
@@ -138,7 +154,11 @@ export class ButtonImpl extends React.Component<ButtonProps, {}> {
         className={className}
         {...buttonProps}
       >
-        {this.props.children}
+        <div className={classes.loading}>
+          <Icon symbolId={IconSymbol.LOADING} size={15} color={'#fff'}/>
+        </div>
+
+        <span className={classes!.content}>{ this.props.children }</span>
       </button>
     );
   }
