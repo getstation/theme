@@ -113,6 +113,7 @@ const styles = (theme: ThemeTypes) => createStyles({
     transition: 'opacity 300ms',
     '& svg': {
       animation: `spin 1.5s cubic-bezier(0.82, 0.26, 0.25, 0.68) infinite`,
+      animationPlayState: (({ isLoading } : ButtonProps) => isLoading ? 'running' : 'paused') as any,
     },
   },
 });
