@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
+## [0.8.4] - 2018-10-31
+### Added
+- Add Recent Icon
+
 ## [0.8.3] - 2018-10-24
 ### Updated
 - Fix infinite loading on loading Button
