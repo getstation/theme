@@ -93,15 +93,15 @@ type Props = OwnProps & WithSheet<IgnoreJSSNested<typeof styles>, {}> & React.HT
 
 class InputImpl extends React.Component<Props, {}> {
 
+  public static defaultProps: Partial<Props> = {
+    inputSize: InputSize.NORMAL,
+    refInput: () => {},
+  };
+
   constructor(props: Props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
-
-  public static defaultProps: Partial<Props> = {
-    inputSize: InputSize.NORMAL,
-    refInput: () =>{},
-  };
 
   handleChange(event: React.FormEvent<HTMLInputElement>) {
     const { onChange, onValueChange } = this.props;

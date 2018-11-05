@@ -97,7 +97,7 @@ export const theme = {
     },
   },
   mixins: {
-    ellipsis: (nbLines: number = 2) =>({
+    ellipsis: (nbLines: number = 2) => ({
       display: '-webkit-box',
       '-webkit-line-clamp': nbLines,
       '-webkit-box-orient': 'vertical',
@@ -116,7 +116,13 @@ export const theme = {
       width: size,
       height: size,
     }),
-    position: (position: CSSProperties['position'], top?: number | string, left?: number | string, bottom?: number | string, right?: number | string) => ({
+    position: (
+      position: CSSProperties['position'],
+      top?: number | string,
+      left?: number | string,
+      bottom?: number | string,
+      right?: number | string,
+    ) => ({
       position,
       top,
       left,
@@ -131,15 +137,15 @@ export const theme = {
     size: 50,
   },
 
-  //== Base
+  // == Base
   $gutter: '10px',
   $borderRadius: '4px',
   $imPath: '../../static/',
 
-  //== Colors
+  // == Colors
   $red: '#FF5F5C',
 
-  //== Z-indexes
+  // == Z-indexes
   $zindexUltime: 1000,
   $zIndexSupra: 100,
   $zIndexUltra: 10,
@@ -150,7 +156,7 @@ export const theme = {
   $zIndexSmall: 1,
   $zIndexNull: 0,
 
-  //== Global variables
+  // == Global variables
   $bodyBkg: '#fff',
   $osbarHeight: '30px',
   $appSize: '50px',
@@ -192,7 +198,8 @@ export const theme = {
    * elipsisMixin
    *
    * @param {number} lineClamp - value of the line-clamp property
-   * @returns {{display: string; "-webkit-line-clamp": number; "-webkit-box-orient": string; overflow: string; textOverflow: string}} the corresponding CSS properties
+   * @returns {{display: string; "-webkit-line-clamp": number; "-webkit-box-orient": string; overflow: string; textOverflow: string}}
+   * the corresponding CSS properties
    */
   elipsisMixin: (lineClamp = 2) => ({
     display: '-webkit-box',

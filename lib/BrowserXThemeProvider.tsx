@@ -17,7 +17,7 @@ export class BrowserXThemeProvider extends React.Component<BrowserXThemeProvider
   render() {
     return (
       <ThemeProvider theme={theme}>
-        { this.props.children }
+        {this.props.children}
       </ThemeProvider>
     );
   }

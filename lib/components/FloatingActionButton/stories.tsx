@@ -4,8 +4,8 @@ import { withNotes } from '@storybook/addon-notes';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { FloatingActionButton } from './index';
-import { action } from "@storybook/addon-actions";
-import { Icon, IconSymbol } from "../Icon";
+import { action } from '@storybook/addon-actions';
+import { Icon, IconSymbol } from '../Icon';
 
 storiesOf('Atoms|Floating Action Button', module)
   .addDecorator(withKnobs)
@@ -15,7 +15,7 @@ storiesOf('Atoms|Floating Action Button', module)
         () => {
           return (
             <FloatingActionButton onClick={action('onClick')} />
-          )
+          );
         }
       )))
   .add('FAB with Icon',
@@ -26,7 +26,7 @@ storiesOf('Atoms|Floating Action Button', module)
             <FloatingActionButton onClick={action('onClick')}>
               <Icon symbolId={IconSymbol.PLUS} color={'white'} size={30} />
             </FloatingActionButton>
-          )
+          );
         }
       )))
   .add('FAB with Text',
@@ -35,8 +35,8 @@ storiesOf('Atoms|Floating Action Button', module)
         () => {
           return (
             <FloatingActionButton onClick={action('onClick')}>
-              { text('content', 'Add') }
+              {text('content', 'Add')}
             </FloatingActionButton>
-          )
+          );
         }
       )));

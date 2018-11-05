@@ -1,12 +1,12 @@
 import centered from '@storybook/addon-centered';
 import { withInfo } from '@storybook/addon-info';
-import {text, withKnobs} from '@storybook/addon-knobs';
+import { text, withKnobs } from '@storybook/addon-knobs';
 import { withNotes } from '@storybook/addon-notes';
 import { storiesOf } from '@storybook/react';
 // import PopperJS from 'popper.js';
 import * as React from 'react';
 import { Tooltip } from './index';
-import {Icon, IconSymbol} from "../Icon";
+import { Icon, IconSymbol } from '../Icon';
 
 storiesOf('Atoms|Tooltip', module)
   .addDecorator(withKnobs)
@@ -23,6 +23,6 @@ storiesOf('Atoms|Tooltip', module)
             <Tooltip tooltip={tooltip} offset={offset}>
               <Icon symbolId={IconSymbol.BELL} color={'#FFF'} size={40}/>
             </Tooltip>
-          )
+          );
         }
       )));

@@ -63,7 +63,7 @@ class SearchInputImpl extends React.PureComponent<Props, {}> {
     Mousetrap.unbind('mod+f');
   }
 
-  handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+  handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.props.onChange(e.target.value);
   }
 
@@ -82,7 +82,7 @@ class SearchInputImpl extends React.PureComponent<Props, {}> {
           type="search"
           placeholder={placeholder}
           value={value}
-          onChange={(e) => this.handleInputChange(e)}
+          onChange={this.handleInputChange}
           ref={this.inputRef}
         />
       </div>

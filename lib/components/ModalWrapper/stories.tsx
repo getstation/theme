@@ -1,7 +1,7 @@
 import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { ModalWrapper } from "./index";
+import { ModalWrapper } from './index';
 
 const containerStyle = {
   padding: 40,

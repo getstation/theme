@@ -24,11 +24,11 @@ export interface SunCalc {
 }
 
 export class ThemeColorScheme {
-  public colors: Array<string>;
+  public colors: string[];
   public duration: number;
   public frameInterval: number;
 
-  constructor(colors: Array<string>, duration: number, frameInterval: number) {
+  constructor(colors: string[], duration: number, frameInterval: number) {
     this.colors = colors;
     this.duration = duration;
     this.frameInterval = frameInterval;
@@ -39,7 +39,7 @@ export type ChooserItemTypes = {
   title: string,
   description: string,
   value: any,
-}
+};
 
 export type IgnoreJSSNested<C> = Styles<Extract<keyof C, string>>;
 
