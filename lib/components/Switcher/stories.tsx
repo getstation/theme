@@ -24,6 +24,6 @@ storiesOf('Atoms|Switcher', module)
                 disabledHint={text('disabledHint', '')}
                 text={switcherText}
             />
-          )
+          );
         }
       )));

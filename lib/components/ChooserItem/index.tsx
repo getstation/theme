@@ -63,8 +63,13 @@ class ChooserItemImpl extends React.PureComponent<Props, {}> {
     implicit: true,
   };
 
+  handleClickSelect = () => {
+    const { onSelect, item } = this.props;
+    onSelect(item.value);
+  }
+
   render() {
-    const { classes, style, item, onSelect, selectText } = this.props;
+    const { classes, style, item, selectText } = this.props;
 
     const styleClassNames = {
       [ChooserItemStyle.PRIMARY]: classes!.chooserPrimary,
@@ -84,7 +89,7 @@ class ChooserItemImpl extends React.PureComponent<Props, {}> {
         </div>
 
         <Button
-          onClick={() => onSelect(item.value)}
+          onClick={this.handleClickSelect}
           btnStyle={style === ChooserItemStyle.SECONDARY ? ButtonStyle.SECONDARY : ButtonStyle.PRIMARY}
           btnSize={ButtonSize.SMALL}
         >

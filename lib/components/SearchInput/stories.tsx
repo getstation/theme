@@ -1,11 +1,11 @@
-import {withInfo} from '@storybook/addon-info';
-import {text, withKnobs} from '@storybook/addon-knobs';
-import {withNotes} from '@storybook/addon-notes';
-import {storiesOf} from '@storybook/react';
+import { withInfo } from '@storybook/addon-info';
+import { text, withKnobs } from '@storybook/addon-knobs';
+import { withNotes } from '@storybook/addon-notes';
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {SearchInput} from "./index";
-import {action} from "@storybook/addon-actions";
-import centered from "@storybook/addon-centered";
+import { SearchInput } from './index';
+import { action } from '@storybook/addon-actions';
+import centered from '@storybook/addon-centered';
 
 storiesOf('Molecules|SearchInput', module)
   .addDecorator(centered)

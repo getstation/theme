@@ -26,7 +26,6 @@ export enum Theme {
   night = 'night',
 }
 
-
 export const COLORS = new LinkedMap();
 COLORS.push('dawn', new ThemeColorScheme(
   ['#1D092E', '#38154C', '#6C3272', '#E898A0'],

@@ -2,7 +2,7 @@ import { Icon, IconSymbol } from '../Icon';
 import * as React from 'react';
 import injectSheet, { WithSheet } from 'react-jss';
 import { createStyles, ThemeTypes } from '../../types';
-import { roundedBackground } from "../../jss";
+import { roundedBackground } from '../../jss';
 
 /** The type of action: will influence icon used and checkbox. If not present, no action button will be shown. */
 export enum ServiceActionType {
@@ -116,11 +116,9 @@ class ServiceImpl extends React.PureComponent<Props, {}> {
     super(props);
 
     this.iconRef = React.createRef();
-
-    this.handleAddApplication = this.handleAddApplication.bind(this);
   }
 
-  handleAddApplication() {
+  handleAddApplication = () => {
     const { service, iconPath } = this.props;
 
     const serviceId = (service.deprecated && service.newVersionId) ? service.newVersionId : service.id;
@@ -146,7 +144,7 @@ class ServiceImpl extends React.PureComponent<Props, {}> {
         <p className={classes!.serviceDetails}>
           <strong className={classes!.serviceName}>{service.name}</strong>
 
-          { subTitle && <small>{subTitle}</small> }
+          {subTitle && <small>{subTitle}</small>}
         </p>
 
         { actionType &&
@@ -154,7 +152,7 @@ class ServiceImpl extends React.PureComponent<Props, {}> {
             symbolId={ServiceActionButtonIconMap[actionType]}
             size={24}
             className={classes!.action}
-            onClick={this.handleAddApplication.bind(this)}
+            onClick={this.handleAddApplication}
           />
         }
       </div>

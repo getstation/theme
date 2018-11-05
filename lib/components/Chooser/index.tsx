@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ChooserItem } from '../ChooserItem';
 
 export interface Props {
-  items: Array<ChooserItemTypes>,
+  items: ChooserItemTypes[],
   onSelect: (item: any) => any,
   className?: string,
   implicit?: boolean,

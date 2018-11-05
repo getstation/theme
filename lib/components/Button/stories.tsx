@@ -1,7 +1,7 @@
 import { Button, Size, Style } from './index';
 import centered from '@storybook/addon-centered';
 import { withInfo } from '@storybook/addon-info';
-import {withKnobs, text, boolean} from '@storybook/addon-knobs';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import { withNotes } from '@storybook/addon-notes';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';

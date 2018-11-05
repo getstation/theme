@@ -6,16 +6,16 @@ import { IgnoreJSSNested } from '../../types';
 import { Tooltip } from '../Tooltip';
 
 export enum TEXT {
-    ON_OFF,
-    YES_NO,
+  ON_OFF,
+  YES_NO,
 }
 
 interface OwnProps {
-    disabledHint?: string,
-    checked?: boolean,
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => any,
-    text?: TEXT,
-    disabled?: boolean,
+  disabledHint?: string;
+  checked?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => any;
+  text?: TEXT;
+  disabled?: boolean;
 }
 
 const transition = {
@@ -67,7 +67,8 @@ const styles = {
     },
   },
   contentLeft: {
-    backgroundImage: 'linear-gradient(180deg, #213655 0%, #385679 34.24%, #4A7496 79.87%, #7272A0 100%)',
+    backgroundImage:
+      'linear-gradient(180deg, #213655 0%, #385679 34.24%, #4A7496 79.87%, #7272A0 100%)',
     backgroundSize: '100%',
     '& span': {
       marginRight: '20px',
@@ -139,58 +140,61 @@ const styles = {
   },
 };
 
-
 type Props = OwnProps & WithSheet<IgnoreJSSNested<typeof styles>, {}>;
 
 class SwitcherImpl extends React.PureComponent<Props, {}> {
-    static defaultProps = {
-        text: TEXT.ON_OFF,
-        onChange: () => {},
-        checked: false,
-        disabled: false,
-        disabledHint: '',
+  static defaultProps = {
+    text: TEXT.ON_OFF,
+    onChange: () => {},
+    checked: false,
+    disabled: false,
+    disabledHint: '',
+  };
+
+  inputId: string;
+  values: any;
+
+  constructor(props: Props) {
+    super(props);
+    this.inputId = `switcher-input-${shortid.generate()}`;
+    this.values = {
+      [TEXT.ON_OFF]: { 0: 'off', 1: 'on' },
+      [TEXT.YES_NO]: { 0: 'no', 1: 'yes' },
     };
+  }
 
-    inputId: string;
-    values: any;
+  render() {
+    const { classes, checked, onChange, disabled, text, disabledHint } = this.props;
 
-    constructor(props: Props) {
-        super(props);
-        this.inputId = `switcher-input-${shortid.generate()}`;
-        this.values = {
-            [TEXT.ON_OFF]: {0: 'off', 1: 'on'},
-            [TEXT.YES_NO]: {0: 'no', 1: 'yes'},
-        }
-    }
+    const hint = disabled ? disabledHint : '';
+    const values = this.values[text!];
 
-    render() {
-        const { classes, checked, onChange, disabled, text, disabledHint } = this.props;
-
-        const hint = disabled ? disabledHint : '';
-        const values = this.values[text!];
-
-        return (
-            <div>
-              <Tooltip hintClassname={classes.hint} tooltip={hint}>
-                <input
-                    type="checkbox"
-                    id={this.inputId}
-                    className={classes.toggle}
-                    checked={checked}
-                    disabled={disabled}
-                    onChange={onChange}
-                />
-                <label className={classes.viewport} htmlFor={this.inputId}>
-                    <div className={classes.switcher}>
-                        <div className={classes.button}>&nbsp;</div>
-                        <div className={classNames(classes.content, classes.contentLeft)}><span>{values[1]}</span></div>
-                        <div className={classNames(classes.content, classes.contentRight)}><span>{values[0]}</span></div>
-                    </div>
-                </label>
-              </Tooltip>
+    return (
+      <div>
+        <Tooltip hintClassname={classes.hint} tooltip={hint}>
+          <input
+            type="checkbox"
+            id={this.inputId}
+            className={classes.toggle}
+            checked={checked}
+            disabled={disabled}
+            onChange={onChange}
+          />
+          <label className={classes.viewport} htmlFor={this.inputId}>
+            <div className={classes.switcher}>
+              <div className={classes.button}>&nbsp;</div>
+              <div className={classNames(classes.content, classes.contentLeft)}>
+                <span>{values[1]}</span>
+              </div>
+              <div className={classNames(classes.content, classes.contentRight)}>
+                <span>{values[0]}</span>
+              </div>
             </div>
-        );
-    }
+          </label>
+        </Tooltip>
+      </div>
+    );
+  }
 }
 
 export const Switcher = injectSheet(styles as IgnoreJSSNested<typeof styles>)(SwitcherImpl);

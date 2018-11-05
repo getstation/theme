@@ -2,7 +2,7 @@ import * as React from 'react';
 import injectSheet from 'react-jss';
 import { createStyles, ThemeTypes } from '../../types';
 import classNames = require('classnames');
-import {Icon, IconSymbol} from "../Icon";
+import { Icon, IconSymbol } from '../Icon';
 
 export enum Size {
   BIG, NORMAL, SMALL, XSMALL, XXSMALL,
@@ -159,7 +159,7 @@ export class ButtonImpl extends React.Component<ButtonProps, {}> {
           <Icon symbolId={IconSymbol.LOADING} size={15} color={'#fff'}/>
         </div>
 
-        <span className={classes!.content}>{ this.props.children }</span>
+        <span className={classes!.content}>{this.props.children}</span>
       </button>
     );
   }

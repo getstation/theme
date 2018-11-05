@@ -39,7 +39,7 @@ export class FloatingActionButtonImpl extends React.PureComponent<Props, {}> {
 
     return (
       <button className={classes.container} onClick={onClick}>
-        { children }
+        {children}
       </button>
     );
   }

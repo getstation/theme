@@ -1,10 +1,10 @@
 import centered from '@storybook/addon-centered';
 import { withInfo } from '@storybook/addon-info';
-import {number, select, text, withKnobs} from '@storybook/addon-knobs';
+import { number, select, text, withKnobs } from '@storybook/addon-knobs';
 import { withNotes } from '@storybook/addon-notes';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {Hint, STYLE} from './index';
+import { Hint, STYLE } from './index';
 
 storiesOf('Atoms|Hint', module)
   .addDecorator(withKnobs)
@@ -21,6 +21,6 @@ storiesOf('Atoms|Hint', module)
             <Hint tooltip={tooltip} style={style} size={size}>
                 Hint
             </Hint>
-          )
+          );
         }
       )));
