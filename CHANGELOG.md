@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
+## [0.8.5] - 2018-11-05
+### Added
+- Add linter configuration
+
 ## [0.8.4] - 2018-10-31
 ### Added
 - Add Recent Icon
@@ -16,7 +20,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.8.2] - 2018-10-23
 ### Updated
 - Add a loading state for Button
-
 
 ## [0.8.1] - 2018-10-19
 ### Updated
