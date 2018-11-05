@@ -8,10 +8,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf ./dist && tsc",
     "typedoc": "rimraf ./docs/typedoc && typedoc --out ./docs/typedoc ./lib",
-    "prepublish": "rimraf ./dist && tsc",
+    "prepublishOnly": "rimraf ./dist && tsc",
     "storybook": "start-storybook -s ./ -p 6006",
     "build-storybook": "rimraf ./docs/storybook && build-storybook -s ./static -o ./docs/storybook/ && cp ./docs/storybook/Icons.svg ./docs/storybook/static/Icons.svg",
-    "build-docs": "yarn run build-storybook && yarn run typedoc"
+    "build-docs": "yarn run build-storybook && yarn run typedoc",
+    "lint": "tslint -p .",
+    "lint:ci": "tslint -p . -c tslint-ci.json"
   },
   "author": "",
   "license": "ISC",
@@ -68,6 +70,9 @@
     "rimraf": "^2.6.2",
     "shortid": "^2.2.8",
     "ts-loader": "^3.0.0",
+    "tslint": "^5.11.0",
+    "tslint-config-station": "^0.5.1",
+    "tslint-react": "^3.6.0",
     "typedoc": "^0.13.0",
     "typescript": "^3.1.3"
   }
