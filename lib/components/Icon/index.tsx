@@ -99,4 +99,5 @@ export enum IconSymbol {
   HINT = 'hint',
   RETURN = 'return',
   RECENT = 'recent',
+  RECENT_ARROW = 'recent-arrow',
 }
