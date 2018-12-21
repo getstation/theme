@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
 
+## [0.9.1] - 2018-12-21
+- Update Recent Arrow Icon & remove pointer cursor on Button
+
 ## [0.9.0] - 2018-12-21
 
 ## [0.8.7] - 2018-12-20
