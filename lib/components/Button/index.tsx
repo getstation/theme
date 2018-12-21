@@ -33,7 +33,6 @@ const styles = (theme: ThemeTypes) => createStyles({
     fontSize: '11px',
     fontWeight: 700,
     transition: 'all 250ms ease-out',
-    cursor: 'pointer',
     '&:disabled': {
       cursor: 'default',
       opacity: 0.4,
