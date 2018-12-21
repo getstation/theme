@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
 
+## [0.9.0] - 2018-12-21
+
 ## [0.8.7] - 2018-12-20
 ### Updated
 - Update Recent Subdock Arrow Icon
