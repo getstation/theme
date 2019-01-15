@@ -12,6 +12,8 @@ interface OwnProps {
   placement?: PopperJS.Placement;
   offset?: string;
   hintClassname?: string;
+  alternate?: boolean;
+  themeGradient?: string;
 }
 
 interface State {
@@ -30,6 +32,10 @@ const styles = {
     color: '#FFF',
     backgroundColor: '#333',
     borderRadius: 2,
+  },
+  alternate: {
+    borderRadius: 12,
+    backgroundImage: ((props: OwnProps) => props.themeGradient || 'initial') as any,
   },
 };
 
@@ -73,7 +79,7 @@ class TooltipImpl extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { children, tooltip, placement, classes, offset, hintClassname } = this.props;
+    const { children, tooltip, placement, classes, offset, hintClassname, alternate } = this.props;
 
     return (
       <Manager className={this.props.className}>
@@ -96,7 +102,9 @@ class TooltipImpl extends React.PureComponent<Props, State> {
                 offset: { offset },
               }}
             >
-              <div className={classNames(classes.hint, hintClassname)}>{tooltip}</div>
+              <div className={classNames(classes.hint, hintClassname, { [classes.alternate]: alternate })}>
+                {tooltip}
+              </div>
             </Popper>
           )}
       </Manager>

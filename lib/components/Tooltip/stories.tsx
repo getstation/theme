@@ -25,4 +25,21 @@ storiesOf('Atoms|Tooltip', module)
             </Tooltip>
           );
         }
+      )))
+  .add('Tooltip Alternate',
+    withInfo({ text: 'Tooltip Alternate' })(
+      withNotes('A very simple component')(
+        () => {
+          const tooltip = text('Tooltip', 'This is an alternate tooltip');
+          // const placement = text('Placement', 'auto'); TODO: fix type issues with PopperJS.Placement
+          const offset = text('Offset', '0, 0, 0, 0');
+          // tslint:disable-next-line:max-line-length
+          const gradient = 'linear-gradient(-180deg, rgba(0,0,0,0.3) 0vh, rgba(0,0,0,0.3) 100vh), linear-gradient(-180deg, #85A9C4 0vh, #C5C7C6 22vh, #DFD2C0 58vh, #F1B87C 100vh)';
+
+          return (
+            <Tooltip tooltip={tooltip} offset={offset} alternate={true} themeGradient={gradient}>
+              <Icon symbolId={IconSymbol.BELL} color={'#FFF'} size={40}/>
+            </Tooltip>
+          );
+        }
       )));
