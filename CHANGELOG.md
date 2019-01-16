@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
 
+## [0.9.2] - 2019-01-16
+- Add Tooltip Alternate UI
+
 ## [0.9.1] - 2018-12-21
 - Update Recent Arrow Icon & remove pointer cursor on Button
 
