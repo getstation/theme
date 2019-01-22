@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
+### Updated
+- Update Gradient Colors
 
 ## [0.9.2] - 2019-01-16
 - Add Tooltip Alternate UI

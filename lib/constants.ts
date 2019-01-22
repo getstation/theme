@@ -28,37 +28,37 @@ export enum Theme {
 
 export const COLORS = new LinkedMap();
 COLORS.push('dawn', new ThemeColorScheme(
-  ['#1D092E', '#38154C', '#6C3272', '#E898A0'],
+  ['#4372AA', '#81AADE', '#A3C4EC', '#85C0F3'],
   SLOW_DURATION,
   SLOW_INTERVAL
 ));
 COLORS.push('sunrise', new ThemeColorScheme(
-  ['#0F3B6E', '#164D7F', '#B76B4F', '#EF984F'],
+  ['#276AAE', '#3C84C4', '#6CADE1', '#8ACBF2'],
   SLOW_DURATION,
   SLOW_INTERVAL
 ));
 COLORS.push('morning', new ThemeColorScheme(
-  ['#85A9C4', '#C5C7C6', '#DFD2C0', '#F1B87C'],
+  ['#2B91BA', '#3794C2', '#4B99CF', '#629FDD'],
   SLOW_DURATION,
   SLOW_INTERVAL
 ));
 COLORS.push('midday', new ThemeColorScheme(
-  ['#4372AA', '#81AADE', '#A3C4EC', '#BAD7F0'],
+  ['#2EB3C3', '#399AD5', '#558DDA', '#3872C7'],
   QUICK_DURATION,
   QUICK_INTERVAL
 ));
 COLORS.push('afternoon', new ThemeColorScheme(
-  ['#276AAE', '#428CCA', '#68A9DF', '#8ACBF2'],
+  ['#6BB7EA', '#61ACE4', '#4E96D5', '#286AAE'],
   QUICK_DURATION,
   QUICK_INTERVAL
 ));
 COLORS.push('sunset', new ThemeColorScheme(
-  ['#0F3B6E', '#164D7F', '#B76B4F', '#EF984F'],
+  ['#5486B2', '#5381B0', '#5179AC', '#4F6FA7'],
   QUICK_DURATION,
   QUICK_INTERVAL
 ));
 COLORS.push('night', new ThemeColorScheme(
-  ['#213655', '#385679', '#4A7496', '#7272A0'],
+  ['#415B82', '#3A587C', '#4E7497', '#7272A0'],
   QUICK_DURATION,
   QUICK_INTERVAL
 ));
