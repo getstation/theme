@@ -53,6 +53,7 @@ function getIconHref(symbolId: IconSymbol) {
 export const Icon = injectSheet(styles)(IconImpl) as typeof IconImpl;
 
 export enum IconSymbol {
+  APP_ICON_PLACEHOLDER = 'app-icon-placeholder',
   CHAT = 'chat',
   CHECKMARK = 'checkmark',
   CROSS = 'cross',
