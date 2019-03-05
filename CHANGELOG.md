@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
 
+## [0.9.4] - 2019-03-05
+### Added
+- Add App Placeholder Icon
+
 ## [0.9.3] - 2019-01-22
 ### Updated
 - Update Gradient Colors
