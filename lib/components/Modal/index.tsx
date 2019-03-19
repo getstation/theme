@@ -16,6 +16,7 @@ interface OwnProps {
   continueContent?: string,
   continueDanger?: boolean,
   applicationIcon?: string,
+  themeColor?: string,
   isLoading?: boolean,
 }
 
@@ -51,7 +52,7 @@ const styles = (theme: ThemeTypes) => createStyles({
     width: 90,
     height: 90,
     backgroundImage: (({ applicationIcon }: OwnProps) => `url('${applicationIcon}')`) as any,
-    backgroundColor: theme.colors.gray.light,
+    backgroundColor: (({ themeColor }: OwnProps) => themeColor || '#000000') as any,
     backgroundRepeat: 'no-repeat',
     backgroundSize: '100%',
     backgroundPosition: 'center',
