@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
+## Changed
+- Add `themeColor` props to `Modal` component
 
 ## [0.9.4] - 2019-03-05
 ### Added
