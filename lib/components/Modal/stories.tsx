@@ -55,8 +55,9 @@ storiesOf('Molecules|Modal', module)
       onContinue={action('continue')}
       applicationIcon={text(
         'applicationIcon',
-        'https://pbs.twimg.com/profile_images/959451316903845889/BpKfHFc4_400x400.jpg',
+        'https://dl.airtable.com/GFscY2CMS6WaaWzOrjlT_provider-svg-gmail.svg',
       )}
+      themeColor={text('themeColor', '#ABCDEF')}
       continueDanger={boolean('continueDanger', false)}
       continueContent={text('continueContent', '')}
     >
@@ -71,8 +72,9 @@ storiesOf('Molecules|Modal', module)
       onContinue={action('continue')}
       applicationIcon={text(
         'applicationIcon',
-        'https://pbs.twimg.com/profile_images/959451316903845889/BpKfHFc4_400x400.jpg',
+        'https://dl.airtable.com/GFscY2CMS6WaaWzOrjlT_provider-svg-gmail.svg',
       )}
+      themeColor={text('themeColor', '#ABCDEF')}
       isLoading={boolean('isLoading', true)}
       continueDanger={boolean('continueDanger', false)}
       continueContent={text('continueContent', '')}
