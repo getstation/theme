@@ -25,7 +25,7 @@ interface OwnProps {
 const styles = (theme: ThemeTypes) => createStyles({
   container: {
     position: 'relative',
-    width: 450,
+    width: 400,
     maxHeight: 500,
     backgroundColor: theme.$bodyBkg,
     borderRadius: 5,
