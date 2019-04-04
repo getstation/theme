@@ -106,11 +106,11 @@ class ModalImpl extends React.PureComponent<Props, {}> {
   render() {
     const {
       classes, title, description, classNameModalBody, onCancel, cancelContent, onContinue, continueContent,
-      isLoading, children, continueDanger, disableWrapperClick,
+      isLoading, children, continueDanger, onWrapperCancel, disableWrapperClick,
     } = this.props;
 
     return (
-      <ModalWrapper onCancel={(disableWrapperClick) ? undefined : onCancel}>
+      <ModalWrapper onCancel={(disableWrapperClick) ? undefined : (onWrapperCancel || onCancel)}>
         <div className={classes.container}>
           <div className={classes.header}>
             <div className={classes.applicationIcon} />
