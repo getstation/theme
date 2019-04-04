@@ -46,8 +46,9 @@ class ModalWrapperImpl extends React.PureComponent<Props, {}> {
    **/
   handleClickOutside(e: React.SyntheticEvent<HTMLElement>) {
     if (!this.modalWrapper) return;
+
     const target = e.target as HTMLElement;
-    if (e.currentTarget === target) this.props.onCancel!(e);
+    if (e.currentTarget === target && this.props.onCancel) this.props.onCancel(e);
   }
 
   setModalWrapperRef(modalWrapper: HTMLDivElement | null) {
