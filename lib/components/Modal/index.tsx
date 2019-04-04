@@ -11,6 +11,7 @@ interface OwnProps {
   title?: string,
   description?: string,
   onCancel?: () => void,
+  onWrapperCancel?: () => void,
   cancelContent?: string,
   onContinue?: () => void,
   continueContent?: string,
@@ -18,6 +19,7 @@ interface OwnProps {
   applicationIcon?: string,
   themeColor?: string,
   isLoading?: boolean,
+  disableWrapperClick?: boolean,
 }
 
 const styles = (theme: ThemeTypes) => createStyles({
@@ -104,11 +106,11 @@ class ModalImpl extends React.PureComponent<Props, {}> {
   render() {
     const {
       classes, title, description, classNameModalBody, onCancel, cancelContent, onContinue, continueContent,
-      isLoading, children, continueDanger,
+      isLoading, children, continueDanger, disableWrapperClick,
     } = this.props;
 
     return (
-      <ModalWrapper onCancel={onCancel}>
+      <ModalWrapper onCancel={(disableWrapperClick) ? undefined : onCancel}>
         <div className={classes.container}>
           <div className={classes.header}>
             <div className={classes.applicationIcon} />
