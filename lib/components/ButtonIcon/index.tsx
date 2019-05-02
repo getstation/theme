@@ -66,8 +66,8 @@ class ButtonIconImp extends React.Component<InjectSheetProps & ButtonIconProps, 
 
   getIconSize = () => {
     switch (this.props.btnSize) {
-      // case Size.XXXSMALL:
-      //   return 16;
+      case Size.XXXSMALL:
+        return 16;
       case Size.XXSMALL:
         return 20;
       case Size.XSMALL:

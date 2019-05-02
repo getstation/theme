@@ -35,6 +35,10 @@ storiesOf('Atoms|ButtonIcon', module)
                 symbolId={IconSymbol.CROSS}
                 btnSize={Size.XXSMALL}
               />
+              <ButtonIcon
+                symbolId={IconSymbol.CROSS}
+                btnSize={Size.XXXSMALL}
+              />
             </>
           );
         }

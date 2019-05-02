@@ -5,7 +5,7 @@ import classNames = require('classnames');
 import { Icon, IconSymbol } from '../Icon';
 
 export enum Size {
-  BIG, NORMAL, SMALL, XSMALL, XXSMALL,
+  BIG, NORMAL, SMALL, XSMALL, XXSMALL, XXXSMALL,
 }
 export enum Style {
   PRIMARY, SECONDARY, TERTIARY, LINK, DANGER,
@@ -51,6 +51,11 @@ const styles = (theme: ThemeTypes) => createStyles({
   buttonXXSmall: {
     height: '20px',
     lineHeight: '20px',
+    padding: '0 10px',
+  },
+  buttonXXXSmall: {
+    height: '16px',
+    lineHeight: '16px',
     padding: '0 10px',
   },
   buttonSmall: {
@@ -130,6 +135,7 @@ export class ButtonImpl extends React.Component<ButtonProps & InjectSheetProps, 
     const { classes, className: upperClassName, btnSize, btnStyle, sheet: _, ...buttonProps } = this.props;
 
     const sizeClassNames = {
+      [Size.XXXSMALL]: classes.buttonXXXSmall,
       [Size.XXSMALL]: classes.buttonXXSmall,
       [Size.XSMALL]: classes.buttonXSmall,
       [Size.SMALL]: classes.buttonSmall,
