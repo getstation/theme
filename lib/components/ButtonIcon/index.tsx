@@ -23,8 +23,8 @@ interface InjectSheetProps {
 
 const styles = {
   button: {
-    paddingLeft: ({ text }: ButtonIconProps) => text ? '10px' : '0px',
-    paddingRight: ({ text }: ButtonIconProps) => text ? '20px' : '0px',
+    paddingLeft: 0,
+    paddingRight: ({ text }: ButtonIconProps) => text ? '10px' : '0px',
   },
   buttonText: {
     verticalAlign: 'top',
