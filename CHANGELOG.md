@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
+### Changed
+- Add `XXXSMALL` button size
+### Added
+- Added `ButtonIcon` component
 
 ## [0.9.6] - 2019-04-04
 ## Changed
