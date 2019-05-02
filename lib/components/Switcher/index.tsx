@@ -36,7 +36,7 @@ const styles = {
     width: '200%',
     ...transition,
   },
-  button: ((props: OwnProps): CSSProperties => ({
+  button: ((props: OwnProps): CSSProperties<OwnProps> => ({
     backgroundSize: '100%',
     background: 'gray',
     boxSizing: 'border-box',
@@ -86,7 +86,7 @@ const styles = {
       textAlign: 'center',
     },
   },
-  viewport: ((props: OwnProps): CSSProperties => ({
+  viewport: ((props: OwnProps): CSSProperties<OwnProps> => ({
     boxSizing: 'content-box',
     display: 'block',
     width: '44px',

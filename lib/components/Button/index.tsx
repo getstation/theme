@@ -12,13 +12,16 @@ export enum Style {
 }
 
 export interface ButtonOwnProps extends JSX.IntrinsicClassAttributes<ButtonImpl> {
-  classes?: any,
-  sheet?: any,
   btnSize?: Size,
   btnStyle?: Style
   isLoading?: boolean,
 }
+interface InjectSheetProps {
+  classes: any,
+  sheet: any,
+}
 
+// outer props
 export type ButtonProps = ButtonOwnProps & React.HTMLProps<HTMLButtonElement>;
 
 const styles = (theme: ThemeTypes) => createStyles({
@@ -116,7 +119,7 @@ const styles = (theme: ThemeTypes) => createStyles({
     },
   },
 });
-export class ButtonImpl extends React.Component<ButtonProps, {}> {
+export class ButtonImpl extends React.Component<ButtonProps & InjectSheetProps, {}> {
 
   public static defaultProps: Partial<ButtonProps> = {
     btnSize: Size.NORMAL,
@@ -174,4 +177,5 @@ const isRenderingIcon = (props: ButtonProps): boolean => {
     .some((prop: string) => prop === 'symbolId');
 };
 
-export const Button = injectSheet(styles)(ButtonImpl) as typeof ButtonImpl;
+// force outer typing
+export const Button = injectSheet(styles)(ButtonImpl) as unknown as React.ComponentType<ButtonProps>;
