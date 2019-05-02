@@ -42,4 +42,21 @@ storiesOf('Atoms|ButtonIcon', module)
             </>
           );
         }
+      )))
+  .add('With text',
+    withInfo({ text: 'With text' })(
+      withNotes('With text')(
+        () => {
+          const content = text('text', 'Add a new account');
+
+          return (
+            <>
+             <ButtonIcon
+              text={content}
+              symbolId={IconSymbol.PLUS}
+              btnSize={Size.SMALL}
+             />
+            </>
+          );
+        }
       )));
