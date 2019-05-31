@@ -91,6 +91,7 @@ export enum IconSymbol {
   BELL = 'bell',
   BELL_OFF = 'bell-off',
   ARROW_LEFT = 'arrow-left',
+  ARROW_DOWN_LEFT = 'arrow-down-left',
   ARROW_RIGHT = 'arrow-right',
   LOADING = 'loading',
   EXTENSION = 'extension',

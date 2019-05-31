@@ -1,5 +1,5 @@
 import Color from 'color';
-import { CSSProperties } from 'react-jss';
+import * as CSS from 'csstype';
 
 /**
  * getGradientCSSBackground
@@ -53,7 +53,7 @@ export const getGradientWithOverlay = (themeColors: string[], opacity: number) =
  * @param {string | number} weight - weight of the font
  * @returns {{fontFamily: string; fontSize: number; fontWeight: string | number}} the corresponding fonts CSS properties
  */
-const fontMixin = (size: CSSProperties['fontSize'], weight: CSSProperties['fontWeight'] = 'normal') => ({
+const fontMixin = (size: CSS.FontSizeProperty<number>, weight: CSS.FontWeightProperty = 'normal') => ({
   fontFamily:
     `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol"`,
@@ -117,7 +117,7 @@ export const theme = {
       height: size,
     }),
     position: (
-      position: CSSProperties['position'],
+      position: CSS.Properties['position'],
       top?: number | string,
       left?: number | string,
       bottom?: number | string,

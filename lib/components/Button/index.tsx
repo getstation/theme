@@ -5,20 +5,23 @@ import classNames = require('classnames');
 import { Icon, IconSymbol } from '../Icon';
 
 export enum Size {
-  BIG, NORMAL, SMALL, XSMALL, XXSMALL,
+  BIG, NORMAL, SMALL, XSMALL, XXSMALL, XXXSMALL,
 }
 export enum Style {
   PRIMARY, SECONDARY, TERTIARY, LINK, DANGER,
 }
 
 export interface ButtonOwnProps extends JSX.IntrinsicClassAttributes<ButtonImpl> {
-  classes?: any,
-  sheet?: any,
   btnSize?: Size,
   btnStyle?: Style
   isLoading?: boolean,
 }
+interface InjectSheetProps {
+  classes: any,
+  sheet: any,
+}
 
+// outer props
 export type ButtonProps = ButtonOwnProps & React.HTMLProps<HTMLButtonElement>;
 
 const styles = (theme: ThemeTypes) => createStyles({
@@ -48,6 +51,11 @@ const styles = (theme: ThemeTypes) => createStyles({
   buttonXXSmall: {
     height: '20px',
     lineHeight: '20px',
+    padding: '0 10px',
+  },
+  buttonXXXSmall: {
+    height: '16px',
+    lineHeight: '16px',
     padding: '0 10px',
   },
   buttonSmall: {
@@ -116,7 +124,7 @@ const styles = (theme: ThemeTypes) => createStyles({
     },
   },
 });
-export class ButtonImpl extends React.Component<ButtonProps, {}> {
+export class ButtonImpl extends React.Component<ButtonProps & InjectSheetProps, {}> {
 
   public static defaultProps: Partial<ButtonProps> = {
     btnSize: Size.NORMAL,
@@ -127,6 +135,7 @@ export class ButtonImpl extends React.Component<ButtonProps, {}> {
     const { classes, className: upperClassName, btnSize, btnStyle, sheet: _, ...buttonProps } = this.props;
 
     const sizeClassNames = {
+      [Size.XXXSMALL]: classes.buttonXXXSmall,
       [Size.XXSMALL]: classes.buttonXXSmall,
       [Size.XSMALL]: classes.buttonXSmall,
       [Size.SMALL]: classes.buttonSmall,
@@ -174,4 +183,5 @@ const isRenderingIcon = (props: ButtonProps): boolean => {
     .some((prop: string) => prop === 'symbolId');
 };
 
-export const Button = injectSheet(styles)(ButtonImpl) as typeof ButtonImpl;
+// force outer typing
+export const Button = injectSheet(styles)(ButtonImpl) as unknown as React.ComponentType<ButtonProps>;
