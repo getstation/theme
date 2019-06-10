@@ -1,6 +1,6 @@
 {
   "name": "@getstation/theme",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Station Theme & Styleguide",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -35,7 +35,8 @@
     "react-hover-observer": "^2.1.0",
     "react-jss": "^8.6.1",
     "react-key-handler": "1.0.1",
-    "react-popper": "^0.10.1"
+    "react-popper": "^0.10.1",
+    "shortid": "^2.2.8"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.10",
@@ -68,7 +69,6 @@
     "babel-runtime": "^6.26.0",
     "popper.js": "^1.14.3",
     "rimraf": "^2.6.2",
-    "shortid": "^2.2.8",
     "ts-loader": "^3.0.0",
     "tslint": "^5.11.0",
     "tslint-config-station": "^0.5.1",
