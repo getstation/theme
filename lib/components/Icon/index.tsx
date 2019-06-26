@@ -103,4 +103,5 @@ export enum IconSymbol {
   RECENT = 'recent',
   RECENT_ARROW = 'recent-arrow',
   PIN = 'pin',
+  BURGER= 'burger',
 }
