@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.10.4] - 2019-06-27
+### Added
+- Add Burger Icon
+- Documentation on "How to add an icon"
+
 ## [0.10.3] - 2019-06-11
 ### Fixed
 - Remove default `fill` of Pin icon
