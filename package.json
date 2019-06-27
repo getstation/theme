@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf ./dist && tsc",
     "typedoc": "rimraf ./docs/typedoc && typedoc --out ./docs/typedoc ./lib",
-    "prepublishOnly": "rimraf ./dist && tsc",
+    "prepublishOnly": "yarn run build",
     "storybook": "start-storybook -s ./ -p 6006",
     "build-storybook": "rimraf ./docs/storybook && build-storybook -s ./static -o ./docs/storybook/ && cp ./docs/storybook/Icons.svg ./docs/storybook/static/Icons.svg",
     "build-docs": "yarn run build-storybook && yarn run typedoc",
