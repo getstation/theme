@@ -26,7 +26,7 @@ To add an icon to the theme, follow this 2 steps:
 ```
 Replace `xxx` by the name of your icon
 
-**2 - Register the new icon in the them typing**
+**2 - Register the new icon in the typing**
 - Open `lib/components/Icon/index.tsx`
 - Add the new icon to the enum list:
 ```
