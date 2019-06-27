@@ -71,6 +71,26 @@
 				<p><a href="https://getstation.github.io/theme/storybook/index.html">https://getstation.github.io/theme/storybook/index.html</a></p>
 				<h2 id="typescript">TypeScript</h2>
 				<p><a href="https://getstation.github.io/theme/typedoc/index.html">https://getstation.github.io/theme/typedoc/index.html</a></p>
+				<h2 id="how-to-add-an-icon">How to add an icon</h2>
+				<p>To add an icon to the theme, follow this 2 steps:</p>
+				<p><strong>1 - Add the svg to the static list</strong></p>
+				<ul>
+					<li>Open <code>static/Icons.svg</code></li>
+					<li>Add the svg path to the list of symbol, like:<pre><code><span class="hljs-tag">&lt;<span class="hljs-name">symbol</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"icon--xxx"</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">"[...]"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">"[...]"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">symbol</span>&gt;</span></code></pre>Replace <code>xxx</code> by the name of your icon</li>
+				</ul>
+				<p><strong>2 - Register the new icon in the typing</strong></p>
+				<ul>
+					<li>Open <code>lib/components/Icon/index.tsx</code></li>
+					<li>Add the new icon to the enum list:<pre><code>export <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">IconSymbol</span> {</span>
+[...]
+ICON_NAME = <span class="hljs-string">'xxx'</span>
+}</code></pre>The value <code>xxx</code> should match the name set in part 1.</li>
+				</ul>
+				<hr>
+				<p>Tadaa 🎉</p>
+				<p>Don&#39;t forget to update the changelog and publish to see the changes when everything is good !</p>
 				<h2 id="publish">Publish</h2>
 				<ul>
 					<li>Build docs: <code>yarn build-docs</code></li>
