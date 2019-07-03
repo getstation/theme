@@ -101,6 +101,7 @@ class TooltipImpl extends React.PureComponent<Props, State> {
                 preventOverflow: { enabled: true, boundariesElement: 'viewport' },
                 offset: { offset },
               }}
+              positionFixed={true}
             >
               <div className={classNames(classes.hint, hintClassname, { [classes.alternate]: alternate })}>
                 {tooltip}

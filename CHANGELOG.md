@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.11.4] - 2019-07-03
+### Fixed
+- Fixed tooltip positioning by using `positionFixed` of Popper
+
 ## [0.10.4] - 2019-06-27
 ### Added
 - Add Burger Icon
