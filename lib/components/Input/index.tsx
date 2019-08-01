@@ -18,6 +18,7 @@ interface OwnProps {
   className?: string,
   inputClassName?: string,
   inputSize?: InputSize,
+  forceHeader?: boolean, // default to true
   label?: string,
   error?: string,
   onValueChange?: (value: string, event: React.FormEvent<HTMLInputElement>) => any,
@@ -94,6 +95,7 @@ type Props = OwnProps & WithSheet<IgnoreJSSNested<typeof styles>, {}> & React.HT
 class InputImpl extends React.Component<Props, {}> {
 
   public static defaultProps: Partial<Props> = {
+    forceHeader: true,
     inputSize: InputSize.NORMAL,
     refInput: () => {},
   };
@@ -108,6 +110,25 @@ class InputImpl extends React.Component<Props, {}> {
     const value = event.currentTarget.value;
     if (onChange) onChange(event);
     if (onValueChange) onValueChange(value, event);
+  }
+
+  renderHeader() {
+    const { classes, label, error, forceHeader } = this.props;
+    if (!forceHeader && !label && !error) return null;
+
+    return (
+      <div className={classes!.header}>
+        {label ?
+          <label className={classes!.label}>{label}</label>
+          :
+          <label className={classes!.label}>&nbsp;</label>
+        }
+
+        {error &&
+        <span className={classes!.error}>{error}</span>
+        }
+      </div>
+    );
   }
 
   render() {
@@ -125,18 +146,7 @@ class InputImpl extends React.Component<Props, {}> {
 
     return (
       <div className={classNames(classes!.container, className)}>
-        <div className={classes!.header}>
-          {label ?
-            <label className={classes!.label}>{label}</label>
-            :
-            <label className={classes!.label}>&nbsp;</label>
-          }
-
-          {error &&
-          <span className={classes!.error}>{error}</span>
-          }
-        </div>
-
+        {this.renderHeader()}
         <input ref={refInput} className={_inputClassName} onChange={this.handleChange} {...inputProps}>
           {this.props.children}
         </input>
