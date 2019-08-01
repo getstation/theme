@@ -105,4 +105,5 @@ export enum IconSymbol {
   PIN = 'pin',
   BURGER = 'burger',
   PENCIL = 'pencil',
+  LOCK = 'lock',
 }
