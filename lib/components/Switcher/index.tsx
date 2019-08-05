@@ -123,6 +123,9 @@ const styles = {
       color: 'white',
       backgroundColor: 'white',
     },
+    '&:disabled + $viewport $button': {
+      opacity: 0.5,
+    },
     '&:checked + $viewport $contentLeft': {
       marginLeft: 0,
     },
