@@ -1,6 +1,6 @@
 {
   "name": "@getstation/theme",
-  "version": "0.13.0",
+  "version": "0.14.0-rc0",
   "description": "Station Theme & Styleguide",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
