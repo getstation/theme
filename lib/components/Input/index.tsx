@@ -133,7 +133,7 @@ class InputImpl extends React.Component<Props, {}> {
 
   render() {
     const { classes, inputClassName, className, inputSize, label, error, refInput,
-      forceHeader, onValueChange, ...inputProps } = this.props;
+            forceHeader, onValueChange, ...inputProps } = this.props;
 
     const sizeClassNames = {
       [InputSize.XXSMALL]: classes!.inputXXSmall,
