@@ -108,4 +108,6 @@ export enum IconSymbol {
   LOCK = 'lock',
   JOIN = 'join',
   LEAVE = 'leave',
+  ARROW_FORWARD = 'arrow-forward',
+  ARROW_BACK = 'arrow-back',
 }
