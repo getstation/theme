@@ -4,6 +4,7 @@ import { IgnoreJSSNested } from '../../types';
 
 interface OwnProps {
   step: number,
+  alignItems?: 'start' | 'end',
 }
 
 const styles = {
@@ -14,7 +15,9 @@ const styles = {
   stepAnimation: {
     transition: 'transform .6s',
     display: 'flex',
-    alignItems: 'flex-end',
+    alignItems: (
+      ({ alignItems }: OwnProps) => alignItems === 'start' ? 'flex-start' : 'flex-end'
+    ) as any,
     justifyContent: 'flex-start',
     width: '100%',
     transform: (({ step }: OwnProps) => step ? `translateX(-${step * 100}%)` : 'translateX(0)') as any,
