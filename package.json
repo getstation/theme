@@ -22,6 +22,8 @@
     "@types/react": "^16.4.0"
   },
   "dependencies": {
+    "@types/autosuggest-highlight": "^3.1.0",
+    "autosuggest-highlight": "^3.1.1",
     "classnames": "^2.2.5",
     "color": "^3.0.0",
     "create-react-context": "^0.2.2",
@@ -30,12 +32,14 @@
     "mousetrap": "^1.6.2",
     "ms": "^2.1.1",
     "react": "^16.3.1",
+    "react-autosuggest": "^9.4.3",
     "react-debounce-input": "^3.2.0",
     "react-dom": "^16.3.1",
     "react-hover-observer": "^2.1.0",
     "react-jss": "^8.6.1",
     "react-key-handler": "1.0.1",
     "react-popper": "^0.10.1",
+    "react-tagsinput": "^3.19.0",
     "shortid": "^2.2.8"
   },
   "devDependencies": {
@@ -56,8 +60,10 @@
     "@types/mousetrap": "^1.6.0",
     "@types/ms": "^0.7.30",
     "@types/react": "^16.4.18",
+    "@types/react-autosuggest": "^9.3.10",
     "@types/react-dom": "^16.0.9",
     "@types/react-jss": "^8.6.3",
+    "@types/react-tagsinput": "^3.19.6",
     "@types/shortid": "^0.0.29",
     "@types/storybook__addon-actions": "^3.4.0",
     "@types/storybook__addon-centered": "^3.3.0",
@@ -67,6 +73,7 @@
     "@types/storybook__react": "^3.0.8",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
+    "css-loader": "^3.2.0",
     "popper.js": "^1.14.3",
     "rimraf": "^2.6.2",
     "ts-loader": "^3.0.0",
