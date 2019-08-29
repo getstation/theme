@@ -106,4 +106,8 @@ export enum IconSymbol {
   BURGER = 'burger',
   PENCIL = 'pencil',
   LOCK = 'lock',
+  JOIN = 'join',
+  LEAVE = 'leave',
+  ARROW_FORWARD = 'arrow-forward',
+  ARROW_BACK = 'arrow-back',
 }
