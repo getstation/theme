@@ -32,7 +32,7 @@ storiesOf('Molecules|Modal', module)
       )}
       onCancel={action('cancel')}
     >
-      {text('Content', `Content of the modal: ${loremIpsum}`)}
+      {text('Content', `Content of the modal: ${loremIpsum}. ${loremIpsum}`)}
     </Modal>
   ))
   .add('Modal with buttons', () => (
