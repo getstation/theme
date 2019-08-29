@@ -26,7 +26,7 @@ const styles = (theme: ThemeTypes) => createStyles({
   container: {
     position: 'relative',
     width: 400,
-    maxHeight: 500,
+    maxHeight: 550,
     backgroundColor: theme.$bodyBkg,
     borderRadius: 5,
   },
