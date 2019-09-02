@@ -3,6 +3,7 @@ import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { Modal } from './index';
+import {InputTags} from "../InputTags";
 
 const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,' +
   ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
@@ -62,6 +63,40 @@ storiesOf('Molecules|Modal', module)
       continueContent={text('continueContent', '')}
     >
       {text('Content', 'Content of the modal with buttons and Application icon')}
+    </Modal>
+  ))
+  .add('Modal with buttons and App icon and InputTags', () => (
+    <Modal
+      title={text('Title', 'My modal')}
+      description={text('Description', 'My awesome modal here')}
+      onCancel={action('cancel')}
+      onContinue={action('continue')}
+      applicationIcon={text(
+        'applicationIcon',
+        'https://dl.airtable.com/GFscY2CMS6WaaWzOrjlT_provider-svg-gmail.svg',
+      )}
+      themeColor={text('themeColor', '#ABCDEF')}
+      continueDanger={boolean('continueDanger', false)}
+      continueContent={text('continueContent', '')}
+    >
+      <div>
+        {text('Content', 'Content of the modal with buttons and Application icon')}
+
+        <InputTags
+          items={[
+              { name: 'Guillaume Arm', selected: true, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/15768/thumb_avatar_1558702997.png' },
+              { name: 'Hugo Mano', selected: false, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/15767/thumb_avatar_1558702986.png' },
+              { name: 'Maud Miguet', selected: true, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/15764/thumb_avatar_1558702913.png' },
+              { name: 'Alexandre Lachèze', selected: false, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/15763/thumb_avatar_1558702855.png' },
+              { name: 'Mikaël Atier', selected: false, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/12182/thumb_avatar_1558702845.png' },
+              { name: 'Julien Berthomier', selected: true, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/15766/thumb_avatar_1558702979.png' },
+              { name: 'Joël Charles', selected: false, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/12181/thumb_avatar_1558702850.png' },
+              { name: 'Mathias D', selected: false, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/17076/thumb_avatar_1567069484.jpg' },
+          ]}
+          tags={['Maud Miguet', 'Hugo Mano', 'Mikaël Atier', 'Alexandre Lachèze']}
+          onUpdateTags={action('onUpdateTags')}
+        />
+      </div>
     </Modal>
   ))
   .add('Modal - loading state', () => (

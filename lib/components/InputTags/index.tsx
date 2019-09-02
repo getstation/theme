@@ -2,22 +2,9 @@ import React from 'react';
 import TagsInput from 'react-tagsinput';
 import Autosuggest from 'react-autosuggest';
 import { RoundPicture } from '../RoundPicture';
-import injectSheet, {WithSheet} from "react-jss";
-import {IgnoreJSSNested} from "../../types";
-import {Icon, IconSymbol} from "../Icon";
-
-function states () {
-    return [
-        { name: 'Guillaume Arm', member: true, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/15768/thumb_avatar_1558702997.png' },
-        { name: 'Hugo Mano', member: false, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/15767/thumb_avatar_1558702986.png' },
-        { name: 'Maud Miguet', member: true, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/15764/thumb_avatar_1558702913.png' },
-        { name: 'Alexandre Lachèze', member: false, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/15763/thumb_avatar_1558702855.png' },
-        { name: 'Mikaël Atier', member: false, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/12182/thumb_avatar_1558702845.png' },
-        { name: 'Julien Berthomier', member: true, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/15766/thumb_avatar_1558702979.png' },
-        { name: 'Joël Charles', member: false, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/12181/thumb_avatar_1558702850.png' },
-        { name: 'Mathias D', member: false, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/17076/thumb_avatar_1567069484.jpg' },
-    ]
-}
+import injectSheet, { WithSheet } from 'react-jss';
+import { IgnoreJSSNested } from '../../types';
+import { Icon, IconSymbol } from "../Icon";
 
 const theme : any = {
     container: {
@@ -71,7 +58,6 @@ const styles = {
             padding: 4,
             boxSizing: 'border-box',
             borderRadius: 20,
-            width: 300,
             minHeight: 34,
             lineHeight: '34px',
             fontSize: 11,
@@ -137,31 +123,31 @@ const styles = {
 };
 
 interface OwnProps {
+    items: InputTagsItem[],
+    tags: Tag[],
+    onUpdateTags: (tags: Tag[]) => any,
 }
 
-interface State {
-    tags: any,
+interface InputTagsItem {
+    name: string,
+    selected: boolean,
+    picture: string,
 }
+
+type Tag = String;
 
 type Props = OwnProps & WithSheet<IgnoreJSSNested<typeof styles>, {}> & React.HTMLProps<HTMLInputElement>;
 
-class InputTagsImpl extends React.Component<Props, State> {
+class InputTagsImpl extends React.Component<Props, {}> {
     constructor (props: Props) {
         super(props);
-        this.state = {
-            tags: []
-        };
     }
 
-    handleChange (tags: any) {
-        this.setState({tags})
-    }
-
-    renderSuggestion = (suggestion: any) => {
+    renderSuggestion = (suggestion: InputTagsItem) => {
         const { classes } = this.props;
         return (
             <>
-                <Icon symbolId={IconSymbol.HINT} color={suggestion.member ? 'gray' : 'transparent'} size={10}/>
+                <Icon symbolId={IconSymbol.HINT} color={suggestion.selected ? 'gray' : 'transparent'} size={10}/>
                 <RoundPicture
                     className={classes.roundPicture}
                     item={suggestion}
@@ -185,14 +171,14 @@ class InputTagsImpl extends React.Component<Props, State> {
         const inputValue = (props.value && props.value.trim().toLowerCase()) || '';
         const inputLength = inputValue.length;
 
-        let suggestions = states().filter((state) => {
-            return state.name.toLowerCase().slice(0, inputLength) === inputValue
+        let suggestions = this.props.items.filter((item: InputTagsItem) => {
+            return item.name.toLowerCase().slice(0, inputLength) === inputValue
         });
 
         const inputProps = {
             ...props,
             onChange: handleOnChange,
-            placeholder: this.state.tags.length == 0 && 'Search members from your organization',
+            placeholder: this.props.tags.length == 0 && 'Search members from your organization',
         };
 
         return (
@@ -200,10 +186,10 @@ class InputTagsImpl extends React.Component<Props, State> {
                 ref={props.ref}
                 suggestions={suggestions}
                 shouldRenderSuggestions={(value) => (value && value.trim().length > 0) as boolean}
-                getSuggestionValue={(suggestion) => suggestion.name}
+                getSuggestionValue={(suggestion: InputTagsItem) => suggestion.name}
                 renderSuggestion={this.renderSuggestion}
                 inputProps={inputProps}
-                onSuggestionSelected={(e, {suggestion}) => {
+                onSuggestionSelected={(e, { suggestion }: any) => {
                     addTag(suggestion.name)
                 }}
                 onSuggestionsClearRequested={() => {}}
@@ -215,13 +201,13 @@ class InputTagsImpl extends React.Component<Props, State> {
 
     render () {
         function renderTag(props: Props, renderTagsProps: any) {
-            const { classes } = props;
+            const { classes, items } = props;
             const { tag, key, disabled, onRemove, className, classNameRemove, getTagDisplayValue, ...other } = renderTagsProps;
             return (
                 <span key={key} {...other} className={className}>
                     <RoundPicture
                         className={classes.renderTagRoundPicture}
-                        item={states()[0]}
+                        item={items.filter((item: InputTagsItem) => item.name === getTagDisplayValue(tag))[0]}
                         size={18}
                         borderColor="transparent"
                     />
@@ -238,8 +224,8 @@ class InputTagsImpl extends React.Component<Props, State> {
         return <TagsInput
             renderInput={this.autocompleteRenderInput}
             renderTag={(renderTagsProps: any) => renderTag(this.props, renderTagsProps)}
-            value={this.state.tags}
-            onChange={this.handleChange.bind(this)}
+            value={this.props.tags}
+            onChange={this.props.onUpdateTags}
         />
     }
 }
