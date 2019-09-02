@@ -16,9 +16,9 @@ const theme : any = {
     suggestionsContainerOpen: {
         display: 'block',
         position: 'absolute',
-        top: 44,
-        left: 4,
-        width: '97%',
+        left: 24,
+        marginTop: 40,
+        width: '88%',
         border: '1px solid #c9c9c9',
         color: '#292929',
         backgroundColor: '#FFFFFF',
@@ -54,7 +54,7 @@ const styles = {
         '.react-tagsinput': {
             display: 'block',
             appearance: 'none',
-            border: '1px solid rgba(41, 41, 41, 0.1)',
+            border: '1px solid #c9c9c9',
             padding: 4,
             boxSizing: 'border-box',
             borderRadius: 20,
@@ -147,7 +147,11 @@ class InputTagsImpl extends React.Component<Props, {}> {
         const { classes } = this.props;
         return (
             <>
-                <Icon symbolId={IconSymbol.HINT} color={suggestion.selected ? 'gray' : 'transparent'} size={10}/>
+                <Icon
+                    symbolId={IconSymbol.CHECKMARK}
+                    color={suggestion.selected ? '#4f94f8' : 'transparent'}
+                    size={16}
+                />
                 <RoundPicture
                     className={classes.roundPicture}
                     item={suggestion}
