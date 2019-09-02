@@ -124,17 +124,17 @@ const styles = {
 
 interface OwnProps {
     items: InputTagsItem[],
-    tags: Tag[],
-    onUpdateTags: (tags: Tag[]) => any,
+    tags: InputTags,
+    onUpdateTags: (tags: InputTags) => any,
 }
 
-interface InputTagsItem {
+export interface InputTagsItem {
     name: string,
     selected: boolean,
     picture: string,
 }
 
-type Tag = String;
+export type InputTags = String[];
 
 type Props = OwnProps & WithSheet<IgnoreJSSNested<typeof styles>, {}> & React.HTMLProps<HTMLInputElement>;
 
