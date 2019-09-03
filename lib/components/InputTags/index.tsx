@@ -124,7 +124,6 @@ const styles = {
 
 interface OwnProps {
     items: InputTagsItem[],
-    tags: InputTags,
     onUpdateTags: (tags: InputTags) => any,
 }
 
@@ -138,9 +137,30 @@ export type InputTags = String[];
 
 type Props = OwnProps & WithSheet<IgnoreJSSNested<typeof styles>, {}> & React.HTMLProps<HTMLInputElement>;
 
-class InputTagsImpl extends React.Component<Props, {}> {
+interface State {
+    tags: InputTags,
+}
+
+class InputTagsImpl extends React.Component<Props, State> {
     constructor (props: Props) {
         super(props);
+
+        this.state = {
+            tags: [],
+        }
+    }
+
+    static getDerivedStateFromProps(props: Props, state: State) {
+        const tags = props.items
+            .filter(item => item.selected)
+            .map(item => item.name);
+
+        if (tags !== state.tags) {
+            return {
+                tags
+            };
+        }
+        return null;
     }
 
     renderSuggestion = (suggestion: InputTagsItem) => {
@@ -182,7 +202,7 @@ class InputTagsImpl extends React.Component<Props, {}> {
         const inputProps = {
             ...props,
             onChange: handleOnChange,
-            placeholder: this.props.tags.length == 0 && 'Search members from your organization',
+            placeholder: this.state.tags.length == 0 && 'Search members from your organization',
         };
 
         return (
@@ -228,7 +248,7 @@ class InputTagsImpl extends React.Component<Props, {}> {
         return <TagsInput
             renderInput={this.autocompleteRenderInput}
             renderTag={(renderTagsProps: any) => renderTag(this.props, renderTagsProps)}
-            value={this.props.tags}
+            value={this.state.tags}
             onChange={this.props.onUpdateTags}
         />
     }

@@ -25,7 +25,6 @@ storiesOf('Molecules|InputTags', module)
                             { name: 'Joël Charles', selected: false, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/12181/thumb_avatar_1558702850.png' },
                             { name: 'Mathias D', selected: false, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/17076/thumb_avatar_1567069484.jpg' },
                         ]}
-                        tags={['Maud Miguet', 'Hugo Mano', 'Mikaël Atier', 'Alexandre Lachèze']}
                         onUpdateTags={action('onUpdateTags')}
                     />
                 )
