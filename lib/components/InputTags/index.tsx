@@ -128,6 +128,7 @@ interface OwnProps {
 }
 
 export interface InputTagsItem {
+    id: string,
     name: string,
     selected: boolean,
     picture: string,
@@ -231,7 +232,7 @@ class InputTagsImpl extends React.Component<Props, State> {
                 <span key={key} {...other} className={className}>
                     <RoundPicture
                         className={classes.renderTagRoundPicture}
-                        item={items.filter((item: InputTagsItem) => item.name === getTagDisplayValue(tag))[0]}
+                        item={items.find((item: InputTagsItem) => item.name === tag)}
                         size={18}
                         borderColor="transparent"
                     />
