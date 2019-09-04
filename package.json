@@ -29,6 +29,7 @@
     "create-react-context": "^0.2.2",
     "jss-nested": "^6.0.1",
     "linked-map": "^2.2.2",
+    "memoize-one": "^5.1.1",
     "mousetrap": "^1.6.2",
     "ms": "^2.1.1",
     "react": "^16.3.1",

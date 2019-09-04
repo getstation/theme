@@ -1,6 +1,7 @@
 import React from 'react';
 import TagsInput from 'react-tagsinput';
 import Autosuggest from 'react-autosuggest';
+import memoize from 'memoize-one';
 import { RoundPicture } from '../RoundPicture';
 import injectSheet, { WithSheet } from 'react-jss';
 import { IgnoreJSSNested } from '../../types';
@@ -151,10 +152,14 @@ class InputTagsImpl extends React.Component<Props, State> {
         }
     }
 
+    static getTags = memoize(
+        (items: InputTagsItem[]) => items
+            .filter((item: InputTagsItem) => item.selected)
+            .map((item: InputTagsItem) => item.name)
+    );
+
     static getDerivedStateFromProps(props: Props, state: State) {
-        const tags = props.items
-            .filter(item => item.selected)
-            .map(item => item.name);
+        const tags = InputTagsImpl.getTags(props.items);
 
         if (tags !== state.tags) {
             return {
