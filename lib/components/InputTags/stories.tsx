@@ -1,12 +1,12 @@
 import centered from '@storybook/addon-centered';
 import { withInfo } from '@storybook/addon-info';
-import {object, text, withKnobs} from '@storybook/addon-knobs';
+import { object, text, withKnobs } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { withNotes } from '@storybook/addon-notes';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { InputTags } from './index';
-import {Modal} from "../Modal";
+import { Modal } from '../Modal';
 
 const renderInputTags = () => (
     <InputTags
@@ -41,7 +41,7 @@ storiesOf('Molecules|InputTags', module)
         >
             <div>
                 <p>{text('Content', 'Content of the modal with an InputTags.')}</p>
-                <p>{renderInputTags()}</p>
+                <div>{renderInputTags()}</div>
             </div>
         </Modal>
     ));

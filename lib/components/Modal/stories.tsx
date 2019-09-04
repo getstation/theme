@@ -3,7 +3,6 @@ import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { Modal } from './index';
-import {InputTags} from "../InputTags";
 
 const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,' +
   ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
