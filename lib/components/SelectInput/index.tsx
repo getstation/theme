@@ -1,12 +1,52 @@
 import React from 'react';
-import Select from 'react-select';
+import Select, { components } from 'react-select';
 import injectSheet, { WithSheet } from 'react-jss';
 import { IgnoreJSSNested } from '../../types';
+import { RoundPicture } from '../RoundPicture';
 
 const styles = {
-  container: {
-    minWidth: 200,
+  roundPicture: {
+    marginRight: 8,
   },
+  inviteButton: {
+    color: '#4f94f8',
+  },
+};
+
+const customStyles = {
+  container: (provided: any, _state: any) => ({
+    ...provided,
+    minWidth: 200,
+    height: 34,
+  }),
+  control: (provided: any, _state: any) => ({
+    ...provided,
+    borderRadius: 30,
+    fontSize: 12,
+    fontWeight: 500,
+    border: '1px solid rgba(41, 41, 41, 0.1)',
+    color: '#292929',
+    backgroundColor: '#FFFFFF',
+  }),
+  menu: (provided: any, state: any) => ({
+    ...provided,
+    border: '1px solid #c9c9c9',
+    boxShadow: '0 5px 10px 0 rgba(0, 0, 0, 0.12)',
+    borderRadius: 10,
+  }),
+  option: (provided: any, state: any) => ({
+    ...provided,
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: 12,
+    padding: '5px 10px',
+    color: state.isFocused ? 'white' : 'initial',
+    backgroundColor: state.isFocused ? '#4f94f8' : 'initial',
+  }),
+  noOptionsMessage: (provided: any, state: any) => ({
+    ...provided,
+    fontSize: 12,
+  })
 };
 
 interface OwnProps {
@@ -37,23 +77,58 @@ class SelectInputImpl extends React.Component<Props, State> {
 
   handleChange = (selectedOption: any) => {
     this.setState({ selectedOption: '' });
-    console.log(`Option selected:`, selectedOption);
+    this.props.onChange(selectedOption);
+  };
+
+  renderOption = (componentProps : any) => {
+    const { data } = componentProps;
+    const { classes } = this.props;
+
+    return (
+      <components.Option {...componentProps}>
+        <RoundPicture
+          className={classes.roundPicture}
+          item={data}
+          size={22}
+          borderColor="transparent"
+        />
+        <div>{data.label}</div>
+      </components.Option>
+    )
+  };
+
+  renderNoOptionsMessage = (componentProps : any) => {
+    const { classes } = this.props;
+
+    return (
+      <components.NoOptionsMessage {...componentProps}>
+        <p>No one found. Maybe they’re not on Station?</p>
+        <p className={classes.inviteButton}>
+          Invite them
+        </p>
+      </components.NoOptionsMessage>
+    )
   };
 
   render() {
-    const { classes, options } = this.props;
+    const { options } = this.props;
     const { selectedOption } = this.state;
 
     return (
       <Select
-        className={classes.container}
         placeholder="Search members from your organization"
         value={selectedOption}
         onChange={this.handleChange}
         options={options}
+        styles={customStyles}
+        components={{
+          Option: this.renderOption,
+          NoOptionsMessage: this.renderNoOptionsMessage,
+        }}
       />
     );
   }
 }
 
 export const SelectInput = injectSheet(styles as IgnoreJSSNested<typeof styles>)(SelectInputImpl);
+
