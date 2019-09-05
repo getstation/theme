@@ -20,6 +20,8 @@ const renderInputList = () => (
       { id: '6', name: 'Joël Charles', selected: false, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/12181/thumb_avatar_1558702850.png' },
       { id: '7', name: 'Mathias D', selected: false, picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/17076/thumb_avatar_1567069484.jpg' },
     ])}
+    onAddItem={action('onAddItem')}
+    onRemoveItem={action('onRemoveItem')}
   />
 );
 

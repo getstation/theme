@@ -48,13 +48,32 @@ const styles = {
     backgroundColor: '#4f94f8',
     color: 'white',
   },
+  suggestionSelected: {
+    pointerEvents: 'none',
+  },
   roundPicture: {
     margin: '0 8px 0 5px',
+  },
+  selectedItems: {
+    margin: 0,
+    padding: 0,
+  },
+  selectedItem: {
+    listStyleType: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    margin: '5px 0',
+  },
+  selectedItemContent: {
+    flex: 1,
+    marginLeft: 10,
   },
 };
 
 interface OwnProps {
   items: InputListItem[],
+  onAddItem: (item:  InputListItem) => any,
+  onRemoveItem: (item:  InputListItem) => any,
 }
 
 export interface InputListItem {
@@ -85,7 +104,7 @@ class InputListImpl extends React.Component<Props, State> {
     };
   }
 
-  onChange = (e: any) => {
+  onInputChange = (e: any) => {
     const { items } = this.props;
     const userInput = e.currentTarget.value;
 
@@ -103,13 +122,17 @@ class InputListImpl extends React.Component<Props, State> {
     });
   };
 
-  onClick = (e: any) => {
+  onClickSuggestion = (e: any) => {
+    const { activeSuggestion, filteredSuggestions } = this.state;
+
     this.setState({
       activeSuggestion: 0,
       filteredSuggestions: [],
       showSuggestions: false,
-      userInput: e.currentTarget.innerText
+      userInput: '',
     });
+
+    this.props.onAddItem(filteredSuggestions[activeSuggestion])
   };
 
   onKeyDown = (e: any) => {
@@ -120,8 +143,10 @@ class InputListImpl extends React.Component<Props, State> {
       this.setState({
         activeSuggestion: 0,
         showSuggestions: false,
-        userInput: filteredSuggestions[activeSuggestion].name
+        userInput: '',
       });
+
+      this.props.onAddItem(filteredSuggestions[activeSuggestion]);
     }
     // User pressed the up arrow
     else if (e.keyCode === 38) {
@@ -142,7 +167,7 @@ class InputListImpl extends React.Component<Props, State> {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, items, onRemoveItem } = this.props;
     const { activeSuggestion, filteredSuggestions, showSuggestions, userInput } = this.state;
 
     let suggestionsListComponent;
@@ -152,10 +177,16 @@ class InputListImpl extends React.Component<Props, State> {
         suggestionsListComponent = (
           <ul className={classes.suggestions}>
             {filteredSuggestions.map((suggestion: any, index: any) => {
-              const className = classNames(classes.suggestion, { [classes.suggestionActive]: index === activeSuggestion });
+              const className = classNames(
+                classes.suggestion,
+                {
+                  [classes.suggestionActive]: index === activeSuggestion,
+                  [classes.suggestionSelected]: suggestion.selected,
+                }
+              );
 
               return (
-                <li className={className} key={suggestion.id} onClick={this.onClick}>
+                <li className={className} key={suggestion.id} onClick={this.onClickSuggestion}>
                   <Icon
                     symbolId={IconSymbol.CHECKMARK}
                     color={suggestion.selected ? '#4f94f8' : 'transparent'}
@@ -182,18 +213,34 @@ class InputListImpl extends React.Component<Props, State> {
       }
     }
 
+    const itemsSelected = items.filter((item: InputListItem) => item.selected);
+
     return (
       <div className={classes.container}>
-          {/*<ul>
+          <ul className={classes.selectedItems}>
             { itemsSelected.map((item: InputListItem) =>
-              <li key={item.id}>{ item.name }</li>)
+              <li className={classes.selectedItem} key={item.id}>
+                <RoundPicture
+                  className={classes.roundPicture}
+                  item={item}
+                  size={27}
+                  borderColor="transparent"
+                />
+                <div className={classes.selectedItemContent}>{item.name}</div>
+                <Icon
+                  symbolId={IconSymbol.CROSS}
+                  size={16}
+                  color="currentColor"
+                  onClick={() => onRemoveItem(item)}
+                />
+              </li>)
             }
-          </ul>*/}
+          </ul>
           <Input
               type={InputType.TEXT}
               placeholder="Search members from your organization"
               value={userInput}
-              onChange={this.onChange}
+              onChange={this.onInputChange}
               onKeyDown={this.onKeyDown}
           />
           {suggestionsListComponent}
