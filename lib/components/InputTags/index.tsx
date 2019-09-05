@@ -17,7 +17,7 @@ const theme : any = {
   suggestionsContainerOpen: {
     display: 'block',
     position: 'absolute',
-    left: 24,
+    left: 25,
     marginTop: 40,
     width: '88%',
     border: '1px solid #c9c9c9',
