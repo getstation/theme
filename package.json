@@ -36,6 +36,7 @@
     "react-jss": "^8.6.1",
     "react-key-handler": "1.0.1",
     "react-popper": "^0.10.1",
+    "react-select": "^3.0.4",
     "shortid": "^2.2.8"
   },
   "devDependencies": {
@@ -58,6 +59,7 @@
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
     "@types/react-jss": "^8.6.3",
+    "@types/react-select": "^3.0.4",
     "@types/shortid": "^0.0.29",
     "@types/storybook__addon-actions": "^3.4.0",
     "@types/storybook__addon-centered": "^3.3.0",
