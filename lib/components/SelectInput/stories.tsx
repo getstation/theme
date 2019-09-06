@@ -44,7 +44,7 @@ storiesOf('Molecules|SelectInput', module)
     >
       <div>
         <p>{text('Content', 'Content of the modal with a SelectInput.')}</p>
-        { renderSelectInput() }
+        {renderSelectInput()}
       </div>
     </Modal>
   ));

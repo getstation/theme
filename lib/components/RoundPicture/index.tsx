@@ -46,11 +46,11 @@ export interface RoundedItem {
 // COMPONENT
 
 const RoundPictureImpl = ({
-                            className,
-                            classes,
-                            item,
-                            style,
-                          }: Props) => (
+  className,
+  classes,
+  item,
+  style,
+}: Props) => (
   <div className={classNames(classes.container, className)} style={style}>
     <img className={classes!.picture} src={item.picture} alt={item.name} />
   </div>

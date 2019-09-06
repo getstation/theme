@@ -43,7 +43,7 @@ const customStyles = {
   noOptionsMessage: (provided: any, state: any) => ({
     ...provided,
     fontSize: 12,
-  })
+  }),
 };
 
 interface OwnProps {
@@ -78,7 +78,7 @@ class SelectInputImpl extends React.Component<Props, State> {
   handleChange = (selectedOption: any) => {
     this.setState({ selectedOption: '' });
     this.props.onChange(selectedOption);
-  };
+  }
 
   renderOption = (componentProps : any) => {
     const { data } = componentProps;
@@ -94,8 +94,8 @@ class SelectInputImpl extends React.Component<Props, State> {
         />
         <div>{data.label}</div>
       </components.Option>
-    )
-  };
+    );
+  }
 
   renderNoOptionsMessage = (componentProps : any) => {
     const { classes, noOptionsMessage } = this.props;
@@ -104,8 +104,8 @@ class SelectInputImpl extends React.Component<Props, State> {
       <components.NoOptionsMessage {...componentProps}>
         <p>{noOptionsMessage || 'No options'}</p>
       </components.NoOptionsMessage>
-    )
-  };
+    );
+  }
 
   render() {
     const { className, options, placeholder } = this.props;
@@ -129,4 +129,3 @@ class SelectInputImpl extends React.Component<Props, State> {
 }
 
 export const SelectInput = injectSheet(styles as IgnoreJSSNested<typeof styles>)(SelectInputImpl);
-
