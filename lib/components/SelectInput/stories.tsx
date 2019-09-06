@@ -21,6 +21,8 @@ const renderSelectInput = () => (
       { value: '7', label: 'Mathias D', picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/17076/thumb_avatar_1567069484.jpg' },
     ]}
     onChange={action('onChange')}
+    placeholder="Search members from your organization"
+    noOptionsMessage="No one found."
   />
 );
 

@@ -6,10 +6,7 @@ import { RoundPicture } from '../RoundPicture';
 
 const styles = {
   roundPicture: {
-    marginRight: 8,
-  },
-  inviteButton: {
-    color: '#4f94f8',
+    marginRight: 12,
   },
 };
 
@@ -39,7 +36,7 @@ const customStyles = {
     display: 'flex',
     alignItems: 'center',
     fontSize: 12,
-    padding: '5px 10px',
+    padding: '5px 20px',
     color: state.isFocused ? 'white' : 'initial',
     backgroundColor: state.isFocused ? '#4f94f8' : 'initial',
   }),
@@ -52,6 +49,9 @@ const customStyles = {
 interface OwnProps {
   options: SelectInputOption[],
   onChange: (option: any) => any,
+  placeholder: string,
+  noOptionsMessage: string,
+  className?: string,
 }
 
 export interface SelectInputOption {
@@ -98,25 +98,23 @@ class SelectInputImpl extends React.Component<Props, State> {
   };
 
   renderNoOptionsMessage = (componentProps : any) => {
-    const { classes } = this.props;
+    const { classes, noOptionsMessage } = this.props;
 
     return (
       <components.NoOptionsMessage {...componentProps}>
-        <p>No one found. Maybe they’re not on Station?</p>
-        <p className={classes.inviteButton}>
-          Invite them
-        </p>
+        <p>{noOptionsMessage || 'No options'}</p>
       </components.NoOptionsMessage>
     )
   };
 
   render() {
-    const { options } = this.props;
+    const { className, options, placeholder } = this.props;
     const { selectedOption } = this.state;
 
     return (
       <Select
-        placeholder="Search members from your organization"
+        className={className}
+        placeholder={placeholder}
         value={selectedOption}
         onChange={this.handleChange}
         options={options}
