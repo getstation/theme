@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Add lock icon
 - Add `forceHeader` prop to `Input` component
+- Added `confirmButtonIsLoading` prop on `<Modal />`
 
 ### Fixed
 - Switcher: better style for disabled state
