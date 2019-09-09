@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 ### Added
+- Add icon-arrow-up-right and icon-arrow-up-right-plus
+
+### Added
 - Add lock icon
 - Add `forceHeader` prop to `Input` component
 
