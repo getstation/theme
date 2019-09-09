@@ -5,12 +5,32 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+
+## [0.15.0] - 2019-09-06
+### Added
+- Add arrow-up-right icon
+
+## [0.14.0] - 2019-08-29
+### Added
+- Add join/leave icons
+- Add arrow-forward and arrow-back icons
+- SlideX: add alignItems props
+
+### Fixed
+- Avoid <Input> warnings with some props
+- Modal: handle content workflow
+
+## [0.13.0] - 2019-08-05
 ### Added
 - Add lock icon
 - Add `forceHeader` prop to `Input` component
 
 ### Fixed
 - Switcher: better style for disabled state
+
+## [0.12.0] - 2019-07-22
+### Added
+- Add pencil icon
 
 ## [0.11.4] - 2019-07-03
 ### Fixed
