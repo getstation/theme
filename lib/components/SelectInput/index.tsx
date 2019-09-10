@@ -3,6 +3,8 @@ import Select, { components } from 'react-select';
 import injectSheet, { WithSheet } from 'react-jss';
 import { IgnoreJSSNested } from '../../types';
 import { RoundPicture } from '../RoundPicture';
+import { OptionProps } from 'react-select/src/components/Option';
+import { NoticeProps } from 'react-select/src/components/Menu';
 
 const styles = {
   roundPicture: {
@@ -48,9 +50,10 @@ const customStyles = {
 
 interface OwnProps {
   options: SelectInputOption[],
-  onChange: (option: any) => any,
-  placeholder: string,
-  noOptionsMessage: string,
+  value: SelectInputOption | null,
+  onChange: (option: SelectInputOption) => void,
+  placeholder?: string,
+  noOptionsMessage?: string,
   className?: string,
 }
 
@@ -60,27 +63,24 @@ export interface SelectInputOption {
   picture: string,
 }
 
+type ValueType<T> = T | ReadonlyArray<T> | null | undefined;
+
 type Props = OwnProps & WithSheet<IgnoreJSSNested<typeof styles>, {}>;
 
-interface State {
-  selectedOption: any,
-}
-
-class SelectInputImpl extends React.Component<Props, State> {
+class SelectInputImpl extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
-
-    this.state = {
-      selectedOption : '',
-    };
   }
 
-  handleChange = (selectedOption: any) => {
-    this.setState({ selectedOption: '' });
+  handleChange = (selectedOption: ValueType<SelectInputOption>) => {
+    if (!selectedOption || Array.isArray(selectedOption)) return;
+
+    // @ts-ignore TS not able to recognize selectedOption is not a ReadOnlyArray
+    // https://github.com/microsoft/TypeScript/issues/17002
     this.props.onChange(selectedOption);
   }
 
-  renderOption = (componentProps : any) => {
+  renderOption = (componentProps: OptionProps<SelectInputOption>) => {
     const { data } = componentProps;
     const { classes } = this.props;
 
@@ -97,7 +97,7 @@ class SelectInputImpl extends React.Component<Props, State> {
     );
   }
 
-  renderNoOptionsMessage = (componentProps : any) => {
+  renderNoOptionsMessage = (componentProps: NoticeProps<SelectInputOption>) => {
     const { classes, noOptionsMessage } = this.props;
 
     return (
@@ -108,14 +108,13 @@ class SelectInputImpl extends React.Component<Props, State> {
   }
 
   render() {
-    const { className, options, placeholder } = this.props;
-    const { selectedOption } = this.state;
+    const { className, options, placeholder, value } = this.props;
 
     return (
-      <Select
+      <Select<SelectInputOption>
         className={className}
         placeholder={placeholder}
-        value={selectedOption}
+        value={value}
         onChange={this.handleChange}
         options={options}
         styles={customStyles}
@@ -128,4 +127,6 @@ class SelectInputImpl extends React.Component<Props, State> {
   }
 }
 
-export const SelectInput = injectSheet(styles as IgnoreJSSNested<typeof styles>)(SelectInputImpl);
+export const SelectInput = injectSheet(
+  styles as IgnoreJSSNested<typeof styles>
+)(SelectInputImpl) as React.ComponentType<OwnProps>;

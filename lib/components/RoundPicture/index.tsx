@@ -27,7 +27,6 @@ const styles = {
 // PROPS
 
 interface Props {
-  classes: Classes,
   item: RoundedItem,
   /**
    * Outer classname.
@@ -50,11 +49,13 @@ const RoundPictureImpl = ({
   classes,
   item,
   style,
-}: Props) => (
+}: Props & { classes: Classes }) => (
   <div className={classNames(classes.container, className)} style={style}>
     <img className={classes!.picture} src={item.picture} alt={item.name} />
   </div>
 );
 
-// @ts-ignore
-export const RoundPicture = injectSheet(styles)(RoundPictureImpl);
+export const RoundPicture = injectSheet(
+  // @ts-ignore
+  styles
+)(RoundPictureImpl) as React.ComponentType<Props>;
