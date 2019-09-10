@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
+## [0.17.0] - 2019-09-10
+### Added
+- Added `confirmButtonIsLoading` prop on `<Modal />`
+- Added a `<SelectInput />` component
+
 ## [0.16.0] - 2019-09-09
 ### Added
 - Add icon-arrow-up-right and icon-arrow-up-right-plus
@@ -28,8 +33,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Add lock icon
 - Add `forceHeader` prop to `Input` component
-- Added `confirmButtonIsLoading` prop on `<Modal />`
-- Added a `<SelectInput />` component
 
 ### Fixed
 - Switcher: better style for disabled state
