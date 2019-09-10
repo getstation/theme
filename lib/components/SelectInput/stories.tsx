@@ -8,7 +8,8 @@ import { SelectInput } from './index';
 import { action } from '@storybook/addon-actions';
 import { Modal } from '../Modal';
 
-const renderSelectInput = () => (
+const renderSelectInput = () => {
+  return (
   <SelectInput
     options={[
       { value: '0', label: 'Guillaume Arm', picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/15768/thumb_avatar_1558702997.png' },
@@ -20,11 +21,12 @@ const renderSelectInput = () => (
       { value: '6', label: 'Joël Charles', picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/12181/thumb_avatar_1558702850.png' },
       { value: '7', label: 'Mathias D', picture: 'https://dgivdslhqe3qo.cloudfront.net/careers/members/17076/thumb_avatar_1567069484.jpg' },
     ]}
+    value={null}
     onChange={action('onChange')}
     placeholder="Search members from your organization"
     noOptionsMessage="No one found."
-  />
-);
+  />);
+};
 
 storiesOf('Molecules|SelectInput', module)
   .addDecorator(withKnobs)
