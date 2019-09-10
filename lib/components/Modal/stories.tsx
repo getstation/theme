@@ -76,6 +76,7 @@ storiesOf('Molecules|Modal', module)
       )}
       themeColor={text('themeColor', '#ABCDEF')}
       isLoading={boolean('isLoading', true)}
+      confirmButtonIsLoading={boolean('confirmButtonIsLoading', true)}
       continueDanger={boolean('continueDanger', false)}
       continueContent={text('continueContent', '')}
     >

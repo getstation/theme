@@ -19,6 +19,10 @@ interface OwnProps {
   applicationIcon?: string,
   themeColor?: string,
   isLoading?: boolean,
+  /**
+   * Will display a loading on the confirm button.
+   */
+  confirmButtonIsLoading?: boolean,
   disableWrapperClick?: boolean,
 }
 
@@ -106,7 +110,7 @@ class ModalImpl extends React.PureComponent<Props, {}> {
   render() {
     const {
       classes, title, description, classNameModalBody, onCancel, cancelContent, onContinue, continueContent,
-      isLoading, children, continueDanger, onWrapperCancel, disableWrapperClick,
+      isLoading, children, continueDanger, onWrapperCancel, disableWrapperClick, confirmButtonIsLoading,
     } = this.props;
 
     return (
@@ -137,7 +141,11 @@ class ModalImpl extends React.PureComponent<Props, {}> {
             }
 
             { onContinue &&
-            <Button onClick={onContinue} btnStyle={continueDanger ? Style.DANGER : Style.PRIMARY}>
+            <Button
+              onClick={onContinue}
+              btnStyle={continueDanger ? Style.DANGER : Style.PRIMARY}
+              isLoading={confirmButtonIsLoading}
+            >
               {continueContent || `OK`}
             </Button>
             }
