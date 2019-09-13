@@ -8,6 +8,7 @@ import { ModalWrapper } from '../ModalWrapper';
 
 interface OwnProps {
   classNameModalBody?: string,
+  classNameModalContent?: string,
   title?: string,
   description?: string,
   onCancel?: () => void,
@@ -30,7 +31,6 @@ const styles = (theme: ThemeTypes) => createStyles({
   container: {
     position: 'relative',
     width: 400,
-    maxHeight: 550,
     backgroundColor: theme.$bodyBkg,
     borderRadius: 5,
   },
@@ -83,6 +83,10 @@ const styles = (theme: ThemeTypes) => createStyles({
   '@keyframes spin': {
     '100%': { transform: 'rotate(360deg)' },
   },
+  content: {
+    maxHeight: 400,
+    overflow : 'scroll',
+  },
   loading: {
     ...theme.mixins.flexbox.containerCenter,
     ...theme.mixins.position('absolute', 0, 0),
@@ -91,6 +95,7 @@ const styles = (theme: ThemeTypes) => createStyles({
     '& svg': {
       animation: `spin 1s linear infinite`,
     },
+    zIndex: 1,
   },
   footer: {
     whiteSpace: 'nowrap',
@@ -109,8 +114,10 @@ type Props = OwnProps & WithSheet<typeof styles>;
 class ModalImpl extends React.PureComponent<Props, {}> {
   render() {
     const {
-      classes, title, description, classNameModalBody, onCancel, cancelContent, onContinue, continueContent,
-      isLoading, children, continueDanger, onWrapperCancel, disableWrapperClick, confirmButtonIsLoading,
+      classes, title, description, cancelContent, continueContent, children,
+      onCancel, onContinue, onWrapperCancel,
+      isLoading, continueDanger, disableWrapperClick, confirmButtonIsLoading,
+      classNameModalContent, classNameModalBody,
     } = this.props;
 
     return (
@@ -129,7 +136,9 @@ class ModalImpl extends React.PureComponent<Props, {}> {
             </div>
             }
 
-            {children}
+            <div className={classNames(classes.content, classNameModalContent)}>
+              {children}
+            </div>
           </div>
 
           { (onCancel || onContinue) &&
