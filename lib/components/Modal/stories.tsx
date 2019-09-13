@@ -80,6 +80,25 @@ storiesOf('Molecules|Modal', module)
       continueDanger={boolean('continueDanger', false)}
       continueContent={text('continueContent', '')}
     >
-      {text('Content', 'Content of the modal with buttons and Application icon')}
+      <div>
+        {
+          // tslint:disable-next-line: max-line-length
+          text('Content', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris semper risus venenatis justo maximus ultricies. Donec eget mi imperdiet, eleifend nisi ut, cursus ex. Pellentesque est arcu, vestibulum ac feugiat quis, vulputate in massa. Donec malesuada tempus tortor, ut sodales magna vulputate quis. Nunc ac tortor iaculis, rhoncus urna rutrum, luctus libero. Donec nec scelerisque justo, quis pharetra ante. Donec porta lacus quis orci egestas, nec vulputate quam ultricies.')
+        }
+      </div>
+      <br/>
+      <div>
+        {
+          // tslint:disable-next-line: max-line-length
+          text('Content', 'Proin at ex nisi. Aliquam faucibus eu erat nec sollicitudin. Aliquam non sapien vitae velit blandit sollicitudin at non mi. Morbi pellentesque, est vitae placerat semper, lorem elit ultricies mauris, sed porttitor augue augue quis ex. Maecenas id pellentesque ligula. Nullam porttitor ipsum dui, sit amet maximus libero fermentum non. Nulla vulputate nisi lectus, non scelerisque dolor consequat sed. Ut id mattis metus, sed mattis justo. Phasellus sollicitudin mi lacus, eu eleifend elit finibus sit amet. Ut id vestibulum nunc. Morbi ac pellentesque odio. Etiam ac quam sodales, pulvinar metus sit amet, vestibulum erat. Nam facilisis nisi eu laoreet laoreet. Aenean volutpat purus ante, et consequat velit aliquam a. Etiam molestie, diam eu sollicitudin tristique, nunc diam tincidunt urna, id iaculis est magna ac dolor. Aenean in enim vulputate, euismod ex in, sollicitudin quam.')
+        }
+      </div>
+      <br/>
+      <div>
+        {
+          // tslint:disable-next-line: max-line-length
+          text('Content', 'Proin viverra libero risus, sed facilisis risus tincidunt at. Praesent ultrices, urna sed aliquet tempor, tortor mi scelerisque risus, at finibus erat quam at massa. Curabitur et dapibus purus. Etiam pellentesque dolor vitae pulvinar rutrum. Sed dignissim elit purus, id semper lacus pharetra nec. Proin sit amet massa ut massa euismod maximus. Morbi posuere sollicitudin elit, ut lobortis ipsum fermentum eget. Nam sagittis eros ut ex mattis, quis lobortis dui efficitur. Pellentesque feugiat magna cursus suscipit euismod.')
+        }
+      </div>
     </Modal>
   ));
