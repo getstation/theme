@@ -8,6 +8,7 @@ import { ModalWrapper } from '../ModalWrapper';
 
 interface OwnProps {
   classNameModalBody?: string,
+  classNameModalContent?: string,
   title?: string,
   description?: string,
   onCancel?: () => void,
@@ -26,13 +27,14 @@ interface OwnProps {
   disableWrapperClick?: boolean,
 }
 
+const BORDER_RADIUS = 5;
+
 const styles = (theme: ThemeTypes) => createStyles({
   container: {
     position: 'relative',
     width: 400,
-    maxHeight: 550,
     backgroundColor: theme.$bodyBkg,
-    borderRadius: 5,
+    borderRadius: BORDER_RADIUS,
   },
   header: {
     width: '100%',
@@ -78,10 +80,21 @@ const styles = (theme: ThemeTypes) => createStyles({
   body: {
     color: theme.colors.black,
     position: 'relative',
-    padding: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingLeft: 5,
+    paddingRight: 5,
   },
   '@keyframes spin': {
     '100%': { transform: 'rotate(360deg)' },
+  },
+  content: {
+    height: '100%',
+    width: '100%',
+    maxHeight: 400,
+    overflow : 'scroll',
+    paddingLeft: 15,
+    paddingRight: 15,
   },
   loading: {
     ...theme.mixins.flexbox.containerCenter,
@@ -91,6 +104,8 @@ const styles = (theme: ThemeTypes) => createStyles({
     '& svg': {
       animation: `spin 1s linear infinite`,
     },
+    zIndex: 1,
+    borderRadius: BORDER_RADIUS,
   },
   footer: {
     whiteSpace: 'nowrap',
@@ -109,8 +124,10 @@ type Props = OwnProps & WithSheet<typeof styles>;
 class ModalImpl extends React.PureComponent<Props, {}> {
   render() {
     const {
-      classes, title, description, classNameModalBody, onCancel, cancelContent, onContinue, continueContent,
-      isLoading, children, continueDanger, onWrapperCancel, disableWrapperClick, confirmButtonIsLoading,
+      classes, title, description, cancelContent, continueContent, children,
+      onCancel, onContinue, onWrapperCancel,
+      isLoading, continueDanger, disableWrapperClick, confirmButtonIsLoading,
+      classNameModalContent, classNameModalBody,
     } = this.props;
 
     return (
@@ -129,7 +146,9 @@ class ModalImpl extends React.PureComponent<Props, {}> {
             </div>
             }
 
-            {children}
+            <div className={classNames(classes.content, classNameModalContent)}>
+              {children}
+            </div>
           </div>
 
           { (onCancel || onContinue) &&
