@@ -3,7 +3,7 @@ import * as React from 'react';
 // @ts-ignore: no declaration file
 import ReactHoverObserver from 'react-hover-observer';
 import injectSheet, { WithSheet } from 'react-jss';
-import { Manager, Popper, Target } from 'react-popper';
+import { Manager, Popper, Reference } from 'react-popper';
 import classNames = require('classnames');
 
 interface OwnProps {
@@ -82,33 +82,47 @@ class TooltipImpl extends React.PureComponent<Props, State> {
     const { children, tooltip, placement, classes, offset, hintClassname, alternate } = this.props;
 
     return (
-      <Manager className={this.props.className}>
-        <Target>
-          <ReactHoverObserver
-            hoverDelayInMs={500}
-            onHoverChanged={this.handleHoverChanged}
-            shouldDecorateChildren={false}
-          >
-            {children}
-          </ReactHoverObserver>
-        </Target>
-        {!this.state.tooltipShown &&
-          tooltip &&
-          this.state.isHovering && (
-            <Popper
-              placement={placement}
-              modifiers={{
-                preventOverflow: { enabled: true, boundariesElement: 'viewport' },
-                offset: { offset },
-              }}
-              positionFixed={true}
-            >
-              <div className={classNames(classes.hint, hintClassname, { [classes.alternate]: alternate })}>
-                {tooltip}
+      <div className={this.props.className}>
+        <Manager>
+          <Reference>
+            {({ ref }) => (
+              <div ref={ref}>
+                <ReactHoverObserver
+                  hoverDelayInMs={500}
+                  onHoverChanged={this.handleHoverChanged}
+                  shouldDecorateChildren={false}
+                >
+                  {children}
+                </ReactHoverObserver>
               </div>
-            </Popper>
-          )}
-      </Manager>
+            )}
+          </Reference>
+          {!this.state.tooltipShown &&
+            tooltip &&
+            this.state.isHovering && (
+              <Popper
+                placement={placement}
+                modifiers={{
+                  preventOverflow: { enabled: true, boundariesElement: 'viewport' },
+                  offset: { offset },
+                }}
+                positionFixed={true}
+              >
+                {({ ref, style, placement: givenPlacement }) => (
+                  <div
+                    ref={ref}
+                    style={style}
+                    data-placement={givenPlacement}
+                    className={classNames(classes.hint, hintClassname, { [classes.alternate]: alternate })}
+                  >
+                    {tooltip}
+                  </div>
+                )}
+
+              </Popper>
+            )}
+        </Manager>
+      </div>
     );
   }
 }
