@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import injectSheet, { WithSheet } from 'react-jss';
+
 import { createStyles, ThemeTypes } from '../../types';
 import { Button, Style } from '../Button';
 import { Icon, IconSymbol } from '../Icon';
@@ -15,6 +16,7 @@ interface OwnProps {
   onWrapperCancel?: () => void,
   cancelContent?: string,
   onContinue?: () => void,
+  onClickOutside?: () => void,
   continueContent?: string,
   continueDanger?: boolean,
   applicationIcon?: string,
@@ -125,13 +127,16 @@ class ModalImpl extends React.PureComponent<Props, {}> {
   render() {
     const {
       classes, title, description, cancelContent, continueContent, children,
-      onCancel, onContinue, onWrapperCancel,
+      onCancel, onContinue, onWrapperCancel, onClickOutside,
       isLoading, continueDanger, disableWrapperClick, confirmButtonIsLoading,
       classNameModalContent, classNameModalBody,
     } = this.props;
 
     return (
-      <ModalWrapper onCancel={(disableWrapperClick) ? undefined : (onWrapperCancel || onCancel)}>
+      <ModalWrapper
+        onCancel={(disableWrapperClick) ? undefined : (onWrapperCancel || onCancel)}
+        onClickOutside={onClickOutside}
+      >
         <div className={classes.container}>
           <div className={classes.header}>
             <div className={classes.applicationIcon} />
