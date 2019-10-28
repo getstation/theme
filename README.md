@@ -70,7 +70,7 @@ Create a RC version for your PR to be tested:
 
 - `yarn version --preid=rc --prerelease (0.0.0-rc-0)` for a new, or increment RC
 - `yarn version --premajor (1.0.0-rc.0) || --preminor (0.1.0-rc.0) || --prepatch (0.0.1-rc.0)` for a new Version + RC
-
+- `git push --follow-tags` to push rc version version
 
 ## Publish
 - Build docs: `yarn build-docs`
