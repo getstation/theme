@@ -6,14 +6,15 @@ import { Button, ButtonProps, Icon, IconSymbol, Size } from '../..';
 // outer props
 export type ButtonIconProps = ButtonProps & {
   iconColor?: string,
+  iconPosition?: 'Left' | 'Right',
+  iconClassName?: string,
   symbolId: IconSymbol,
   text?: string,
-  iconClassName?: string,
 };
 
 interface Classes {
   button: string,
-  buttonText: string,
+  iconAndTextSpan: string,
 }
 
 interface InjectSheetProps {
@@ -21,12 +22,25 @@ interface InjectSheetProps {
   sheet: any
 }
 
+const positionStyle = {
+  Left: {
+    flexDirection: 'row',
+    padding: '0 10px 0 0',
+  },
+  Right: {
+    flexDirection: 'row-reverse',
+    padding: '0 0 0 10px',
+  },
+};
+
 const styles = {
   button: {
     paddingLeft: 0,
-    paddingRight: ({ text }: ButtonIconProps) => text ? '10px' : '0px',
+    padding: ({ iconPosition }: ButtonIconProps) => positionStyle[iconPosition || 'Left'].padding,
   },
-  buttonText: {
+  iconAndTextSpan: {
+    display: 'flex',
+    flexDirection: ({ iconPosition }: ButtonIconProps) => positionStyle[iconPosition || 'Left'].flexDirection,
     verticalAlign: 'top',
   },
 };
@@ -50,17 +64,17 @@ class ButtonIconImp extends React.Component<InjectSheetProps & ButtonIconProps, 
       />
     );
     if (!text) return icon;
-    const textSpan = (
+    const iconAndTextSpan = (
       <span
         key="text"
-        className={classes.buttonText}
+        className={classes.iconAndTextSpan}
       >
+        {icon}
         {text}
       </span>
     );
     return [
-      icon,
-      textSpan,
+      iconAndTextSpan,
     ];
   }
 
