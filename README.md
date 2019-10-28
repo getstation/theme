@@ -42,8 +42,33 @@ Tadaa 🎉
 
 Don't forget to update the changelog and publish to see the changes when everything is good !
 
+## Dev
+
+#### Requirement for developpement usage
+
+To work with storybook inside Bx you will need to link the module 
+
+- `git clone http://github.com/getstation/theme`
+- `cd theme`
+- `yarn`
+- `yarn link`
+- `cd /path/to/my/Bx`
+- `yarn link @getstation/theme`
+
+#### Storybook
+
+You cna see modifications to you components inside `storybook`, just start it `yarn run storybook` & go to [localhost](http://localhost:6006)
+
+
+#### Expose modifications to BX
+
+Rebuild `@getstaion/theme` via `yarn run build` inside the repo everytime you did change `theme` 
+
 ## Publish
 - Build docs: `yarn build-docs`
-- Bump version in `package.json`
 - verify `CHANGELOG.md` entries
-- Publish: `npm publish`
+- Increment version via: (`from 0.0.0`)
+  - `yarn version --major (1.0.0) || --minor (0.1.0) || --patch (0.0.1)`
+  - `yarn version --preid=rc --prerelease (0.0.0-rc-0)` for a new, or increment RC
+  - `yarn version --premajor (1.0.0-rc.0) || --preminor (0.1.0-rc.0) || --prepatch (0.0.1-rc.0)`
+- Publish: `yarn publish`
