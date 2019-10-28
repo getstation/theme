@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import injectSheet, { WithSheet } from 'react-jss';
-
 import { createStyles, ThemeTypes } from '../../types';
 import { Button, Style } from '../Button';
 import { Icon, IconSymbol } from '../Icon';
