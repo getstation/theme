@@ -123,17 +123,30 @@ const styles = (theme: ThemeTypes) => createStyles({
 type Props = OwnProps & WithSheet<typeof styles>;
 
 class ModalImpl extends React.PureComponent<Props, {}> {
+
+  onCancel = () => {
+    // click is disable, stop here
+    if (this.props.disableWrapperClick) return;
+
+    const { onWrapperCancel, onCancel } = this.props;
+    if (onWrapperCancel) {
+      onWrapperCancel();
+      return;
+    }
+    onCancel && onCancel();
+  }
+
   render() {
     const {
       classes, title, description, cancelContent, continueContent, children,
-      onCancel, onContinue, onWrapperCancel, onClickOutside,
-      isLoading, continueDanger, disableWrapperClick, confirmButtonIsLoading,
+      onCancel, onContinue, onClickOutside,
+      isLoading, continueDanger, confirmButtonIsLoading,
       classNameModalContent, classNameModalBody,
     } = this.props;
 
     return (
       <ModalWrapper
-        onCancel={(disableWrapperClick) ? undefined : (onWrapperCancel || onCancel)}
+        onCancel={this.onCancel}
         onClickOutside={onClickOutside}
       >
         <div className={classes.container}>
