@@ -45,17 +45,21 @@ class ModalWrapperImpl extends React.PureComponent<Props, {}> {
    using Portal kinda disturbs ClickOutside.
    let's do some logic here to check that the click outside
    is definitely outside ModalWrapper before calling hide
+   If no onClickOutside callback sent use onCancel
    **/
   handleClickOutside(e: React.SyntheticEvent<HTMLElement>) {
     const target = e.target as HTMLElement;
     const isFinalTarget = e.currentTarget === target;
-    if (!isFinalTarget || !this.modalWrapper || !this.props.onClickOutside || ! this.props.onCancel) return;
+    if (!isFinalTarget || !this.modalWrapper) return;
 
     if (this.props.onClickOutside) {
       this.props.onClickOutside(e);
       return;
     }
-    this.props.onCancel;
+
+    if (this.props.onCancel) {
+      this.props.onCancel(e);
+    }
   }
 
   setModalWrapperRef(modalWrapper: HTMLDivElement | null) {
