@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added 
 - Add an `onClickOutside` event listener on modal, default is cancelation.
+- Added prop `iconPosition` for `buttonIcon`, can be *Left* (default) or *Right*
 
 ## [0.17.2] - 2019-09-20
 ### Updated
