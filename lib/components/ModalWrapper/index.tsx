@@ -6,7 +6,6 @@ import KeyHandler, { KEYDOWN } from 'react-key-handler';
 import { ThemeTypes } from '../../types';
 
 interface OwnProps {
-  onCancel?: (e: React.SyntheticEvent<HTMLElement>) => void,
   onClickOutside?: (e: React.SyntheticEvent<HTMLElement>) => void,
   backgroundOverlay?: boolean,
 }
@@ -29,7 +28,7 @@ type Props = OwnProps & WithSheet<typeof styles>;
 class ModalWrapperImpl extends React.PureComponent<Props, {}> {
   public static defaultProps = {
     backgroundOverlay: true,
-    onCancel: () => {},
+    onClickOutside: () => {},
   };
 
   modalWrapper!: HTMLDivElement | null;
@@ -50,16 +49,9 @@ class ModalWrapperImpl extends React.PureComponent<Props, {}> {
   handleClickOutside(e: React.SyntheticEvent<HTMLElement>) {
     const target = e.target as HTMLElement;
     const isFinalTarget = e.currentTarget === target;
-    if (!isFinalTarget || !this.modalWrapper) return;
+    if (!isFinalTarget || !this.modalWrapper || !this.props.onClickOutside) return;
 
-    if (this.props.onClickOutside) {
-      this.props.onClickOutside(e);
-      return;
-    }
-
-    if (this.props.onCancel) {
-      this.props.onCancel(e);
-    }
+    this.props.onClickOutside(e);
   }
 
   setModalWrapperRef(modalWrapper: HTMLDivElement | null) {
@@ -67,15 +59,15 @@ class ModalWrapperImpl extends React.PureComponent<Props, {}> {
   }
 
   render() {
-    const { classes, onCancel, children, onClickOutside } = this.props;
+    const { classes, onClickOutside, children } = this.props;
 
     return (
       <div className={classes.container} ref={this.setModalWrapperRef} onClick={this.handleClickOutside}>
-        { (onClickOutside || onCancel) &&
+        { onClickOutside &&
         <KeyHandler
           keyEventName={KEYDOWN}
           keyValue="Escape"
-          onKeyHandle={onClickOutside || onCancel}
+          onKeyHandle={onClickOutside}
         />
         }
         {children}

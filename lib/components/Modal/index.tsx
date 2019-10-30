@@ -12,7 +12,6 @@ interface OwnProps {
   title?: string,
   description?: string,
   onCancel?: () => void,
-  onWrapperCancel?: () => void,
   cancelContent?: string,
   onContinue?: () => void,
   onClickOutside?: () => void,
@@ -124,13 +123,13 @@ type Props = OwnProps & WithSheet<typeof styles>;
 
 class ModalImpl extends React.PureComponent<Props, {}> {
 
-  onCancel = () => {
+  onClickOutside = () => {
     // click is disable, stop here
     if (this.props.disableWrapperClick) return;
 
-    const { onWrapperCancel, onCancel } = this.props;
-    if (onWrapperCancel) {
-      onWrapperCancel();
+    const { onClickOutside, onCancel } = this.props;
+    if (onClickOutside) {
+      onClickOutside();
       return;
     }
     onCancel && onCancel();
@@ -139,16 +138,13 @@ class ModalImpl extends React.PureComponent<Props, {}> {
   render() {
     const {
       classes, title, description, cancelContent, continueContent, children,
-      onCancel, onContinue, onClickOutside,
+      onCancel, onContinue,
       isLoading, continueDanger, confirmButtonIsLoading,
       classNameModalContent, classNameModalBody,
     } = this.props;
 
     return (
-      <ModalWrapper
-        onCancel={this.onCancel}
-        onClickOutside={onClickOutside}
-      >
+      <ModalWrapper onClickOutside={this.onClickOutside}>
         <div className={classes.container}>
           <div className={classes.header}>
             <div className={classes.applicationIcon} />
