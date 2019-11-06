@@ -36,7 +36,7 @@ const positionStyle = {
 const styles = {
   button: {
     paddingLeft: 0,
-    padding: ({ iconPosition }: ButtonIconProps) => positionStyle[iconPosition || 'Left'].padding,
+    padding: ({ iconPosition, text }: ButtonIconProps) => text ? positionStyle[iconPosition || 'Left'].padding : 0,
   },
   iconAndTextSpan: {
     display: 'flex',
