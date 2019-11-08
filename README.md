@@ -57,25 +57,29 @@ To work with storybook inside Bx you will need to link the module
 
 #### Storybook
 
-You cna see modifications to you components inside `storybook`, just start it `yarn run storybook` & go to [localhost](http://localhost:6006)
+You can see modifications to you components inside `storybook`, just start it `yarn run storybook` & go to [localhost](http://localhost:6006)
 
 
 #### Expose modifications to BX
 
-Rebuild `@getstaion/theme` via `yarn run build` inside the repo everytime you did change `theme` 
+Rebuild `@getstation/theme` via `yarn run build` inside the repo everytime you did change in `theme` 
 
 #### Pull request
 
 Create a RC version for your PR to be tested:
 
-- `yarn version --preid=rc --prerelease (0.0.0-rc-0)` for a new, or increment RC
-- `yarn version --premajor (1.0.0-rc.0) || --preminor (0.1.0-rc.0) || --prepatch (0.0.1-rc.0)` for a new Version + RC
+- `yarn version --preid=rc --prerelease ` for a new or increment RC, will result in **0.0.0-rc-0**
+- `yarn version --premajor` for a new major RC version, will result in **1.0.0-rc.0**
+- `yarn version --preminor` for a new minor RC version, will result in **0.1.0-rc.0**
+- `yarn version --prepatch` for a new patched version, will result in **0.0.1-rc.0** 
 - `git push --follow-tags` to push rc version version
 
 ## Publish
 - Build docs: `yarn build-docs`
 - verify `CHANGELOG.md` entries
-- Increment version via: (`from 0.0.0`)
-  - `yarn version --major (1.0.0) || --minor (0.1.0) || --patch (0.0.1)`
+- Increment version via: from **0.0.0**
+  - `yarn version --major` => **1.0.0**
+  - `yarn version --minor` => **0.1.0**
+  - `yarn version --patch` => **0.0.1**
   - NB: if the version was a *RC* those command will automatically chaned it a release one with same version !👌
 - Publish: `yarn publish`

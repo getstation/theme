@@ -124,7 +124,7 @@ type Props = OwnProps & WithSheet<typeof styles>;
 class ModalImpl extends React.PureComponent<Props, {}> {
 
   onClickOutside = () => {
-    // click is disable, stop here
+    // click is disabled, stop here
     if (this.props.disableWrapperClick) return;
 
     const { onClickOutside, onCancel } = this.props;
