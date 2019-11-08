@@ -2,10 +2,11 @@ import * as React from 'react';
 import injectSheet, { WithSheet } from 'react-jss';
 // @ts-ignore: no declaration file
 import KeyHandler, { KEYDOWN } from 'react-key-handler';
+
 import { ThemeTypes } from '../../types';
 
 interface OwnProps {
-  onCancel?: (e: React.SyntheticEvent<HTMLElement>) => void,
+  onClickOutside?: (e: React.SyntheticEvent<HTMLElement>) => void,
   backgroundOverlay?: boolean,
 }
 
@@ -27,7 +28,7 @@ type Props = OwnProps & WithSheet<typeof styles>;
 class ModalWrapperImpl extends React.PureComponent<Props, {}> {
   public static defaultProps = {
     backgroundOverlay: true,
-    onCancel: () => {},
+    onClickOutside: () => {},
   };
 
   modalWrapper!: HTMLDivElement | null;
@@ -43,12 +44,14 @@ class ModalWrapperImpl extends React.PureComponent<Props, {}> {
    using Portal kinda disturbs ClickOutside.
    let's do some logic here to check that the click outside
    is definitely outside ModalWrapper before calling hide
+   If no onClickOutside callback sent use onCancel
    **/
   handleClickOutside(e: React.SyntheticEvent<HTMLElement>) {
-    if (!this.modalWrapper) return;
-
     const target = e.target as HTMLElement;
-    if (e.currentTarget === target && this.props.onCancel) this.props.onCancel(e);
+    const isFinalTarget = e.currentTarget === target;
+    if (!isFinalTarget || !this.modalWrapper || !this.props.onClickOutside) return;
+
+    this.props.onClickOutside(e);
   }
 
   setModalWrapperRef(modalWrapper: HTMLDivElement | null) {
@@ -56,18 +59,17 @@ class ModalWrapperImpl extends React.PureComponent<Props, {}> {
   }
 
   render() {
-    const { classes, onCancel, children } = this.props;
+    const { classes, onClickOutside, children } = this.props;
 
     return (
       <div className={classes.container} ref={this.setModalWrapperRef} onClick={this.handleClickOutside}>
-        { onCancel &&
+        { onClickOutside &&
         <KeyHandler
           keyEventName={KEYDOWN}
           keyValue="Escape"
-          onKeyHandle={onCancel}
+          onKeyHandle={onClickOutside}
         />
         }
-
         {children}
       </div>
     );

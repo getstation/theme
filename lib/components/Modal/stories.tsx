@@ -19,6 +19,7 @@ storiesOf('Molecules|Modal', module)
       title={text('Title', 'My modal')}
       description={text('Description', 'My awesome modal here')}
       onCancel={action('cancel')}
+      onClickOutside={action('clicked outside')}
     >
       {text('Content', 'Content of the modal')}
     </Modal>
@@ -31,6 +32,7 @@ storiesOf('Molecules|Modal', module)
         `My awesome modal here: this is a long long long long long long long description`,
       )}
       onCancel={action('cancel')}
+      onClickOutside={action('clicked outside')}
     >
       {text('Content', `Content of the modal: ${loremIpsum}. ${loremIpsum}`)}
     </Modal>
@@ -43,6 +45,7 @@ storiesOf('Molecules|Modal', module)
       onContinue={action('continue')}
       continueDanger={boolean('continueDanger', false)}
       continueContent={text('continueContent', '')}
+      onClickOutside={action('clicked outside')}
     >
       {text('Content', 'Content of the modal with action buttons')}
     </Modal>
@@ -53,6 +56,7 @@ storiesOf('Molecules|Modal', module)
       description={text('Description', 'My awesome modal here')}
       onCancel={action('cancel')}
       onContinue={action('continue')}
+      onClickOutside={action('clicked outside')}
       applicationIcon={text(
         'applicationIcon',
         'https://dl.airtable.com/GFscY2CMS6WaaWzOrjlT_provider-svg-gmail.svg',
@@ -70,6 +74,7 @@ storiesOf('Molecules|Modal', module)
       description={text('Description', 'My awesome modal here')}
       onCancel={action('cancel')}
       onContinue={action('continue')}
+      onClickOutside={action('clicked outside')}
       applicationIcon={text(
         'applicationIcon',
         'https://dl.airtable.com/GFscY2CMS6WaaWzOrjlT_provider-svg-gmail.svg',

@@ -42,8 +42,44 @@ Tadaa 🎉
 
 Don't forget to update the changelog and publish to see the changes when everything is good !
 
+## Dev
+
+#### Requirement for developpement usage
+
+To work with storybook inside Bx you will need to link the module 
+
+- `git clone http://github.com/getstation/theme`
+- `cd theme`
+- `yarn`
+- `yarn link`
+- `cd /path/to/my/Bx`
+- `yarn link @getstation/theme`
+
+#### Storybook
+
+You can see modifications to you components inside `storybook`, just start it `yarn run storybook` & go to [localhost](http://localhost:6006)
+
+
+#### Expose modifications to BX
+
+Rebuild `@getstation/theme` via `yarn run build` inside the repo everytime you did change in `theme` 
+
+#### Pull request
+
+Create a RC version for your PR to be tested:
+
+- `yarn version --preid=rc --prerelease ` for a new or increment RC, will result in **0.0.0-rc-0**
+- `yarn version --premajor` for a new major RC version, will result in **1.0.0-rc.0**
+- `yarn version --preminor` for a new minor RC version, will result in **0.1.0-rc.0**
+- `yarn version --prepatch` for a new patched version, will result in **0.0.1-rc.0** 
+- `git push --follow-tags` to push rc version version
+
 ## Publish
 - Build docs: `yarn build-docs`
-- Bump version in `package.json`
 - verify `CHANGELOG.md` entries
-- Publish: `npm publish`
+- Increment version via: from **0.0.0**
+  - `yarn version --major` => **1.0.0**
+  - `yarn version --minor` => **0.1.0**
+  - `yarn version --patch` => **0.0.1**
+  - NB: if the version was a *RC* those command will automatically chaned it a release one with same version !👌
+- Publish: `yarn publish`
