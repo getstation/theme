@@ -30,8 +30,7 @@ export class BrowserXThemeProvider extends React.Component<BrowserXThemeProvider
  */
 export function withBrowserXTheme<P>(
   component: React.ComponentType<P & { theme: ThemeTypes }>
-): React.ComponentType<Pick<P, Exclude<keyof P, "theme">>> {
+): React.ComponentType<Pick<P, Exclude<keyof P, 'theme'>>> {
   // @ts-ignore ?
   return withTheme(component);
-};
-
+}
