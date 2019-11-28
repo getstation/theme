@@ -91,12 +91,42 @@ ICON_NAME = <span class="hljs-string">'xxx'</span>
 				<hr>
 				<p>Tadaa 🎉</p>
 				<p>Don&#39;t forget to update the changelog and publish to see the changes when everything is good !</p>
+				<h2 id="dev">Dev</h2>
+				<h4 id="requirement-for-developpement-usage">Requirement for developpement usage</h4>
+				<p>To work with storybook inside Bx you will need to link the module </p>
+				<ul>
+					<li><code>git clone http://github.com/getstation/theme</code></li>
+					<li><code>cd theme</code></li>
+					<li><code>yarn</code></li>
+					<li><code>yarn link</code></li>
+					<li><code>cd /path/to/my/Bx</code></li>
+					<li><code>yarn link @getstation/theme</code></li>
+				</ul>
+				<h4 id="storybook">Storybook</h4>
+				<p>You can see modifications to you components inside <code>storybook</code>, just start it <code>yarn run storybook</code> &amp; go to <a href="http://localhost:6006">localhost</a></p>
+				<h4 id="expose-modifications-to-bx">Expose modifications to BX</h4>
+				<p>Rebuild <code>@getstation/theme</code> via <code>yarn run build</code> inside the repo everytime you did change in <code>theme</code> </p>
+				<h4 id="pull-request">Pull request</h4>
+				<p>Create a RC version for your PR to be tested:</p>
+				<ul>
+					<li><code>yarn version --preid=rc --prerelease</code> for a new or increment RC, will result in <strong>0.0.0-rc-0</strong></li>
+					<li><code>yarn version --premajor</code> for a new major RC version, will result in <strong>1.0.0-rc.0</strong></li>
+					<li><code>yarn version --preminor</code> for a new minor RC version, will result in <strong>0.1.0-rc.0</strong></li>
+					<li><code>yarn version --prepatch</code> for a new patched version, will result in <strong>0.0.1-rc.0</strong> </li>
+					<li><code>git push --follow-tags</code> to push rc version version</li>
+				</ul>
 				<h2 id="publish">Publish</h2>
 				<ul>
 					<li>Build docs: <code>yarn build-docs</code></li>
-					<li>Bump version in <code>package.json</code></li>
 					<li>verify <code>CHANGELOG.md</code> entries</li>
-					<li>Publish: <code>npm publish</code></li>
+					<li>Increment version via: from <strong>0.0.0</strong><ul>
+							<li><code>yarn version --major</code> =&gt; <strong>1.0.0</strong></li>
+							<li><code>yarn version --minor</code> =&gt; <strong>0.1.0</strong></li>
+							<li><code>yarn version --patch</code> =&gt; <strong>0.0.1</strong></li>
+							<li>NB: if the version was a <em>RC</em> those command will automatically chaned it a release one with same version !👌</li>
+						</ul>
+					</li>
+					<li>Publish: <code>yarn publish</code></li>
 				</ul>
 			</div>
 		</div>
