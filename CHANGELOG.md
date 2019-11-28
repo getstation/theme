@@ -5,11 +5,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+## [0.20.0] - 2019-11-28
+### Added
+- Added icon-info
+
 ## [0.19.0] - 2019-11-17
+### Added
 - Added `withBrowserXTheme`
 
 ## [0.18.0] - 2019-11-17
-### Added 
+### Added
 - Add an `onClickOutside` event listener on modal, default is cancelation.
 - Added prop `iconPosition` for `buttonIcon`, can be *Left* (default) or *Right*
 
