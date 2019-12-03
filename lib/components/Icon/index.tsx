@@ -113,4 +113,5 @@ export enum IconSymbol {
   ARROW_UP_RIGHT = 'arrow-up-right',
   ARROW_UP_RIGHT_PLUS = 'arrow-up-right-plus',
   INFO = 'info',
+  QUOTE = 'quote',
 }
