@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+### Added
+- Added 7 new icons (send, link, jobs, at, apps, checkround, cog)
+
 ## [0.20.0] - 2019-11-28
 ### Added
 - Added icon-info
