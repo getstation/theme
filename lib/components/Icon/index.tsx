@@ -114,4 +114,11 @@ export enum IconSymbol {
   ARROW_UP_RIGHT_PLUS = 'arrow-up-right-plus',
   INFO = 'info',
   QUOTE = 'quote',
+  SEND_PAPERPLANE = 'send-paperplane',
+  LINK_CHAIN = 'link-chain',
+  JOBS = 'jobs',
+  AT = 'at',
+  APPS = 'apps',
+  CHECKROUND = 'checkround',
+  COG_LINE = 'cog-line',
 }
