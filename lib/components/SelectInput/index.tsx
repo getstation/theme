@@ -60,7 +60,7 @@ interface OwnProps {
 export interface SelectInputOption {
   value: string,
   label: string,
-  picture: string,
+  picture?: string,
 }
 
 type ValueType<T> = T | ReadonlyArray<T> | null | undefined;
@@ -86,12 +86,14 @@ class SelectInputImpl extends React.Component<Props> {
 
     return (
       <components.Option {...componentProps}>
-        <RoundPicture
-          className={classes.roundPicture}
-          item={data}
-          size={22}
-          borderColor="transparent"
-        />
+        {data.picture &&
+          <RoundPicture
+            className={classes.roundPicture}
+            item={data}
+            size={22}
+            borderColor="transparent"
+          />
+        }
         <div>{data.label}</div>
       </components.Option>
     );
