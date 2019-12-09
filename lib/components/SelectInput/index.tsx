@@ -27,6 +27,15 @@ const customStyles = {
     color: '#292929',
     backgroundColor: '#FFFFFF',
   }),
+  indicatorSeparator: (provided: any, _state: any) => ({
+    ...provided,
+    backgroundColor: 'green',
+  }),
+  indicatorsContainer: (provided: any, _state: any) => ({
+    ...provided,
+    borderRadius: '0 30px 30px 0',
+    backgroundColor: '#3767ac',
+  }),
   menu: (provided: any, state: any) => ({
     ...provided,
     border: '1px solid #c9c9c9',
