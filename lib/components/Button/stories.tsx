@@ -13,6 +13,7 @@ storiesOf('Atoms|Button', module)
     withInfo({ text: 'All buttons' })(
       withNotes('All buttons  ')(
         () => {
+          const mainContent = text('main button content', 'Main Button');
           const primaryContent = text('primary button content', 'Primary Button');
           const secondaryContent = text('secondary button content', 'Secondary Button');
           const tertiaryContent = text('tertiary button content', 'Tertiary Button');
@@ -25,7 +26,7 @@ storiesOf('Atoms|Button', module)
               <h4>XXSMALL Button</h4>
               <div>
                 <Button style={style} btnSize={Size.XXSMALL} btnStyle={Style.MAIN} isLoading={isLoading}>
-                  {primaryContent}
+                  {mainContent}
                 </Button>
                 <Button style={style} btnSize={Size.XXSMALL} btnStyle={Style.PRIMARY} isLoading={isLoading}>
                   {primaryContent}
@@ -46,7 +47,7 @@ storiesOf('Atoms|Button', module)
               <h4>XSMALL Button</h4>
               <div>
                 <Button style={style} btnSize={Size.XSMALL} btnStyle={Style.MAIN} isLoading={isLoading}>
-                  {primaryContent}
+                  {mainContent}
                 </Button>
                 <Button style={style} btnSize={Size.XSMALL} btnStyle={Style.PRIMARY} isLoading={isLoading}>
                   {primaryContent}
@@ -67,7 +68,7 @@ storiesOf('Atoms|Button', module)
               <h4>SMALL Button</h4>
               <div>
                 <Button style={style} btnSize={Size.SMALL} btnStyle={Style.MAIN} isLoading={isLoading}>
-                  {primaryContent}
+                  {mainContent}
                 </Button>
                 <Button style={style} btnSize={Size.SMALL} btnStyle={Style.PRIMARY} isLoading={isLoading}>
                   {primaryContent}
@@ -88,7 +89,7 @@ storiesOf('Atoms|Button', module)
               <h4>NORMAL Button</h4>
               <div>
                 <Button style={style} btnSize={Size.NORMAL} btnStyle={Style.MAIN} isLoading={isLoading}>
-                  {primaryContent}
+                  {mainContent}
                 </Button>
                 <Button style={style} btnSize={Size.NORMAL} btnStyle={Style.PRIMARY} isLoading={isLoading}>
                   {primaryContent}
@@ -109,7 +110,7 @@ storiesOf('Atoms|Button', module)
               <h4>BIG Button</h4>
               <div>
                 <Button style={style} btnSize={Size.BIG} btnStyle={Style.MAIN} isLoading={isLoading}>
-                  {primaryContent}
+                  {mainContent}
                 </Button>
                 <Button style={style} btnSize={Size.BIG} btnStyle={Style.PRIMARY} isLoading={isLoading}>
                   {primaryContent}
