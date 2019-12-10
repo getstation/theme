@@ -79,7 +79,7 @@ const styles = (theme: ThemeTypes) => createStyles({
     backgroundColor: '#292929',
     color: '#fff',
     '&:hover:enabled, &:active:enabled': {
-      color: 'rgba(255, 255, 255, 0.8)',
+      filter: 'brightness(140%)',
     },
   },
   buttonSecondary: {
