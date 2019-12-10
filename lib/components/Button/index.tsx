@@ -8,7 +8,7 @@ export enum Size {
   BIG, NORMAL, SMALL, XSMALL, XXSMALL, XXXSMALL,
 }
 export enum Style {
-  PRIMARY, SECONDARY, TERTIARY, LINK, DANGER,
+  MAIN, PRIMARY, SECONDARY, TERTIARY, LINK, DANGER,
 }
 
 export interface ButtonOwnProps extends JSX.IntrinsicClassAttributes<ButtonImpl> {
@@ -35,6 +35,7 @@ const styles = (theme: ThemeTypes) => createStyles({
     lineHeight: '34px',
     fontSize: '11px',
     fontWeight: 700,
+    cursor: 'pointer',
     transition: 'all 250ms ease-out',
     '&:disabled': {
       cursor: 'default',
@@ -66,6 +67,13 @@ const styles = (theme: ThemeTypes) => createStyles({
     fontSize: '13px',
     height: '42px',
     lineHeight: '42px',
+  },
+  buttonMain: {
+    backgroundColor: '#3070CD',
+    color: '#fff',
+    '&:hover:enabled, &:active:enabled': {
+      backgroundColor: 'rgb(49, 101, 177)',
+    },
   },
   buttonPrimary: {
     backgroundColor: '#292929',
@@ -144,6 +152,7 @@ export class ButtonImpl extends React.Component<ButtonProps & InjectSheetProps, 
     };
 
     const styleClassNames = {
+      [Style.MAIN]: classes.buttonMain,
       [Style.PRIMARY]: classes.buttonPrimary,
       [Style.SECONDARY]: classes.buttonSecondary,
       [Style.TERTIARY]: classes.buttonTertiary,
