@@ -40,12 +40,19 @@ const customStyles = {
   }),
   indicatorSeparator: (provided: any, _state: any) => ({
     ...provided,
-    backgroundColor: '#3767ac',
+    backgroundColor: '#3070cd',
   }),
   indicatorsContainer: (provided: any, _state: any) => ({
     ...provided,
     borderRadius: '0 30px 30px 0',
-    backgroundColor: '#3767ac',
+    backgroundColor: '#3070cd',
+    '&:hover': {
+      backgroundColor: '#3767ac',
+    },
+  }),
+  dropdownIndicator: (provided: any, _state: any) => ({
+    ...provided,
+    color: 'white !important',
   }),
   menu: (provided: any, state: any) => ({
     ...provided,
