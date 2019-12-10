@@ -1,14 +1,25 @@
 import React from 'react';
 import Select, { components } from 'react-select';
 import injectSheet, { WithSheet } from 'react-jss';
-import { IgnoreJSSNested } from '../../types';
-import { RoundPicture } from '../RoundPicture';
 import { OptionProps } from 'react-select/src/components/Option';
 import { NoticeProps } from 'react-select/src/components/Menu';
+
+import { theme } from '../../jss';
+import { IgnoreJSSNested } from '../../types';
+import { RoundPicture } from '../RoundPicture';
 
 const styles = {
   roundPicture: {
     marginRight: 12,
+  },
+  label: {
+    display: 'block',
+    margin: [0, 0, 8, 5] as any,
+    ...theme.fontMixin(12),
+    color: theme.colors.gray.middle,
+  },
+  select: {
+
   },
 };
 
@@ -29,7 +40,7 @@ const customStyles = {
   }),
   indicatorSeparator: (provided: any, _state: any) => ({
     ...provided,
-    backgroundColor: 'green',
+    backgroundColor: '#3767ac',
   }),
   indicatorsContainer: (provided: any, _state: any) => ({
     ...provided,
@@ -64,6 +75,7 @@ interface OwnProps {
   placeholder?: string,
   noOptionsMessage?: string,
   className?: string,
+  label?: string,
 }
 
 export interface SelectInputOption {
@@ -119,21 +131,26 @@ class SelectInputImpl extends React.Component<Props> {
   }
 
   render() {
-    const { className, options, placeholder, value } = this.props;
+    const { classes, className, options, placeholder, value, label } = this.props;
 
     return (
-      <Select<SelectInputOption>
-        className={className}
-        placeholder={placeholder}
-        value={value}
-        onChange={this.handleChange}
-        options={options}
-        styles={customStyles}
-        components={{
-          Option: this.renderOption,
-          NoOptionsMessage: this.renderNoOptionsMessage,
-        }}
-      />
+      <div className={className}>
+        { label &&
+          <div className={classes.label}>{label}</div>
+        }
+        <Select<SelectInputOption>
+          className={classes.select}
+          placeholder={placeholder}
+          value={value}
+          onChange={this.handleChange}
+          options={options}
+          styles={customStyles}
+          components={{
+            Option: this.renderOption,
+            NoOptionsMessage: this.renderNoOptionsMessage,
+          }}
+        />
+      </div>
     );
   }
 }
