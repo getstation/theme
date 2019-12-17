@@ -10,7 +10,7 @@
     "typedoc": "rimraf ./docs/typedoc && typedoc --out ./docs/typedoc ./lib",
     "prepublishOnly": "rimraf ./dist && tsc",
     "storybook": "start-storybook -s ./ -p 6006",
-    "build-storybook": "rimraf ./docs/storybook && build-storybook -s ./static -o ./docs/storybook/",
+    "build-storybook": "rimraf ./docs/storybook && build-storybook",
     "build-docs": "yarn run build-storybook && yarn run typedoc",
     "lint": "tslint -p .",
     "lint:ci": "tslint -p . -c tslint-ci.json",
