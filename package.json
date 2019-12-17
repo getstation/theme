@@ -1,6 +1,6 @@
 {
   "name": "@getstation/theme",
-  "version": "0.22.0-rc.0",
+  "version": "1.0.0-rc",
   "description": "Station Theme & Styleguide",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -23,11 +23,9 @@
     "@types/react": "^16.4.0"
   },
   "dependencies": {
-    "@types/glob": "^7.1.1",
     "classnames": "^2.2.5",
     "color": "^3.0.0",
     "create-react-context": "^0.2.2",
-    "glob": "^7.1.6",
     "jss-nested": "^6.0.1",
     "linked-map": "^2.2.2",
     "mousetrap": "^1.6.2",
@@ -58,6 +56,7 @@
     "@svgr/core": "^4.3.3",
     "@svgr/plugin-prettier": "^4.3.2",
     "@types/classnames": "^2.2.6",
+    "@types/glob": "^7.1.1",
     "@types/color": "^3.0.0",
     "@types/mousetrap": "^1.6.0",
     "@types/ms": "^0.7.30",
@@ -75,6 +74,7 @@
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
     "change-case": "^4.1.0",
+    "glob": "^7.1.6",
     "popper.js": "^1.14.4",
     "rimraf": "^2.6.2",
     "ts-loader": "^3.0.0",
