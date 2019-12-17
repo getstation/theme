@@ -1,7 +1,7 @@
 import * as React from 'react';
 import injectSheet from 'react-jss';
 import { ThemeTypes } from '../../types';
-import svg, { SvgSymbol as IconSymbol} from './svg';
+import svg, { SvgSymbol as IconSymbol } from './svg';
 import classNames = require('classnames');
 
 export { SvgSymbol as IconSymbol } from './svg';

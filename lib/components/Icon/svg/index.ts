@@ -127,7 +127,7 @@ export enum SvgSymbol {
   UPDATE = 'update',
   USER_ADD = 'user-add',
   USER = 'user',
-};
+}
 
 type SvgComponents = {
   [key in SvgSymbol]: React.SFC<React.SVGProps<SVGSVGElement>>;

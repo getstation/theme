@@ -23,6 +23,7 @@ function template(
   const typeScriptTpl = template.smart({ plugins: ['typescript'] })
   return typeScriptTpl.ast`
     ${AUTO_GENERATED_FILE_HEADER}
+    ${'/* tslint:disable:max-line-length */\n'}
     import * as React from 'react';
     const ${componentName} = (props: React.SVGProps<SVGSVGElement>) => ${jsx};
     export default ${componentName};
@@ -60,7 +61,7 @@ export enum SvgSymbol {
 ${svgs.map(svg =>
 `  ${constantCase(svg)} = '${svg}',`
 ).join('\n')}
-};
+}
 
 type SvgComponents = {
   [key in SvgSymbol]: React.SFC<React.SVGProps<SVGSVGElement>>;
