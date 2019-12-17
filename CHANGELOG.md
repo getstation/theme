@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added 7 new icons (send, link, jobs, at, apps, checkround, cog)
 
 ### Updated
-- Add label to SelectInput + fix hover styles on Buttons + add blue Button
+- Add label & error to SelectInput + fix hover styles on Buttons + add blue Button
 
 ## [0.20.0] - 2019-11-28
 ### Added
