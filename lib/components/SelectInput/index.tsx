@@ -40,7 +40,7 @@ const customStyles = {
   container: (provided: any, _state: any) => ({
     ...provided,
     minWidth: 200,
-    height: 34,
+    padding: 2,
   }),
   control: (provided: any, _state: any) => ({
     ...provided,
