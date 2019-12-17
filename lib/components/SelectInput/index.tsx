@@ -12,14 +12,27 @@ const styles = {
   roundPicture: {
     marginRight: 12,
   },
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
   label: {
     display: 'block',
     margin: [0, 0, 8, 5] as any,
     ...theme.fontMixin(12),
-    color: theme.colors.gray.middle,
+    color: (({ error }: OwnProps) => error ? theme.colors.error : theme.colors.gray.middle) as any,
+  },
+  error: {
+    ...theme.fontMixin(10, 'bold'),
+    color: theme.colors.error,
+    textAlign: 'right',
+    padding: [0, 5, 8, 10] as any,
   },
   select: {
-
+    '& > div': {
+      border: (({ error }: OwnProps) => error ? `2px solid ${theme.colors.error} !important` : '1px solid rgba(41, 41, 41, 0.1)') as any,
+      color: (({ error }: OwnProps) => error ? theme.colors.error : '#292929') as any,
+    },
   },
 };
 
@@ -37,6 +50,7 @@ const customStyles = {
     border: '1px solid rgba(41, 41, 41, 0.1)',
     color: '#292929',
     backgroundColor: '#FFFFFF',
+    cursor: 'pointer',
   }),
   indicatorSeparator: (provided: any, _state: any) => ({
     ...provided,
@@ -61,6 +75,7 @@ const customStyles = {
     ...provided,
     display: 'flex',
     alignItems: 'center',
+    cursor: 'pointer',
     fontSize: 12,
     padding: '5px 20px',
     color: state.isFocused ? 'white' : 'initial',
@@ -80,6 +95,8 @@ interface OwnProps {
   noOptionsMessage?: string,
   className?: string,
   label?: string,
+  error?: string,
+  forceHeader?: boolean,
 }
 
 export interface SelectInputOption {
@@ -134,14 +151,30 @@ class SelectInputImpl extends React.Component<Props> {
     );
   }
 
+  renderHeader() {
+    const { classes, label, error, forceHeader } = this.props;
+    if (!forceHeader && !label && !error) return null;
+
+    return (
+      <div className={classes!.header}>
+        {label
+          ? <label className={classes!.label}>{label}</label>
+          : <label className={classes!.label}>&nbsp;</label>
+        }
+
+        {error &&
+        <span className={classes!.error}>{error}</span>
+        }
+      </div>
+    );
+  }
+
   render() {
-    const { classes, className, options, placeholder, value, label } = this.props;
+    const { classes, className, options, placeholder, value } = this.props;
 
     return (
       <div className={className}>
-        { label &&
-          <div className={classes.label}>{label}</div>
-        }
+        {this.renderHeader()}
         <Select<SelectInputOption>
           className={classes.select}
           placeholder={placeholder}

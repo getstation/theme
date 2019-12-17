@@ -8,7 +8,7 @@ import { SelectInput } from './index';
 import { action } from '@storybook/addon-actions';
 import { Modal } from '../Modal';
 
-const renderSelectInput = () => {
+const renderSelectInput = (error?: string) => {
   return (
   <SelectInput
     options={[
@@ -26,6 +26,7 @@ const renderSelectInput = () => {
     onChange={action('onChange')}
     placeholder="Search members from your organization"
     noOptionsMessage="No one found."
+    error={error}
   />);
 };
 
@@ -50,4 +51,7 @@ storiesOf('Molecules|SelectInput', module)
         {renderSelectInput()}
       </div>
     </Modal>
+  ))
+  .add('Select Input with error', () => (
+    renderSelectInput('Field required')
   ));
