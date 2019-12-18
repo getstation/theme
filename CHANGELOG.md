@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 ### Changed
-- Use generated SVG components for icons rather than loading a SVG file (APP-645)
+- [Breaking change] Use generated SVG components for icons rather than loading a SVG file (APP-645)
 
 ## [0.22.0] - 2019-12-17
 ### Added
