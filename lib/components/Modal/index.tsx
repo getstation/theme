@@ -95,6 +95,7 @@ const styles = (theme: ThemeTypes) => createStyles({
     overflow : 'scroll',
     paddingLeft: 15,
     paddingRight: 15,
+    boxSizing: 'border-box',
   },
   loading: {
     ...theme.mixins.flexbox.containerCenter,

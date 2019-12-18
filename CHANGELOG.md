@@ -8,8 +8,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Use generated SVG components for icons rather than loading a SVG file (APP-645)
 
+## [0.22.0] - 2019-12-17
 ### Added
 - Added 7 new icons (send, link, jobs, at, apps, checkround, cog)
+
+### Updated
+- Add label & error to SelectInput + fix hover styles on Buttons + add blue Button
 
 ## [0.20.0] - 2019-11-28
 ### Added

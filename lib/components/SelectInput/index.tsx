@@ -1,14 +1,38 @@
 import React from 'react';
 import Select, { components } from 'react-select';
 import injectSheet, { WithSheet } from 'react-jss';
-import { IgnoreJSSNested } from '../../types';
-import { RoundPicture } from '../RoundPicture';
 import { OptionProps } from 'react-select/src/components/Option';
 import { NoticeProps } from 'react-select/src/components/Menu';
+
+import { theme } from '../../jss';
+import { IgnoreJSSNested } from '../../types';
+import { RoundPicture } from '../RoundPicture';
 
 const styles = {
   roundPicture: {
     marginRight: 12,
+  },
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  label: {
+    display: 'block',
+    margin: [0, 0, 8, 5] as any,
+    ...theme.fontMixin(12),
+    color: (({ error }: OwnProps) => error ? theme.colors.error : theme.colors.gray.middle) as any,
+  },
+  error: {
+    ...theme.fontMixin(10, 'bold'),
+    color: theme.colors.error,
+    textAlign: 'right',
+    padding: [0, 5, 8, 10] as any,
+  },
+  select: {
+    '& > div': {
+      border: (({ error }: OwnProps) => error ? `2px solid ${theme.colors.error} !important` : '1px solid rgba(41, 41, 41, 0.1)') as any,
+      color: (({ error }: OwnProps) => error ? theme.colors.error : '#292929') as any,
+    },
   },
 };
 
@@ -16,7 +40,7 @@ const customStyles = {
   container: (provided: any, _state: any) => ({
     ...provided,
     minWidth: 200,
-    height: 34,
+    padding: 2,
   }),
   control: (provided: any, _state: any) => ({
     ...provided,
@@ -26,6 +50,20 @@ const customStyles = {
     border: '1px solid rgba(41, 41, 41, 0.1)',
     color: '#292929',
     backgroundColor: '#FFFFFF',
+    cursor: 'pointer',
+  }),
+  indicatorSeparator: (provided: any, _state: any) => ({
+    ...provided,
+    backgroundColor: '#3070cd',
+  }),
+  indicatorsContainer: (provided: any, _state: any) => ({
+    ...provided,
+    borderRadius: '0 30px 30px 0',
+    backgroundColor: '#3070cd',
+  }),
+  dropdownIndicator: (provided: any, _state: any) => ({
+    ...provided,
+    color: 'white !important',
   }),
   menu: (provided: any, state: any) => ({
     ...provided,
@@ -37,6 +75,7 @@ const customStyles = {
     ...provided,
     display: 'flex',
     alignItems: 'center',
+    cursor: 'pointer',
     fontSize: 12,
     padding: '5px 20px',
     color: state.isFocused ? 'white' : 'initial',
@@ -55,12 +94,15 @@ interface OwnProps {
   placeholder?: string,
   noOptionsMessage?: string,
   className?: string,
+  label?: string,
+  error?: string,
+  forceHeader?: boolean,
 }
 
 export interface SelectInputOption {
   value: string,
   label: string,
-  picture: string,
+  picture?: string,
 }
 
 type ValueType<T> = T | ReadonlyArray<T> | null | undefined;
@@ -86,12 +128,14 @@ class SelectInputImpl extends React.Component<Props> {
 
     return (
       <components.Option {...componentProps}>
-        <RoundPicture
-          className={classes.roundPicture}
-          item={data}
-          size={22}
-          borderColor="transparent"
-        />
+        {data.picture &&
+          <RoundPicture
+            className={classes.roundPicture}
+            item={data}
+            size={22}
+            borderColor="transparent"
+          />
+        }
         <div>{data.label}</div>
       </components.Option>
     );
@@ -107,22 +151,43 @@ class SelectInputImpl extends React.Component<Props> {
     );
   }
 
-  render() {
-    const { className, options, placeholder, value } = this.props;
+  renderHeader() {
+    const { classes, label, error, forceHeader } = this.props;
+    if (!forceHeader && !label && !error) return null;
 
     return (
-      <Select<SelectInputOption>
-        className={className}
-        placeholder={placeholder}
-        value={value}
-        onChange={this.handleChange}
-        options={options}
-        styles={customStyles}
-        components={{
-          Option: this.renderOption,
-          NoOptionsMessage: this.renderNoOptionsMessage,
-        }}
-      />
+      <div className={classes!.header}>
+        {label
+          ? <label className={classes!.label}>{label}</label>
+          : <label className={classes!.label}>&nbsp;</label>
+        }
+
+        {error &&
+        <span className={classes!.error}>{error}</span>
+        }
+      </div>
+    );
+  }
+
+  render() {
+    const { classes, className, options, placeholder, value } = this.props;
+
+    return (
+      <div className={className}>
+        {this.renderHeader()}
+        <Select<SelectInputOption>
+          className={classes.select}
+          placeholder={placeholder}
+          value={value}
+          onChange={this.handleChange}
+          options={options}
+          styles={customStyles}
+          components={{
+            Option: this.renderOption,
+            NoOptionsMessage: this.renderNoOptionsMessage,
+          }}
+        />
+      </div>
     );
   }
 }
