@@ -1,7 +1,9 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import injectSheet from 'react-jss';
-import { Button, ButtonProps, Icon, IconSymbol, Size } from '../..';
+
+import { Button, ButtonProps, Size } from '../Button';
+import { Icon, IconSymbol } from '../Icon';
 
 // outer props
 export type ButtonIconProps = ButtonProps & {
