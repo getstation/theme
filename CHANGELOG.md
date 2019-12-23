@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+## [1.0.0] - 2019-12-23
 ### Changed
 - [Breaking change] Use generated SVG components for icons rather than loading a SVG file (APP-645)
 
