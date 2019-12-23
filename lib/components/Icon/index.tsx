@@ -1,8 +1,10 @@
-import * as path from 'path';
 import * as React from 'react';
 import injectSheet from 'react-jss';
 import { ThemeTypes } from '../../types';
+import svg, { SvgSymbol as IconSymbol } from './svg';
 import classNames = require('classnames');
+
+export { SvgSymbol as IconSymbol } from './svg';
 
 export interface IconOwnProps {
   classes?: {
@@ -34,91 +36,12 @@ export class IconImpl extends React.PureComponent<IconProps, {}> {
       if (prop in svgProps) delete (svgProps as any)[prop];
     });
 
+    const SvgComponent = svg[symbolId];
+
     return (
-      <svg
-        className={classNames(classes!.icon, this.props.className)}
-        {...svgProps}
-      >
-        <use xlinkHref={getIconHref(symbolId)} />
-      </svg>
+      <SvgComponent className={classNames(classes!.icon, this.props.className)} {...svgProps} />
     );
   }
 }
 
-const STATIC_PATH = path.join(__dirname, '../../../static');
-function getIconHref(symbolId: IconSymbol) {
-  return path.join(STATIC_PATH, `Icons.svg#icon--${symbolId}`);
-}
-
 export const Icon = injectSheet(styles)(IconImpl) as typeof IconImpl;
-
-export enum IconSymbol {
-  APP_ICON_PLACEHOLDER = 'app-icon-placeholder',
-  CHAT = 'chat',
-  CHECKMARK = 'checkmark',
-  CROSS = 'cross',
-  DETACH = 'detach',
-  DOWNLOAD = 'download',
-  FOCUS = 'focus',
-  MARK_READ = 'mark-read',
-  NAV_BACK = 'nav-back',
-  NAV_FORTH = 'nav-forth',
-  NOTIFICATION = 'notification',
-  PLUS = 'plus',
-  QUICK_SEARCH = 'quick-search',
-  REATTACH = 'reattach',
-  SEARCH = 'search',
-  SHOW = 'show',
-  STAR = 'star',
-  SUBVIEW_COPIED = 'subview-copied',
-  SUBVIEW_COPY = 'subview-copy',
-  SUBVIEW_MINIMIZE = 'subview-minimize',
-  SUBVIEW_OPEN = 'subview-open',
-  TIME = 'time',
-  TRASH = 'trash',
-  USER = 'user',
-  USER_ADD = 'user-add',
-  COG = 'cog',
-  UNHAPPY = 'unhappy',
-  DOC = 'doc',
-  SHEET = 'sheet',
-  SLIDE = 'slide',
-  UPDATE = 'update',
-  HEARTFILLED = 'heartfilled',
-  HEARTSTROKE = 'heartstroke',
-  LIFEBOAT = 'lifeboat',
-  NUDGE = 'nudge',
-  BELL = 'bell',
-  BELL_OFF = 'bell-off',
-  ARROW_LEFT = 'arrow-left',
-  ARROW_DOWN_LEFT = 'arrow-down-left',
-  ARROW_RIGHT = 'arrow-right',
-  LOADING = 'loading',
-  EXTENSION = 'extension',
-  SUPPORT = 'support',
-  TEXT = 'text',
-  SEND = 'send',
-  HINT = 'hint',
-  RETURN = 'return',
-  RECENT = 'recent',
-  RECENT_ARROW = 'recent-arrow',
-  PIN = 'pin',
-  BURGER = 'burger',
-  PENCIL = 'pencil',
-  LOCK = 'lock',
-  JOIN = 'join',
-  LEAVE = 'leave',
-  ARROW_FORWARD = 'arrow-forward',
-  ARROW_BACK = 'arrow-back',
-  ARROW_UP_RIGHT = 'arrow-up-right',
-  ARROW_UP_RIGHT_PLUS = 'arrow-up-right-plus',
-  INFO = 'info',
-  QUOTE = 'quote',
-  SEND_PAPERPLANE = 'send-paperplane',
-  LINK_CHAIN = 'link-chain',
-  JOBS = 'jobs',
-  AT = 'at',
-  APPS = 'apps',
-  CHECKROUND = 'checkround',
-  COG_LINE = 'cog-line',
-}

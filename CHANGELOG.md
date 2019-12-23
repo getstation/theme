@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unreleased
+### Changed
+- [Breaking change] Use generated SVG components for icons rather than loading a SVG file (APP-645)
+
 ## [0.22.0] - 2019-12-17
 ### Added
 - Added 7 new icons (send, link, jobs, at, apps, checkround, cog)
