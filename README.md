@@ -45,18 +45,18 @@ Rebuild `@getstation/theme` via `yarn run build` inside the repo everytime you d
 
 Create a RC version for your PR to be tested:
 
-- `yarn version --preid=rc --prerelease ` for a new or increment RC, will result in **0.0.0-rc-0**
-- `yarn version --premajor` for a new major RC version, will result in **1.0.0-rc.0**
-- `yarn version --preminor` for a new minor RC version, will result in **0.1.0-rc.0**
-- `yarn version --prepatch` for a new patched version, will result in **0.0.1-rc.0** 
+- `npm version --preid=rc --prerelease ` for a new or increment RC, will result in **0.0.0-rc-0**
+- `npm version --premajor` for a new major RC version, will result in **1.0.0-rc.0**
+- `npm version --preminor` for a new minor RC version, will result in **0.1.0-rc.0**
+- `npm version --prepatch` for a new patched version, will result in **0.0.1-rc.0** 
 - `git push --follow-tags` to push rc version version
 
 ## Publish
 - Build docs: `yarn build-docs`
 - verify `CHANGELOG.md` entries
 - Increment version via: from **0.0.0**
-  - `yarn version --major` => **1.0.0**
-  - `yarn version --minor` => **0.1.0**
-  - `yarn version --patch` => **0.0.1**
+  - `npm version --major` => **1.0.0**
+  - `npm version --minor` => **0.1.0**
+  - `npm version --patch` => **0.0.1**
   - NB: if the version was a *RC* those command will automatically chaned it a release one with same version !👌
-- Publish: `yarn publish`
+- Publish: `npm publish`

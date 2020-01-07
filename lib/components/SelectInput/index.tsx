@@ -90,7 +90,9 @@ const customStyles = {
 interface OwnProps {
   options: SelectInputOption[],
   value: SelectInputOption | null,
+  inputValue?: string,
   onChange: (option: SelectInputOption) => void,
+  onInputChange?: (value: string) => void,
   placeholder?: string,
   noOptionsMessage?: string,
   className?: string,
@@ -179,7 +181,9 @@ class SelectInputImpl extends React.Component<Props> {
           className={classes.select}
           placeholder={placeholder}
           value={value}
+          inputValue={this.props.inputValue}
           onChange={this.handleChange}
+          onInputChange={this.props.onInputChange}
           options={options}
           styles={customStyles}
           components={{
