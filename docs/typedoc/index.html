@@ -72,25 +72,12 @@
 				<h2 id="typescript">TypeScript</h2>
 				<p><a href="https://getstation.github.io/theme/typedoc/index.html">https://getstation.github.io/theme/typedoc/index.html</a></p>
 				<h2 id="how-to-add-an-icon">How to add an icon</h2>
-				<p>To add an icon to the theme, follow this 2 steps:</p>
-				<p><strong>1 - Add the svg to the static list</strong></p>
 				<ul>
-					<li>Open <code>static/Icons.svg</code></li>
-					<li>Add the svg path to the list of symbol, like:<pre><code><span class="hljs-tag">&lt;<span class="hljs-name">symbol</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"icon--xxx"</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">"[...]"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">"[...]"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">symbol</span>&gt;</span></code></pre>Replace <code>xxx</code> by the name of your icon</li>
+					<li>Add the SVG icon in <code>resources/icons</code> with param-case filename. Example: <code>indian-pale-ale.svg</code>.</li>
+					<li>Run <code>yarn run generate:icons</code></li>
+					<li>Commit SVG resource and generated files in <code>lib/components/Icon/svg</code></li>
+					<li>Use the new icon via: <code>&lt;Icon symbolId={SvgSymbol.INDIAN_PALE_ALE} /&gt;</code></li>
 				</ul>
-				<p><strong>2 - Register the new icon in the typing</strong></p>
-				<ul>
-					<li>Open <code>lib/components/Icon/index.tsx</code></li>
-					<li>Add the new icon to the enum list:<pre><code>export <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">IconSymbol</span> {</span>
-[...]
-ICON_NAME = <span class="hljs-string">'xxx'</span>
-}</code></pre>The value <code>xxx</code> should match the name set in part 1.</li>
-				</ul>
-				<hr>
-				<p>Tadaa 🎉</p>
-				<p>Don&#39;t forget to update the changelog and publish to see the changes when everything is good !</p>
 				<h2 id="dev">Dev</h2>
 				<h4 id="requirement-for-developpement-usage">Requirement for developpement usage</h4>
 				<p>To work with storybook inside Bx you will need to link the module </p>
@@ -109,10 +96,10 @@ ICON_NAME = <span class="hljs-string">'xxx'</span>
 				<h4 id="pull-request">Pull request</h4>
 				<p>Create a RC version for your PR to be tested:</p>
 				<ul>
-					<li><code>yarn version --preid=rc --prerelease</code> for a new or increment RC, will result in <strong>0.0.0-rc-0</strong></li>
-					<li><code>yarn version --premajor</code> for a new major RC version, will result in <strong>1.0.0-rc.0</strong></li>
-					<li><code>yarn version --preminor</code> for a new minor RC version, will result in <strong>0.1.0-rc.0</strong></li>
-					<li><code>yarn version --prepatch</code> for a new patched version, will result in <strong>0.0.1-rc.0</strong> </li>
+					<li><code>npm version --preid=rc --prerelease</code> for a new or increment RC, will result in <strong>0.0.0-rc-0</strong></li>
+					<li><code>npm version --premajor</code> for a new major RC version, will result in <strong>1.0.0-rc.0</strong></li>
+					<li><code>npm version --preminor</code> for a new minor RC version, will result in <strong>0.1.0-rc.0</strong></li>
+					<li><code>npm version --prepatch</code> for a new patched version, will result in <strong>0.0.1-rc.0</strong> </li>
 					<li><code>git push --follow-tags</code> to push rc version version</li>
 				</ul>
 				<h2 id="publish">Publish</h2>
@@ -120,13 +107,13 @@ ICON_NAME = <span class="hljs-string">'xxx'</span>
 					<li>Build docs: <code>yarn build-docs</code></li>
 					<li>verify <code>CHANGELOG.md</code> entries</li>
 					<li>Increment version via: from <strong>0.0.0</strong><ul>
-							<li><code>yarn version --major</code> =&gt; <strong>1.0.0</strong></li>
-							<li><code>yarn version --minor</code> =&gt; <strong>0.1.0</strong></li>
-							<li><code>yarn version --patch</code> =&gt; <strong>0.0.1</strong></li>
+							<li><code>npm version --major</code> =&gt; <strong>1.0.0</strong></li>
+							<li><code>npm version --minor</code> =&gt; <strong>0.1.0</strong></li>
+							<li><code>npm version --patch</code> =&gt; <strong>0.0.1</strong></li>
 							<li>NB: if the version was a <em>RC</em> those command will automatically chaned it a release one with same version !👌</li>
 						</ul>
 					</li>
-					<li>Publish: <code>yarn publish</code></li>
+					<li>Publish: <code>npm publish</code></li>
 				</ul>
 			</div>
 		</div>
@@ -186,6 +173,192 @@ ICON_NAME = <span class="hljs-string">'xxx'</span>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_components_icon_stories_.html">"components/<wbr>Icon/stories"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_appiconplaceholdersvg_.html">"components/<wbr>Icon/svg/<wbr>App<wbr>Icon<wbr>Placeholder<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_appssvg_.html">"components/<wbr>Icon/svg/<wbr>Apps<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_arrowbacksvg_.html">"components/<wbr>Icon/svg/<wbr>Arrow<wbr>Back<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_arrowdownleftsvg_.html">"components/<wbr>Icon/svg/<wbr>Arrow<wbr>Down<wbr>Left<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_arrowforwardsvg_.html">"components/<wbr>Icon/svg/<wbr>Arrow<wbr>Forward<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_arrowleftsvg_.html">"components/<wbr>Icon/svg/<wbr>Arrow<wbr>Left<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_arrowrightsvg_.html">"components/<wbr>Icon/svg/<wbr>Arrow<wbr>Right<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_arrowuprightplussvg_.html">"components/<wbr>Icon/svg/<wbr>Arrow<wbr>UpRight<wbr>Plus<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_arrowuprightsvg_.html">"components/<wbr>Icon/svg/<wbr>Arrow<wbr>UpRight<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_atsvg_.html">"components/<wbr>Icon/svg/<wbr>AtSvg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_belloffsvg_.html">"components/<wbr>Icon/svg/<wbr>Bell<wbr>Off<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_bellsvg_.html">"components/<wbr>Icon/svg/<wbr>Bell<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_burgersvg_.html">"components/<wbr>Icon/svg/<wbr>Burger<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_chatsvg_.html">"components/<wbr>Icon/svg/<wbr>Chat<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_checkmarksvg_.html">"components/<wbr>Icon/svg/<wbr>Checkmark<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_checkroundsvg_.html">"components/<wbr>Icon/svg/<wbr>Checkround<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_coglinesvg_.html">"components/<wbr>Icon/svg/<wbr>Cog<wbr>Line<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_cogsvg_.html">"components/<wbr>Icon/svg/<wbr>Cog<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_crosssvg_.html">"components/<wbr>Icon/svg/<wbr>Cross<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_detachsvg_.html">"components/<wbr>Icon/svg/<wbr>Detach<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_docsvg_.html">"components/<wbr>Icon/svg/<wbr>Doc<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_downloadsvg_.html">"components/<wbr>Icon/svg/<wbr>Download<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_extensionsvg_.html">"components/<wbr>Icon/svg/<wbr>Extension<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_focussvg_.html">"components/<wbr>Icon/svg/<wbr>Focus<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_heartfilledsvg_.html">"components/<wbr>Icon/svg/<wbr>Heartfilled<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_heartstrokesvg_.html">"components/<wbr>Icon/svg/<wbr>Heartstroke<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_hintsvg_.html">"components/<wbr>Icon/svg/<wbr>Hint<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_infosvg_.html">"components/<wbr>Icon/svg/<wbr>Info<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_jobssvg_.html">"components/<wbr>Icon/svg/<wbr>Jobs<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_joinsvg_.html">"components/<wbr>Icon/svg/<wbr>Join<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_leavesvg_.html">"components/<wbr>Icon/svg/<wbr>Leave<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_lifeboatsvg_.html">"components/<wbr>Icon/svg/<wbr>Lifeboat<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_linkchainsvg_.html">"components/<wbr>Icon/svg/<wbr>Link<wbr>Chain<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_loadingsvg_.html">"components/<wbr>Icon/svg/<wbr>Loading<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_locksvg_.html">"components/<wbr>Icon/svg/<wbr>Lock<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_markreadsvg_.html">"components/<wbr>Icon/svg/<wbr>Mark<wbr>Read<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_notificationsvg_.html">"components/<wbr>Icon/svg/<wbr>Notification<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_nudgesvg_.html">"components/<wbr>Icon/svg/<wbr>Nudge<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_pencilsvg_.html">"components/<wbr>Icon/svg/<wbr>Pencil<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_pinsvg_.html">"components/<wbr>Icon/svg/<wbr>Pin<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_plussvg_.html">"components/<wbr>Icon/svg/<wbr>Plus<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_quotesvg_.html">"components/<wbr>Icon/svg/<wbr>Quote<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_reattachsvg_.html">"components/<wbr>Icon/svg/<wbr>Reattach<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_recentarrowsvg_.html">"components/<wbr>Icon/svg/<wbr>Recent<wbr>Arrow<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_recentsvg_.html">"components/<wbr>Icon/svg/<wbr>Recent<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_returnsvg_.html">"components/<wbr>Icon/svg/<wbr>Return<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_searchsvg_.html">"components/<wbr>Icon/svg/<wbr>Search<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_sendpaperplanesvg_.html">"components/<wbr>Icon/svg/<wbr>Send<wbr>Paperplane<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_sendsvg_.html">"components/<wbr>Icon/svg/<wbr>Send<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_sheetsvg_.html">"components/<wbr>Icon/svg/<wbr>Sheet<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_showsvg_.html">"components/<wbr>Icon/svg/<wbr>Show<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_slidesvg_.html">"components/<wbr>Icon/svg/<wbr>Slide<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_starsvg_.html">"components/<wbr>Icon/svg/<wbr>Star<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_supportsvg_.html">"components/<wbr>Icon/svg/<wbr>Support<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_textsvg_.html">"components/<wbr>Icon/svg/<wbr>Text<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_timesvg_.html">"components/<wbr>Icon/svg/<wbr>Time<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_trashsvg_.html">"components/<wbr>Icon/svg/<wbr>Trash<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_unhappysvg_.html">"components/<wbr>Icon/svg/<wbr>Unhappy<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_updatesvg_.html">"components/<wbr>Icon/svg/<wbr>Update<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_useraddsvg_.html">"components/<wbr>Icon/svg/<wbr>User<wbr>Add<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_usersvg_.html">"components/<wbr>Icon/svg/<wbr>User<wbr>Svg"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_components_icon_svg_index_.html">"components/<wbr>Icon/svg/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_components_input_index_.html">"components/<wbr>Input/index"</a>
