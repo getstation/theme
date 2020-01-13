@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+## [1.1.1] - 2020-01-13
+### Fixed
+- Hotfix: align exposed SelectInput types with React Select types.
+
 ## [1.1.0] - 2020-01-10
 ### Added
 - Add raw input management for SelectInput (APP-679)
