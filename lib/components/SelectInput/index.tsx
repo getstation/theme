@@ -3,6 +3,7 @@ import Select, { components } from 'react-select';
 import injectSheet, { WithSheet } from 'react-jss';
 import { OptionProps } from 'react-select/src/components/Option';
 import { NoticeProps } from 'react-select/src/components/Menu';
+import { InputActionMeta } from 'react-select/src/types';
 
 import { theme } from '../../jss';
 import { IgnoreJSSNested } from '../../types';
@@ -92,7 +93,7 @@ interface OwnProps {
   value: SelectInputOption | null,
   inputValue?: string,
   onChange: (option: SelectInputOption) => void,
-  onInputChange?: (value: string) => void,
+  onInputChange?: (value: string, action: InputActionMeta) => void,
   placeholder?: string,
   noOptionsMessage?: string,
   className?: string,
