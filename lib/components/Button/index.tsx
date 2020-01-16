@@ -8,7 +8,7 @@ export enum Size {
   BIG, NORMAL, SMALL, XSMALL, XXSMALL, XXXSMALL,
 }
 export enum Style {
-  MAIN, PRIMARY, SECONDARY, TERTIARY, LINK, DANGER,
+  MAIN, PRIMARY, SECONDARY, TERTIARY, LINK, DANGER, OUTLINED
 }
 
 export interface ButtonOwnProps extends JSX.IntrinsicClassAttributes<ButtonImpl> {
@@ -112,6 +112,10 @@ const styles = (theme: ThemeTypes) => createStyles({
       backgroundColor: theme.colors.flatRed.dark,
     },
   },
+  outlined: {
+    color: '#3070CD',
+    border: 'solid 1px #3070CD',
+  },
   content: {
     opacity: (({ isLoading } : ButtonProps) => isLoading ? 0 : 1) as any,
     transition: '300ms',
@@ -158,6 +162,7 @@ export class ButtonImpl extends React.Component<ButtonProps & InjectSheetProps, 
       [Style.TERTIARY]: classes.buttonTertiary,
       [Style.LINK]: classes.buttonLink,
       [Style.DANGER]: classes.buttonDanger,
+      [Style.OUTLINED]: classes.outlined,
     };
 
     const className = classNames(
