@@ -19,6 +19,8 @@ storiesOf('Atoms|Button', module)
           const tertiaryContent = text('tertiary button content', 'Tertiary Button');
           const linkContent = text('link button content', 'Link Button');
           const dangerContent = text('danger button content', 'Danger Button');
+          const outlinedContent = text('outlined button content', 'Outlined Button');
+
           const style = { marginLeft: '10px' };
           const isLoading = boolean('isLoading', false);
           return (
@@ -43,6 +45,9 @@ storiesOf('Atoms|Button', module)
                 <Button style={style} btnSize={Size.XXSMALL} btnStyle={Style.DANGER} isLoading={isLoading}>
                   {dangerContent}
                 </Button>
+                <Button style={style} btnSize={Size.XXSMALL} btnStyle={Style.OUTLINED} isLoading={isLoading}>
+                  {outlinedContent}
+                </Button>
               </div>
               <h4>XSMALL Button</h4>
               <div>
@@ -63,6 +68,9 @@ storiesOf('Atoms|Button', module)
                 </Button>
                 <Button style={style} btnSize={Size.XSMALL} btnStyle={Style.DANGER} isLoading={isLoading}>
                   {dangerContent}
+                </Button>
+                <Button style={style} btnSize={Size.XSMALL} btnStyle={Style.OUTLINED} isLoading={isLoading}>
+                  {outlinedContent}
                 </Button>
               </div>
               <h4>SMALL Button</h4>
@@ -85,6 +93,9 @@ storiesOf('Atoms|Button', module)
                 <Button style={style} btnSize={Size.SMALL} btnStyle={Style.DANGER} isLoading={isLoading}>
                   {dangerContent}
                 </Button>
+                <Button style={style} btnSize={Size.SMALL} btnStyle={Style.OUTLINED} isLoading={isLoading}>
+                  {outlinedContent}
+                </Button>
               </div>
               <h4>NORMAL Button</h4>
               <div>
@@ -106,6 +117,9 @@ storiesOf('Atoms|Button', module)
                 <Button style={style} btnSize={Size.NORMAL} btnStyle={Style.DANGER} isLoading={isLoading}>
                   {dangerContent}
                 </Button>
+                <Button style={style} btnSize={Size.NORMAL} btnStyle={Style.OUTLINED} isLoading={isLoading}>
+                  {outlinedContent}
+                </Button>
               </div>
               <h4>BIG Button</h4>
               <div>
@@ -126,6 +140,9 @@ storiesOf('Atoms|Button', module)
                 </Button>
                 <Button style={style} btnSize={Size.BIG} btnStyle={Style.DANGER} isLoading={isLoading}>
                   {dangerContent}
+                </Button>
+                <Button style={style} btnSize={Size.BIG} btnStyle={Style.OUTLINED} isLoading={isLoading}>
+                  {outlinedContent}
                 </Button>
               </div>
             </div>
