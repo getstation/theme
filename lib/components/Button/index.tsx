@@ -8,7 +8,7 @@ export enum Size {
   BIG, NORMAL, SMALL, XSMALL, XXSMALL, XXXSMALL,
 }
 export enum Style {
-  MAIN, PRIMARY, SECONDARY, TERTIARY, LINK, DANGER, OUTLINED
+  MAIN, PRIMARY, SECONDARY, TERTIARY, LINK, DANGER, OUTLINED,
 }
 
 export interface ButtonOwnProps extends JSX.IntrinsicClassAttributes<ButtonImpl> {
